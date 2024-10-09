@@ -4081,6 +4081,11 @@ _ {
   padding-inline: max(var(--横余白), 1em);
   border: none;
 }
+.dismissable-banner__action,
+.warning-banner__action,
+_ {
+  display: flex;
+}
 .dismissable-banner__action {
   padding-inline: 0;
 }
