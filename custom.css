@@ -1326,6 +1326,7 @@ html {
 .account-card__title__avatar .account__avatar, 
 _ {
   border-radius: 20%;
+  overflow: hidden;
 }
 .account__header__tabs,
 .account__header__tabs__buttons,
