@@ -1,0 +1,7096 @@
+/*** 変数定義 ***/
+
+body {
+  --表紙絵キャプション: 'トップ画 by しふたろうさん（@shiftal_on）';
+  --小間隔: 2px;
+  --大間隔: 12px;
+  --縦余白: 6px;
+  --横余白: 8px;
+  --横余白塗り: 6px;
+  --投稿詳細の横余白追加: 0px;
+  --小カド: 0px;
+  --大カド: 16px;
+  --弱い影: 0 4px 6px -8px var(--影の色);
+  --grad: 
+    linear-gradient(#fff2, #fff0 20%, #00000008 50%, #fff0 80%, #fff2)
+    , radial-gradient(circle closest-corner at right center, #0081, #0000 100%)
+    , radial-gradient(circle closest-corner at left center, #0081, #0000 100%)
+    , radial-gradient(circle closest-corner at right center, #0081, #0000 25%)
+    , radial-gradient(circle closest-corner at left center, #0081, #0000 25%)
+  ;
+  
+  --col06の明彩色: hsl(160, 56%, 47%);
+  --col07の明彩色: hsl(28, 80%, 52%);
+  --col08の明彩色: hsl(25, 50%, 52%);
+  --col09の明彩色: hsl(320, 60%, 70%);
+  --col10の明彩色: hsl(210, 75%, 66%);
+  
+  --col06の暗彩色: hsl(160, 50%, 38%);
+  --col07の暗彩色: hsl(28, 80%, 42%);
+  --col08の暗彩色: hsl(25, 60%, 42%);
+  --col09の暗彩色: hsl(320, 44%, 56%);
+  --col10の暗彩色: hsl(210, 60%, 49%);
+  
+  --明彩色の順序01: rgb(204, 134, 60);
+  --明彩色の順序02: rgb(212, 124, 123);
+  --明彩色の順序03: rgb(203, 122, 187);
+  --明彩色の順序04: rgb(181, 128, 236);
+  --明彩色の順序05: rgb(150, 141, 255);
+  --明彩色の順序06: rgb(120, 157, 240);
+  --明彩色の順序07: rgb(97, 171, 195);
+  --明彩色の順序08: rgb(89, 181, 132);
+  --明彩色の順序09: rgb(98, 183, 68);
+  --明彩色の順序10: rgb(120, 177, 19);
+  --明彩色の順序11: rgb(151, 164, 0);
+  --明彩色の順序12: rgb(181, 148, 15);
+  
+  --暗彩色の順序01: rgb(158, 84, 60);
+  --暗彩色の順序02: rgb(166, 74, 123);
+  --暗彩色の順序03: rgb(157, 72, 187);
+  --暗彩色の順序04: rgb(135, 78, 236);
+  --暗彩色の順序05: rgb(104, 91, 255);
+  --暗彩色の順序06: rgb(74, 107, 240);
+  --暗彩色の順序07: rgb(51, 121, 195);
+  --暗彩色の順序08: rgb(43, 131, 132);
+  --暗彩色の順序09: rgb(52, 133, 68);
+  --暗彩色の順序10: rgb(74, 127, 19);
+  --暗彩色の順序11: rgb(105, 114, 0);
+  --暗彩色の順序12: rgb(135, 98, 15);
+}
+body.layout-multiple-columns {
+  --小カド: 6px;
+  --カラム幅-主要: 376px;
+}
+body.layout-multiple-columns:has(.drawer .search__input[value*="/width11"]) {
+  --カラム幅-主要: 346px;
+  --投稿詳細の横余白追加: 3px;
+}
+body.layout-multiple-columns:has(.drawer .search__input[value*="/width10"]) {
+  --カラム幅-主要: 316px;
+  --投稿詳細の横余白追加: 6px;
+}
+body.layout-multiple-columns:has(.drawer .search__input[value*="/width09"]) {
+  --カラム幅-主要: 286px;
+  --投稿詳細の横余白追加: 9px;
+}
+body.layout-multiple-columns:has(.drawer .search__input[value*="/width08"]) {
+  --カラム幅-主要: 256px;
+  --投稿詳細の横余白追加: 3px;
+}
+@media (min-width: 600px) {
+  body.layout-single-column {
+    --小間隔: 4px;
+    --大間隔: 24px;
+    --縦余白: 6px;
+    --note: '主カラムの幅の範囲 : 620px ... 780px';
+    --横余白: clamp(16px, 32px, 0.1 * (var(--カラム幅-主要) - 620px) + 16px);
+    --横余白塗り: 8px;
+    --小カド: 10px;
+    --大カド: 20px;
+  }
+}
+
+.link-footer a,
+.reply-indicator__content a,
+.status__content a,
+.status__content__read-more-button,
+.status__content__translate-button,
+_,
+.link-footer a.mention span,
+.reply-indicator__content a.mention span,
+.status__content a.mention span,
+.status__content__read-more-button.mention span,
+.status__content__translate-button.mention span,
+_ {
+  text-decoration: none;
+}
+.link-footer a:is(:active, :focus, :hover),
+.reply-indicator__content a:is(:active, :focus, :hover),
+.status__content a:is(:active, :focus, :hover),
+.status__content__read-more-button:is(:active, :focus, :hover),
+.status__content__translate-button:is(:active, :focus, :hover),
+_,
+.link-footer a.mention span:is(:active, :focus, :hover),
+.reply-indicator__content a.mention span:is(:active, :focus, :hover),
+.status__content a.mention span:is(:active, :focus, :hover),
+.status__content__read-more-button.mention span:is(:active, :focus, :hover),
+.status__content__translate-button.mention span:is(:active, :focus, :hover),
+_ {
+  text-decoration: underline;
+}
+
+body {
+  --背景色飽和: hsl(0, 0%, 0%);
+  --背景色0: hsl(0, 0%, 6%);
+  --背景色1: var(--col01の背景色1);
+  --背景色2: var(--col01の背景色2);
+  --透過背景色1on0: var(--背景色b); --透過背景色1on2: var(--背景色b);
+  
+  --col00の背景色1: hsl(0, 0%, 14%);    	--col00の背景色2: hsl(0, 0%, 22%);
+  --col01の背景色1: hsl(212, 12%, 14%); 	--col01の背景色2: hsl(212, 11%, 22%);
+  --col02の背景色1: hsl(242, 14%, 16%); 	--col02の背景色2: hsl(250, 9%, 24%);
+  --col03の背景色1: hsl(285, 8%, 15%); 	--col03の背景色2: hsl(325, 6%, 23%);
+  --col04の背景色1: hsl(122, 9%, 14%); 	--col04の背景色2: hsl(110, 7%, 21%);
+  --col05の背景色1: hsl(175, 15%, 13%); 	--col05の背景色2: hsl(167, 9%, 20%);
+  --col06の背景色1: hsl(212, 12%, 14%); 	--col06の背景色2: hsl(212, 11%, 22%);
+  --col07の背景色1: hsl(212, 12%, 14%); 	--col07の背景色2: hsl(212, 11%, 22%);
+  --col08の背景色1: hsl(212, 12%, 14%); 	--col08の背景色2: hsl(212, 11%, 22%);
+  --col09の背景色1: hsl(212, 12%, 14%); 	--col09の背景色2: hsl(212, 11%, 22%);
+  --col10の背景色1: hsl(212, 12%, 14%); 	--col10の背景色2: hsl(212, 11%, 22%);
+  
+  ----透過背景色1on0: rgba(173, 200, 255, 0.11);
+  ----透過背景色1on2: rgba(1, 1, 0, 0.376);
+  --前景色新着: hsl(344, 65%, 61%);
+  --背景色注意: hsl(50, 100%, 12%);
+  --背景色警告: hsla(0, 100%, 50%, 0.1);
+  --背景色危険: #b7253d;
+  --前景色危険: #df405a;
+  --背景色特別: hsl(238, 50%, 16%);
+  
+  --前景色飽和: hsl(0, 0%, 100%);
+  --前景色0: hsl(0, 0%, 90%);
+  --前景色1: hsla(40, 10%, 85%, 0.8);
+  --前景色2: hsla(40, 30%, 90%, 0.5);
+  --前景色3: hsla(40, 30%, 90%, 0.3);
+  --前景色注意: hsl(50, 70%, 70%);
+  --前景色ブースト: hsl(140, 60%, 40%);
+  --前景色お気に入り: hsl(42, 100%, 40%);
+  --前景色ブックマーク: #ff5050;
+  --前景色特別: hsl(238, 92%, 67%);
+  
+  --標準の背景彩色: hsl(188, 40%, 14%);
+  --新着の背景彩色: hsl(344, 70%, 14%);
+  --col06の背景彩色: hsl(188, 40%, 14%);
+  --col07の背景彩色: hsl(188, 40%, 14%);
+  --col08の背景彩色: hsl(188, 40%, 14%);
+  --col09の背景彩色: hsl(188, 40%, 14%);
+  --col10の背景彩色: hsl(188, 40%, 14%);
+  --背景彩色の順序01: rgb(52, 29, 18);
+  --背景彩色の順序02: rgb(54, 26, 37);
+  --背景彩色の順序03: rgb(52, 25, 57);
+  --背景彩色の順序04: rgb(45, 27, 71);
+  --背景彩色の順序05: rgb(36, 31, 77);
+  --背景彩色の順序06: rgb(26, 36, 73);
+  --背景彩色の順序07: rgb(20, 40, 59);
+  --背景彩色の順序08: rgb(17, 43, 40);
+  --背景彩色の順序09: rgb(20, 44, 21);
+  --背景彩色の順序10: rgb(27, 42, 6);
+  --背景彩色の順序11: rgb(36, 38, 0);
+  --背景彩色の順序12: rgb(45, 33, 5);
+  
+  --標準の強い彩色: hsl(188, 55%, 60%);
+  --col06の強い彩色: var(--col06の明彩色);
+  --col07の強い彩色: var(--col07の明彩色);
+  --col08の強い彩色: var(--col08の明彩色);
+  --col09の強い彩色: var(--col09の明彩色);
+  --col10の強い彩色: var(--col10の明彩色);
+  --強い彩色の順序01: var(--明彩色の順序01);
+  --強い彩色の順序02: var(--明彩色の順序02);
+  --強い彩色の順序03: var(--明彩色の順序03);
+  --強い彩色の順序04: var(--明彩色の順序04);
+  --強い彩色の順序05: var(--明彩色の順序05);
+  --強い彩色の順序06: var(--明彩色の順序06);
+  --強い彩色の順序07: var(--明彩色の順序07);
+  --強い彩色の順序08: var(--明彩色の順序08);
+  --強い彩色の順序09: var(--明彩色の順序09);
+  --強い彩色の順序10: var(--明彩色の順序10);
+  --強い彩色の順序11: var(--明彩色の順序11);
+  --強い彩色の順序12: var(--明彩色の順序12);
+  
+  --標準の弱い彩色: hsl(188, 43%, 40%);
+  --col06の弱い彩色: var(--col06の暗彩色);
+  --col07の弱い彩色: var(--col07の暗彩色);
+  --col08の弱い彩色: var(--col08の暗彩色);
+  --col09の弱い彩色: var(--col09の暗彩色);
+  --col10の弱い彩色: var(--col10の暗彩色);
+  --弱い彩色の順序01: var(--暗彩色の順序01);
+  --弱い彩色の順序02: var(--暗彩色の順序02);
+  --弱い彩色の順序03: var(--暗彩色の順序03);
+  --弱い彩色の順序04: var(--暗彩色の順序04);
+  --弱い彩色の順序05: var(--暗彩色の順序05);
+  --弱い彩色の順序06: var(--暗彩色の順序06);
+  --弱い彩色の順序07: var(--暗彩色の順序07);
+  --弱い彩色の順序08: var(--暗彩色の順序08);
+  --弱い彩色の順序09: var(--暗彩色の順序09);
+  --弱い彩色の順序10: var(--暗彩色の順序10);
+  --弱い彩色の順序11: var(--暗彩色の順序11);
+  --弱い彩色の順序12: var(--暗彩色の順序12);
+  
+  --背景彩色: var(--標準の背景彩色);
+  --強い彩色: var(--標準の強い彩色);
+  --弱い彩色: var(--標準の弱い彩色);
+  --invert-if-dark: invert(1) hue-rotate(180deg);
+  --invert-個別判定: ;
+  --filter-絵文字強調: contrast(0.6) brightness(1.25) saturate(1.25);
+  --filter-画像上の白字: blur(4px) saturate(150%) contrast(50%) saturate(250%);
+  --transition-bounce: cubic-bezier(0.5, 1.5, 0.5, 1);
+  --icon-ブースト: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="hsla(40, 30%25, 90%25, 0.3)"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
+  --icon-ブースト-白: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="white"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
+  --icon-ブースト不可: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><path id="bar" d="M 28 168 l 14 14 l 160 -160 l -14 -14 z"/><clipPath id="bar-clip"><path clip-rule="evenodd" d=" M 0 0 v 190 h 220 v -190 z M 28 168 l 24 24 l 160 -160 l -24 -24 z"/></clipPath></defs><g fill="hsla(40, 30%25, 90%25, 0.3)"><use href="%23bar"/><g clip-path="url(%23bar-clip)"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></g></svg>');
+  --icon-外へ: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="hsla(40, 30%25, 90%25, 0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
+  --icon-外へ白: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
+  --icon-矢尻右: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><g fill="hsl(188, 43%25, 47%25)"><path d="M 4 2 l -1 1 l 2 2 l -2 2 l 1 1 l 3 -3 z" /></g></svg>');
+  --icon-矢尻下: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><g fill="hsl(188, 43%25, 47%25)"><path d="M 2 4 l 1 -1 l 2 2 l 2 -2 l 1 1 l -3 3 z" /></g></svg>');
+  --icon-加筆: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="hsla(40, 30%25, 90%25, 0.3)" d="M 9 16 v 2 h 2 v -2 z M 13 16 v 2 h 2 v -2 M 17 16 v 2 h 2 v -2 z M 1 18 l 5 -2 l 8 -8 l -3 -3 l -8 8 z M 15 7 l 2 -2 q 1 -1 0 -2 l -1 -1 q -1 -1 -2 0 l -2 2 z"/></svg>');
+  --icon-タグ単: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path fill="hsla(40, 30%25, 90%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
+  --icon-タグ束: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25"><path fill="hsla(40, 30%25, 90%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 19 2 h -3 l 11 11 l -9.5 9.5 l 1.5 1.5 l 11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
+  --icon-左矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 24 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 40 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z"/></svg>');
+  --icon-右矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 24 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 40 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z"/></svg>');
+  
+  color: var(--前景色1);
+}
+
+body.theme-mastodon-light,
+_ {
+  --背景色飽和: hsl(0, 0%, 100%);
+  --背景色0: hsl(0, 0%, 94%);
+  --col00の背景色1: hsl(0, 0%, 86%);    	--col00の背景色2: hsl(0, 0%, 78%);
+  --col01の背景色1: hsl(32, 12%, 86%); 	--col01の背景色2: hsl(32, 11%, 78%);
+  --col02の背景色1: hsl(62, 14%, 84%); 	--col02の背景色2: hsl(70, 9%, 76%);
+  --col03の背景色1: hsl(105, 8%, 85%); 	--col03の背景色2: hsl(145, 6%, 77%);
+  --col04の背景色1: hsl(302, 9%, 86%); 	--col04の背景色2: hsl(290, 7%, 79%);
+  --col05の背景色1: hsl(355, 15%, 87%); 	--col05の背景色2: hsl(347, 9%, 80%);
+  --col06の背景色1: hsl(31, 52%, 85%);  	--col06の背景色2: hsl(20, 47%, 80%);
+  --col07の背景色1: hsl(47, 57%, 81%); 	--col07の背景色2: hsl(35, 55%, 76%);
+  --col08の背景色1: hsl(90, 30%, 82%); 	--col08の背景色2: hsl(112, 25%, 76%);
+  --col09の背景色1: hsl(180, 22%, 84%); 	--col09の背景色2: hsl(190, 22%, 77%);
+  --col10の背景色1: hsl(320, 32%, 88%); 	--col10の背景色2: hsl(312, 25%, 81%);
+  
+  ----透過背景色1on0: rgba(89, 59, 0, 0.1);
+  ----透過背景色1on2: rgba(254, 255, 251, 0.325);
+  --前景色新着: hsl(344, 100%, 65%);
+  --背景色注意: hsl(48, 100%, 83%);
+  --背景色特別: hsl(238, 100%, 94%);
+  
+  --前景色飽和: hsl(0, 0%, 0%);
+  --前景色0: hsl(0, 0%, 10%);
+  --前景色1: hsla(220, 40%, 15%, 0.8);
+  --前景色2: hsla(220, 100%, 10%, 0.5);
+  --前景色3: hsla(220, 100%, 10%, 0.3);
+  --前景色注意: hsl(34, 100%, 23%);
+  
+  --標準の背景彩色: hsl(188, 40%, 84%);
+  --新着の背景彩色: hsl(344, 100%, 92%);
+  --col06の背景彩色: hsl(160, 28%, 78%);
+  --col07の背景彩色: hsl(28, 40%, 81%);
+  --col08の背景彩色: hsl(25, 33%, 80%);
+  --col09の背景彩色: hsl(280, 40%, 85%);
+  --col10の背景彩色: hsl(210, 50%, 84%);
+  --背景彩色の順序01: rgb(235, 215, 196);
+  --背景彩色の順序02: rgb(238, 212, 215);
+  --背景彩色の順序03: rgb(235, 211, 234);
+  --背景彩色の順序04: rgb(228, 213, 249);
+  --背景彩色の順序05: rgb(219, 217, 255);
+  --背景彩色の順序06: rgb(210, 222, 250);
+  --背景彩色の順序07: rgb(203, 226, 237);
+  --背景彩色の順序08: rgb(201, 229, 218);
+  --背景彩色の順序09: rgb(203, 230, 198);
+  --背景彩色の順序10: rgb(210, 228, 184);
+  --背景彩色の順序11: rgb(219, 224, 178);
+  --背景彩色の順序12: rgb(229, 219, 182);
+  
+  --標準の強い彩色: hsl(188, 100%, 32%);
+  --col06の強い彩色: var(--col06の暗彩色);
+  --col07の強い彩色: var(--col07の暗彩色);
+  --col08の強い彩色: var(--col08の暗彩色);
+  --col09の強い彩色: var(--col09の暗彩色);
+  --col10の強い彩色: var(--col10の暗彩色);
+  --強い彩色の順序01: var(--暗彩色の順序01);
+  --強い彩色の順序02: var(--暗彩色の順序02);
+  --強い彩色の順序03: var(--暗彩色の順序03);
+  --強い彩色の順序04: var(--暗彩色の順序04);
+  --強い彩色の順序05: var(--暗彩色の順序05);
+  --強い彩色の順序06: var(--暗彩色の順序06);
+  --強い彩色の順序07: var(--暗彩色の順序07);
+  --強い彩色の順序08: var(--暗彩色の順序08);
+  --強い彩色の順序09: var(--暗彩色の順序09);
+  --強い彩色の順序10: var(--暗彩色の順序10);
+  --強い彩色の順序11: var(--暗彩色の順序11);
+  --強い彩色の順序12: var(--暗彩色の順序12);
+  
+  --標準の弱い彩色: hsl(188, 43%, 54%);
+  --col06の弱い彩色: var(--col06の明彩色);
+  --col07の弱い彩色: var(--col07の明彩色);
+  --col08の弱い彩色: var(--col08の明彩色);
+  --col09の弱い彩色: var(--col09の明彩色);
+  --col10の弱い彩色: var(--col10の明彩色);
+  --弱い彩色の順序01: var(--明彩色の順序01);
+  --弱い彩色の順序02: var(--明彩色の順序02);
+  --弱い彩色の順序03: var(--明彩色の順序03);
+  --弱い彩色の順序04: var(--明彩色の順序04);
+  --弱い彩色の順序05: var(--明彩色の順序05);
+  --弱い彩色の順序06: var(--明彩色の順序06);
+  --弱い彩色の順序07: var(--明彩色の順序07);
+  --弱い彩色の順序08: var(--明彩色の順序08);
+  --弱い彩色の順序09: var(--明彩色の順序09);
+  --弱い彩色の順序10: var(--明彩色の順序10);
+  --弱い彩色の順序11: var(--明彩色の順序11);
+  --弱い彩色の順序12: var(--明彩色の順序12);
+  
+  --invert-if-dark: invert(0);
+  --filter-絵文字強調: brightness(0.8) saturate(1.25);
+  --icon-ブースト: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="hsla(220, 100%25, 10%25, 0.3)"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
+  --icon-ブースト不可: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><path id="bar" d="M 28 168 l 14 14 l 160 -160 l -14 -14 z"/><clipPath id="bar-clip"><path clip-rule="evenodd" d=" M 0 0 v 190 h 220 v -190 z M 28 168 l 24 24 l 160 -160 l -24 -24 z"/></clipPath></defs><g fill="hsla(220, 100%25, 10%25, 0.3)"><use href="%23bar"/><g clip-path="url(%23bar-clip)"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></g></svg>');
+  --icon-外へ: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="hsla(220, 100%25, 10%25, 0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
+  --icon-加筆: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="hsla(220, 100%25, 10%25, 0.3)" d="M 9 16 v 2 h 2 v -2 z M 13 16 v 2 h 2 v -2 M 17 16 v 2 h 2 v -2 z M 1 18 l 5 -2 l 8 -8 l -3 -3 l -8 8 z M 15 7 l 2 -2 q 1 -1 0 -2 l -1 -1 q -1 -1 -2 0 l -2 2 z"/></svg>');
+  --icon-タグ単: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path fill="hsla(220, 100%25, 10%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
+  --icon-タグ束: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25"><path fill="hsla(220, 100%25, 10%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 19 2 h -3 l 11 11 l -9.5 9.5 l 1.5 1.5 l 11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
+  --icon-左矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(220, 40%25, 15%25, 0.8)" d="M 8 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 24 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 40 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z"/></svg>');
+  --icon-右矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(220, 40%25, 15%25, 0.8)" d="M 8 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 24 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 40 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z"/></svg>');
+}
+
+body.theme-default,
+body.layout-single-column.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
+body.layout-multiple-columns.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
+head:has(> meta[name=initialPath][content$='/lc']) + body.theme-contrast,
+_ {
+  --標準の背景彩色: hsl(188, 40%, 26%);
+  --新着の背景彩色: hsl(344, 40%, 30%);
+  --背景彩色の順序01: rgb(93, 64, 44);
+  --背景彩色の順序02: rgb(96, 60, 70);
+  --背景彩色の順序03: rgb(93, 59, 95);
+  --背景彩色の順序04: rgb(84, 62, 115);
+  --背景彩色の順序05: rgb(71, 67, 122);
+  --背景彩色の順序06: rgb(59, 73, 117);
+  --背景彩色の順序07: rgb(50, 79, 99);
+  --背景彩色の順序08: rgb(47, 83, 73);
+  --背景彩色の順序09: rgb(50, 84, 48);
+  --背景彩色の順序10: rgb(59, 81, 28);
+  --背景彩色の順序11: rgb(71, 76, 20);
+  --背景彩色の順序12: rgb(84, 70, 26);
+}
+body.layout-single-column.theme-mastodon-light:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
+body.layout-multiple-columns.theme-mastodon-light:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
+head:has(> meta[name=initialPath][content$='/lc']) + body.theme-mastodon-light,
+_ {
+  --標準の背景彩色: hsl(188, 35%, 69%);
+  --新着の背景彩色: hsl(344, 60%, 85%);
+  --背景彩色の順序01: rgb(205, 176, 156);
+  --背景彩色の順序02: rgb(208, 172, 182);
+  --背景彩色の順序03: rgb(205, 171, 207);
+  --背景彩色の順序04: rgb(196, 174, 227);
+  --背景彩色の順序05: rgb(184, 179, 235);
+  --背景彩色の順序06: rgb(171, 185, 229);
+  --背景彩色の順序07: rgb(162, 191, 211);
+  --背景彩色の順序08: rgb(159, 195, 185);
+  --背景彩色の順序09: rgb(162, 196, 160);
+  --背景彩色の順序10: rgb(171, 193, 140);
+  --背景彩色の順序11: rgb(184, 188, 133);
+  --背景彩色の順序12: rgb(196, 182, 138);
+}
+
+body.theme-mastodon-light,
+body.theme-contrast,
+_ {
+  --背景色a: var(--背景色0);
+  --背景色b: var(--背景色1);
+  --背景色c: var(--背景色2);
+  --カラム内透過背景色: var(--透過背景色1on0);
+  --影の色: var(--前景色飽和);
+}
+body.theme-default,
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
+head:has(> meta[name=initialPath][content$='/lc']) + body,
+_ {
+  --背景色a: var(--背景色2);
+  --背景色b: var(--背景色1);
+  --背景色c: var(--背景色0);
+  --カラム内透過背景色: var(--透過背景色1on2);
+  --影の色: var(--背景色飽和);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/hc"]),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/hc"]),
+head:has(> meta[name=initialPath][content$='/hc']) + body,
+_ {
+  --背景色a: var(--背景色飽和);
+  --背景色b: var(--背景色1);
+  --背景色c: var(--背景色2);
+  --前景色0: var(--前景色飽和);
+  --カラム内透過背景色: var(--透過背景色1on0);
+  --影の色: var(--前景色飽和);
+}
+
+body {
+  --スタイル名: '—';
+}
+.error-column::before {
+  content: '適用されている配色 : ' var(--スタイル名);
+  display: block;
+  margin-block: 30px;
+  margin-inline: auto;
+  padding: 15px;
+  font-size: 15px;
+  color: var(--前景色1);
+  background: var(--背景色b);
+  border-radius: 8px;
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color01"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color01"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color01']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="A"],[content^="B"],[content^="C"],[content^="D"],
+  [content^="E"],[content^="F"],[content^="G"],[content^="H"],
+  [content^="I"],[content^="J"],[content^="K"],[content^="L"],
+  [content^="M"],[content^="N"],[content^="O"],[content^="P"],
+  [content^="Q"],[content^="R"],[content^="S"],[content^="T"],
+  [content^="U"],[content^="V"],[content^="W"],[content^="X"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color01'; --背景色1: var(--col01の背景色1); --背景色2: var(--col01の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color00"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color00"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color00']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="Y"],[content^="Z"],[content^="5"],[content^="6"],
+  [content^="7"],[content^="8"],[content^="9"],[content^="+"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color00'; --背景色1: var(--col00の背景色1); --背景色2: var(--col00の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color02"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color02"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color02']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="a"],[content^="b"],[content^="c"],[content^="d"],
+  [content^="e"],[content^="f"],[content^="g"],[content^="h"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color02'; --背景色1: var(--col02の背景色1); --背景色2: var(--col02の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color03"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color03"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color03']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="i"],[content^="j"],[content^="k"],[content^="l"],
+  [content^="m"],[content^="n"],[content^="o"],[content^="p"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color03'; --背景色1: var(--col03の背景色1); --背景色2: var(--col03の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color04"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color04"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color04']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="q"],[content^="r"],[content^="s"],[content^="t"],
+  [content^="u"],[content^="v"],[content^="w"],[content^="x"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color04'; --背景色1: var(--col04の背景色1); --背景色2: var(--col04の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color05"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color05"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color05']) + body.no-reduce-motion,
+head:has(> meta[name="style-nonce"]:where(
+  [content^="y"],[content^="z"],[content^="0"],[content^="1"],
+  [content^="2"],[content^="3"],[content^="4"],[content^="/"],
+_)) + body.app-body,
+_ {
+  --スタイル名: 'color05'; --背景色1: var(--col05の背景色1); --背景色2: var(--col05の背景色2);
+  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color06"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color06"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color06']) + body.no-reduce-motion {
+  --スタイル名: 'color06'; --背景色1: var(--col06の背景色1); --背景色2: var(--col06の背景色2);
+  --背景彩色: var(--col06の背景彩色); --強い彩色: var(--col06の強い彩色); --弱い彩色: var(--col06の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color07"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color07"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color07']) + body.no-reduce-motion {
+  --スタイル名: 'color07'; --背景色1: var(--col07の背景色1); --背景色2: var(--col07の背景色2);
+  --背景彩色: var(--col07の背景彩色); --強い彩色: var(--col07の強い彩色); --弱い彩色: var(--col07の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color08"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color08"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color08']) + body.no-reduce-motion {
+  --スタイル名: 'color08'; --背景色1: var(--col08の背景色1); --背景色2: var(--col08の背景色2);
+  --背景彩色: var(--col08の背景彩色); --強い彩色: var(--col08の強い彩色); --弱い彩色: var(--col08の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color09"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color09"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color09']) + body.no-reduce-motion {
+  --スタイル名: 'color09'; --背景色1: var(--col09の背景色1); --背景色2: var(--col09の背景色2);
+  --背景彩色: var(--col09の背景彩色); --強い彩色: var(--col09の強い彩色); --弱い彩色: var(--col09の弱い彩色);
+}
+body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color10"]):not(#_),
+body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color10"]):not(#_),
+head:has(> meta[name=initialPath][content$='/color10']) + body.no-reduce-motion {
+  --スタイル名: 'color10'; --背景色1: var(--col10の背景色1); --背景色2: var(--col10の背景色2);
+  --背景彩色: var(--col10の背景彩色); --強い彩色: var(--col10の強い彩色); --弱い彩色: var(--col10の弱い彩色);
+}
+
+/*** 共通要素: body ***/
+
+body {
+  background: var(--背景色b);
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 600px) {
+  body.app-body::before,
+  body.lighter::before,
+  _ {
+    content: '';
+    position: fixed;
+    inset-block: var(--スクロールバー幅);
+    inset-inline: var(--スクロールバー幅) auto;
+    width: calc(100vw - var(--スクロールバー幅) * 2);
+    pointer-events: none;
+    z-index: -1;
+    background: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/c4340e641c02732f.png') center / cover fixed var(--背景色b);
+    filter: saturate(0) brightness(0.7);
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+  }
+}
+
+/*** 選択範囲 ***/
+
+::selection {
+  background: var(--弱い彩色);
+  color: var(--前景色飽和);
+}
+
+/*** 基本フォーカスリング ***/
+
+* {
+  outline-offset: -1px;
+}
+:not(#_) {
+  outline-color: var(--弱い彩色);
+}
+:not(:focus) {
+  outline-offset: 10px;
+}
+:focus-visible,
+.status__content:focus-visible,
+button:focus-visible,
+.dropdown-menu__text-button:focus-visible,
+.column-link:focus-visible,
+_ {
+  outline: 2px solid var(--弱い彩色);
+  transition: 
+    outline-offset 0.1s ease-out
+  ;
+}
+.column-link:focus,
+.column-header button:focus,
+.account__section-headline > a:focus,
+.admin .sidebar a:focus,
+_ {
+  outline-offset: -1px;
+}
+.button:focus {
+  outline-offset: 2px;
+}
+
+/*** アイコンボタンのフォーカスリング ***/
+
+.icon-button,
+.text-icon-button,
+_ {
+    border-radius: 999px;
+}
+.status__action-bar .icon-button,
+.detailed-status__action-bar .icon-button,
+.compose-form__buttons button,
+_ {
+    border-radius: 300px / 400px;
+}
+.icon-button:hover:not(.disabled),
+.icon-button:focus,
+.icon-button.inverted:hover:not(.disabled),
+.icon-button.inverted:focus,
+.text-icon-button:hover:not(.disabled),
+.text-icon-button:focus,
+_ {
+  background: unset;
+  outline: 2px solid var(--弱い彩色);
+  outline-offset: 1px;
+  transition: none;
+}
+
+/*** 共通要素: ボタン類 ***/
+
+.button:not(._):not(._),
+.simple_form .button:not(._):not(._),
+.simple_form button:not(._):not(._),
+_ {
+  padding: 6px 13px;
+  border: 1px solid transparent;
+  line-height: 1.2em;
+  user-select: none;
+}
+.button:not(._):not(._),
+.simple_form .button:not(._):not(._),
+.simple_form button:not(._):not(._),
+.simple_form .block-button,
+.compose-form__poll-wrapper select,
+_ {
+  border-radius: 300px / 400px;
+}
+.account__header__tabs__buttons .icon-button {
+  border-radius: 10px;
+}
+.button:not(._):not(._),
+.simple_form .button:not(._):not(._),
+.simple_form button:not(._):not(._),
+.dropdown-menu__item a:is(:hover, :focus),
+.dropdown-menu__item button:is(:hover, :focus),
+.privacy-dropdown__option.active,
+.privacy-dropdown__option:hover,
+.language-dropdown__dropdown__results__item.active,
+.actions-modal ul li:not(:empty) a:is(.active, :active, :hover, :focus),
+.actions-modal ul li:not(:empty) a:is(.active, :active, :hover, :focus) button,
+input[type=file]::file-selector-button,
+_ {
+  background: var(--grad), var(--弱い彩色);
+  color: white;
+}
+.button.button-secondary:not(._),
+.button.block-modal__cancel-button:not(._),
+.button.mute-modal__cancel-button:not(._),
+.button.confirmation-modal__cancel-button:not(._),
+.button.confirmation-modal__secondary-button:not(._),
+.compose-form__poll-wrapper .button.button-secondary,
+_ {
+  border-color: var(--前景色3);
+  background: transparent;  
+  color: var(--前景色1);
+}
+.button.button-tertiary:not(._),
+.simple_form .button.button-tertiary:not(._),
+_ {
+  border-color: var(--弱い彩色);
+  background: transparent;  
+  color: var(--強い彩色);
+}
+
+input[type=file] {
+  background-color: var(--背景色a);
+  margin: 4px 0;
+  padding: 2px;
+  border-radius: 6px;
+}
+input[type=file]::file-selector-button,
+_ {
+  margin-inline-end: 8px;
+  padding: 3px 11px;
+  border: 1px solid transparent;
+  border-radius: 300px / 400px;
+  color: white;
+}
+.button:not(._):is(:hover, :focus),
+.timeline-hint a:is(:hover, :focus),
+.simple_form .button:not(._):is(:hover, :focus),
+.simple_form button:not(._):is(:hover, :focus),
+.compose-form__poll-wrapper .button:not(._):is(:hover, :focus),
+input[type=file]:is(:hover, :focus)::file-selector-button,
+_ {
+  border-color: transparent;
+  background: var(--grad), var(--弱い彩色);
+  color: white;
+}
+.button:not(._):active,
+.timeline-hint a:active,
+.simple_form .button:not(._):active,
+.simple_form button:not(._):active,
+.compose-form__poll-wrapper .button:not(._):active,
+input[type=file]:active::file-selector-button,
+_ {
+  border-color: var(--前景色3);
+  background: var(--grad), var(--強い彩色);
+  color: white;
+}
+.privacy-dropdown__option.active:hover,
+.language-dropdown__dropdown__results__item.active:hover,
+.privacy-dropdown.active .privacy-dropdown__value.active,
+_ {
+  background: var(--grad), var(--強い彩色);
+  color: white;
+}
+.button.button--destructive:is(:hover, :focus),
+.button.negative:is(:hover, :focus):not(._),
+_ {
+  background-color: var(--背景色危険);
+}
+
+.button:not(._).disabled,
+.button:not(._):disabled,
+_ {
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--背景色a);
+  background: var(--背景色b);
+  color: var(--前景色3);
+}
+
+.icon-with-badge__badge {
+  inset: auto -7px -7px auto;
+  padding: 0 4px;
+  font-size: 12px;
+  background: var(--前景色新着);
+  color: white;
+}
+#mastodon .icon-with-badge__badge {
+  border-color: var(--背景色b);
+}
+
+/*** 「リモートで表示」の外観をボタンにする ***/
+
+.timeline-hint a {
+  display: inline-block;
+  margin: 16px 0;
+  padding: 6px 13px;
+  border-radius: 300px / 400px;
+  border: 1px solid var(--前景色3);
+  background: transparent;  
+  color: var(--前景色1);
+  font-size: 15px;
+  line-height: 1.2em;
+  user-select: none;
+}
+
+.timeline-hint a:hover,
+.timeline-hint a:focus,
+_ {
+  text-decoration: none;
+}
+
+/*** リモートを開くアイコン ***/
+
+.dropdown-menu a[href^='http']::before,
+.actions-modal a[href^='http'] > div > div:first-child::before,
+.timeline-hint a::before,
+_ {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 8px -18px 0;
+  vertical-align: top;
+  background: var(--icon-外へ) center / contain no-repeat;
+}
+.dropdown-menu a[href^='http']:hover::before,
+.dropdown-menu a[href^='http']:focus::before,
+.actions-modal a[href^='http']:hover > div > div:first-child::before,
+.actions-modal a[href^='http']:focus > div > div:first-child::before,
+.timeline-hint a:hover::before,
+.timeline-hint a:focus::before,
+_ {
+  background-image: var(--icon-外へ白);
+}
+
+/*** 一般フォーム要素 ***/
+
+.simple_form input[type=text],
+.simple_form input[type=email],
+.simple_form input[type=password],
+.simple_form input[type=number],
+.simple_form textarea,
+.simple_form select,
+.poll__option input[type=text],
+.compose-form__poll-wrapper select,
+.compose-form .spoiler-input__input,
+.compose-form .compose-form__modifiers,
+_ {
+  color: var(--前景色0);
+  background-color: var(--背景色a);
+}
+.compose-form .autosuggest-textarea {
+  background-color: var(--背景色a);
+}
+
+.simple_form input[type=text],
+.simple_form input[type=email],
+.simple_form input[type=password],
+.simple_form input[type=number],
+.simple_form textarea,
+.simple_form select,
+.poll__option input[type=text],
+.compose-form__poll-wrapper select,
+.compose-form .spoiler-input__input,
+_ {
+  border: 1px solid var(--背景色a);
+}
+.compose-form .autosuggest-textarea__textarea {
+  border: 1px solid transparent;
+}
+
+.search__input {
+  color: var(--前景色1);
+  background: var(--背景色c);
+  border-radius: 8px;
+}
+.search__input,
+.explore__search-header .search__input,
+_ {
+  border: 1px solid transparent;
+}
+.search__input:focus {
+  background-color: var(--背景色a);
+}
+.search__icon .fa:not(._) {
+  color: var(--前景色2);
+}
+.search__icon .fa.active:not(.fa-times-circle) {
+  opacity: 0.5;
+}
+
+.emoji-mart-search input,
+.setting-text,
+_ {
+  border-color: var(--背景色b);
+}
+
+.simple_form input[type=text]:focus,
+.simple_form input[type=email]:focus,
+.simple_form input[type=password]:focus,
+.simple_form input[type=number]:focus,
+.simple_form textarea:focus,
+.simple_form select:focus,
+.poll__option input[type=text]:focus,
+.compose-form__poll-wrapper .poll__footer select:focus,
+.setting-text:focus,
+.compose-form .spoiler-input__input:focus,
+.emoji-mart-search input:focus,
+.search__input:focus,
+.explore__search-header .search__input:focus,
+_ {
+  border-color: var(--強い彩色);
+  outline: none;
+}
+
+.compose-form .spoiler-input__input::placeholder,
+.compose-form .autosuggest-textarea__textarea::placeholder,
+.search__input::placeholder,
+.emoji-mart-search input::placeholder,
+.setting-text::placeholder,
+_ {
+  color: var(--前景色3);
+}
+
+/*** ドロップダウンメニューの色 ***/
+
+.dropdown-menu__item a,
+.dropdown-menu__item button,
+_ {
+  color: var(--前景色0);
+  background-color: var(--背景色a);
+}
+.dropdown-menu,
+.compose-form .autosuggest-textarea__suggestions, 
+.privacy-dropdown.active .privacy-dropdown__value,
+.privacy-dropdown__dropdown,
+.language-dropdown__dropdown,
+.emoji-mart-search,
+.emoji-mart-category-label span,
+.emoji-mart-scroll,
+.emoji-picker-dropdown__menu,
+_ {
+  background-color: var(--背景色a);
+}
+.dropdown-menu__arrow.bottom,
+_ {
+  border-bottom-color: var(--背景色a);
+}
+.compose-form .autosuggest-textarea__suggestions__item.selected,
+.compose-form .autosuggest-textarea__suggestions__item:active,
+.compose-form .autosuggest-textarea__suggestions__item:focus,
+.compose-form .autosuggest-textarea__suggestions__item:hover,
+.language-dropdown__dropdown__results__item:active,
+.language-dropdown__dropdown__results__item:focus,
+.language-dropdown__dropdown__results__item:hover,
+_ {
+  background-color: var(--背景色c);
+}
+
+/*** 背景の色 ***/
+
+body,
+body.modal-layout,
+body.lighter,
+.drawer__inner.darker,
+.about__section__title,
+.about__meta,
+.emoji-mart-search input,
+.setting-text,
+_ {
+  background-color: var(--背景色b);
+}
+.column-header,
+.column-back-button,
+.drawer__header,
+.column > .scrollable,
+.account__header,
+.empty-column-indicator,
+.error-column,
+.focusable:focus,
+.regeneration-indicator,
+.story,
+.search-results h5,
+.search-results .account,
+.search-results .trends__item,
+.search-results .load-more,
+.search-results .search-results__info,
+_ {
+  background-color: var(--背景色a);
+}
+.reply-indicator,
+.compose-form .compose-form__buttons-wrapper,
+.block-modal__action-bar, 
+.boost-modal__action-bar, 
+.confirmation-modal__action-bar, 
+.error-modal__footer, 
+.mute-modal__action-bar, 
+.onboarding-modal__paginator,
+.reactions-bar__item:active,
+.reactions-bar__item:focus,
+.reactions-bar__item:hover,
+_ {
+  background-color: var(--背景色c);
+}
+.drawer__header a:hover,
+.load-more:hover,
+.columns-area .column-inline-form,
+.account-card__header img,
+_ {
+  background-color: var(--背景色c);
+}
+.account__header__bio .account__header__fields,
+_ {
+  background-color: var(--カラム内透過背景色);
+}
+
+.explore__search-header,
+.tabs-bar__wrapper,
+.column-header__button,
+.column-header__back-button,
+.detailed-status,
+.detailed-status__action-bar,
+.focusable:focus .detailed-status,
+.focusable:focus .detailed-status__action-bar,
+.compose-panel .compose-form__autosuggest-wrapper,
+.compose-form .autosuggest-textarea__textarea,
+.getting-started__wrapper,
+.getting-started .column-subheading,
+.getting-started .column-link,
+.scrollable .column-subheading,
+.scrollable .column-link,
+.search-results__header,
+.search-results .trends__header,
+_ {
+  background: transparent;
+}
+
+/*** 文字の色 ***/
+
+.status__prepend .status__display-name strong,
+.status__display-name.muted,
+.status__display-name .display-name strong,
+_ {
+  color: unset;
+}
+
+.status__content,
+.announcements__item__content,
+.account__header__bio .account__header__content,
+.prose,
+.rules-list,
+.story,
+_ {
+  color: var(--前景色0);
+}
+.account__header,
+.status.light .display-name strong,
+.status.light .status__content,
+.detailed-status__display-name strong,
+.account__header__extra__links a strong,
+.account__header__tabs__name h1,
+.privacy-dropdown__option,
+.privacy-dropdown__option__content strong,
+.compose-form .autosuggest-textarea__suggestions, 
+.emoji-mart,
+.emoji-mart-search input,
+.language-dropdown__dropdown__results__item,
+.setting-text,
+.error-column,
+.account__section-headline a.active,
+.account__section-headline button.active,
+.notification__filter-bar a.active,
+.notification__filter-bar button.active,
+.actions-modal ul li:not(:empty) a,
+.compose-form .autosuggest-textarea__textarea,
+.getting-started__trends h4 a,
+.column-link--transparent:not(.active):hover,
+.getting-started .column-link:hover,
+.scrollable .column-link:hover,
+.dismissable-banner__message,
+_ {
+  color: var(--前景色0);
+}
+.account__header__extra__links,
+.account__header__extra__links a,
+.account__header__tabs__name h1 small,
+.notification__filter-bar a,
+.notification__message,
+.account .account__display-name,
+.account__header__bio .account__header__fields dd,
+.column-header__button,
+.reply-indicator__display-name,
+.reply-indicator__content, 
+.getting-started .column-link,
+.scrollable .column-link,
+.drawer__tab,
+.block-modal__action-bar > div,
+.boost-modal__action-bar > div,
+.confirmation-modal__action-bar > div,
+.mute-modal__action-bar > div,
+.about__meta h4,
+.about__header p,
+.compare-history-modal .status__content,
+.trends__item__name a,
+.column-link--transparent,
+.empty-column-indicator,
+.search-results h5,
+.search-results .search-results__info,
+_ {
+  color: var(--前景色1);
+}
+.status__display-name,
+.status__relative-time,
+.detailed-status__display-name,
+.status.muted .status__content,
+.status.muted .status__content *,
+.status-card,
+.navigation-bar,
+.character-counter,
+.text-icon-button,
+.text-icon-button:active,
+.text-icon-button:focus,
+.text-icon-button:hover,
+.icon-button.inverted,
+.icon-button.inverted:active,
+.icon-button.inverted:focus,
+.icon-button.inverted:hover,
+.load-more,
+.notification__filter-bar button,
+.account__section-headline a,
+.account__section-headline button,
+.account__header__bio .account__header__fields dt,
+.privacy-dropdown__option__content,
+.language-dropdown__dropdown__results__item .language-dropdown__dropdown__results__item__common-name,
+.column-subheading,
+.trends__item__name,
+.about__footer,
+.timeline-hint,
+.search-results__header,
+.search-results .trends__header,
+_ {
+  color: var(--前景色2);
+}
+.status__prepend,
+.icon-button,
+.icon-button:hover,
+.icon-button:focus,
+.icon-button.disabled,
+.attachment-list__list a,
+.attachment-list.compact .fa,
+_ {
+  color: var(--前景色2);
+}
+
+.prose a,
+.about__section__title,
+.column-header > .column-header__back-button,
+.column-header__back-button,
+.column-back-button,
+.column-link--transparent.active,
+.account__header__bio .account__header__fields a,
+.status__content a,
+.status__content a.unhandled-link,
+.compare-history-modal .status__content a,
+.announcements__item__content a,
+.announcements__item__content a.unhandled-link,
+.status.light .status__content a,
+.compose-form .compose-form__warning a,
+.reply-indicator__content a,
+.reply-indicator__content a.unhandled-link,
+.simple_form .recommended,
+.simple_form .hint a,
+.admin-wrapper .content .muted-hint a,
+body .muted-hint a,
+.icon-button.active,
+.icon-button.active:hover,
+.icon-button.active:focus,
+.icon-button.active:active,
+.icon-button.inverted.active,
+.text-icon-button.active,
+.status__content__read-more-button,
+_ {
+  color: var(--強い彩色);
+}
+
+/*** 罫線の色 ***/
+
+.audio-player,
+.report-dialog-modal__textarea,
+.compare-history-modal .report-modal__target,
+.dropdown-menu__container__header,
+.dropdown-menu__item.edited-timestamp__history__item,
+.dropdown-menu__separator,
+.actions-modal .dropdown-menu__separator,
+.actions-modal .status,
+.report-dialog-modal .poll__option.dialog-option,
+.account__header__tabs__buttons .icon-button,
+_ {
+  border-color: var(--前景色3);
+}
+.compose-panel hr,
+.navigation-panel hr,
+.getting-started__trends h4,
+_ {
+  border-color: var(--背景色c);
+}
+
+/*** カラム切り替えタブ ***/
+
+.notification__filter-bar {
+  line-height: 1;
+}
+.notification__filter-bar .fa {
+  font-size: 18px;
+}
+
+.notification__filter-bar,
+.account__section-headline,
+_ {
+  border: none;
+  margin-bottom: var(--小間隔);
+  background: transparent;
+}
+
+.notification__filter-bar button,
+.account__section-headline button,
+_ {
+  background: transparent;
+}
+.notification__filter-bar > a:hover,
+.notification__filter-bar > button:hover,
+.account__section-headline a:hover,
+.account__section-headline button:hover,
+_ {
+  background: var(--背景色c);
+}
+.notification__filter-bar a.active::before,
+.notification__filter-bar button.active::before,
+.account__section-headline a.active::before,
+.account__section-headline button.active::before,
+_ {
+  background: var(--強い彩色);
+  bottom: 0;
+}
+
+/*** 進捗バーの類と動画再生 ***/
+
+.loading-bar,
+.upload-progress__tracker,
+_ {
+  background: var(--強い彩色);
+}
+.upload-progress__backdrop {
+  background: var(--背景色c);
+}
+
+.video-player {
+  background: var(--背景色b);
+}
+.video-player video:focus {
+  outline: none;
+}
+.video-player video:focus-visible {
+  outline: 1px dotted var(--弱い彩色);
+}
+
+.video-player__controls {
+  background: linear-gradient(var(--背景色飽和), transparent) center 87.5% / 100% 500%;
+  backdrop-filter: blur(8px);
+ transition: background-position 0.1s;
+}
+.video-player:hover .video-player__controls:not(:hover) {
+  backdrop-filter: blur(0px);
+}
+.status .video-player__controls {
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.video-player__controls:hover {
+  background-position: center 62.5%;
+}
+.video-player .player-button {
+  background: radial-gradient(circle closest-side, var(--背景色飽和) -400%, transparent)
+}
+.video-player__seek__progress,
+.video-player__seek__handle,
+.video-player__volume__current,
+.video-player__volume__handle,
+_ {
+  background: var(--強い彩色);
+}
+.video-player__seek__progress,
+.video-player__volume__current,
+_ {
+  border-radius: unset;
+}
+.video-player__seek {
+  margin-top: -14px;
+}
+.video-player__seek::before {
+  content: unset;
+}
+.video-player__seek__buffer,
+.video-player__volume::before,
+_ {
+  background: var(--前景色飽和);
+  opacity: 0.5;
+  height: 2px;
+  border-radius: unset;
+}
+.video-player__seek__buffer {
+  margin-top: 2px;
+}
+.video-player__time *,
+.video-player__buttons .player-button,
+_ {
+  color: var(--前景色飽和);
+  opacity: 0.75;
+}
+.video-player__buttons .player-button:is(:hover, :focus) {
+  color: var(--前景色飽和);
+  opacity: 1;
+}
+
+/*** トレンドグラフの色 ***/
+
+.trends__item__sparkline path:first-child {
+  fill: var(--前景色3) !important;
+  opacity: 0.25;
+}
+.trends__item__sparkline path:last-child {
+  stroke: var(--前景色2) !important;
+}
+
+/*** スクロールバー ***/
+
+:root {
+  --スクロールバー幅: 12px;
+  --スクロールバー空き: 2px;
+}
+
+::-webkit-scrollbar {
+  width: var(--スクロールバー幅);
+  height: var(--スクロールバー幅);
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track:hover,
+_ {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover,
+_ {
+  border: calc(var(--スクロールバー空き) + 2px) solid transparent;
+  background: var(--前景色3);
+  background-clip: padding-box;
+  border-radius: 99px;
+}
+:hover::-webkit-scrollbar-thumb,
+:focus-within::-webkit-scrollbar-thumb,
+_ {
+  border-width: var(--スクロールバー空き);
+}
+html {
+  scrollbar-color: var(--前景色3) transparent;
+}
+
+/*** プロフィール画像の共通設定 ***/
+
+.account__avatar,
+.account-card__title__avatar .account__avatar, 
+_ {
+  border-radius: 20%;
+}
+.account__header__tabs,
+.account__header__tabs__buttons,
+_ {
+  overflow: unset;
+}
+.account-card__title__avatar img {
+  border: none;
+}
+
+/*** ロゴ ***/
+
+.column-link--logo,
+a.ui__header__logo,
+.logo-container h1 a,
+.admin .sidebar__toggle__logo a,
+_ {
+  text-decoration: none;
+}
+.column-link--logo svg,
+a.ui__header__logo svg,
+.logo-container h1 a svg,
+.admin .sidebar__toggle__logo a svg.logo--wordmark,
+_ {
+  display: none;
+}
+.column-link--logo::before,
+a.ui__header__logo::before,
+.logo-container h1 a::before,
+.admin .sidebar__toggle__logo a::before,
+_ {
+  content: 'もふけもの。';
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--前景色1);
+}
+@media screen and (max-width: 719.9px) {
+  .column-link--logo::before {
+    content: 'も。';
+  }
+}
+
+/*** 幅が狭い時のメニューの背景色を消す ***/
+
+.columns-area__panels__pane--navigational .navigation-panel {
+  background: unset;
+  border: none;
+}
+
+/*** メニューに hover を設定 ***/
+
+@media (hover: hover) {
+  a.column-link:nth-of-type(12n+01) { --背景彩色: var(--背景彩色の順序01); }
+  a.column-link:nth-of-type(12n+02) { --背景彩色: var(--背景彩色の順序02); }
+  a.column-link:nth-of-type(12n+03) { --背景彩色: var(--背景彩色の順序03); }
+  a.column-link:nth-of-type(12n+04) { --背景彩色: var(--背景彩色の順序04); }
+  a.column-link:nth-of-type(12n+05) { --背景彩色: var(--背景彩色の順序05); }
+  a.column-link:nth-of-type(12n+06) { --背景彩色: var(--背景彩色の順序06); }
+  a.column-link:nth-of-type(12n+07) { --背景彩色: var(--背景彩色の順序07); }
+  a.column-link:nth-of-type(12n+08) { --背景彩色: var(--背景彩色の順序08); }
+  a.column-link:nth-of-type(12n+09) { --背景彩色: var(--背景彩色の順序09); }
+  a.column-link:nth-of-type(12n+10) { --背景彩色: var(--背景彩色の順序10); }
+  a.column-link:nth-of-type(12n+11) { --背景彩色: var(--背景彩色の順序11); }
+  a.column-link:nth-of-type(12n+12) { --背景彩色: var(--背景彩色の順序12); }
+}
+
+:is(.scrollable, .navigation-panel) .column-link:not(._),
+_ {
+  border: none;
+  background: radial-gradient(
+    circle closest-side at 40% 50%, var(--背景彩色) 99%, transparent 101%
+  ) right center / 250% 100% no-repeat, linear-gradient(
+    to right, var(--背景彩色) 40%, var(--背景色a) 40%, transparent 60%
+  ) right center / 250% 100% no-repeat, transparent;
+  transition: background-position 0.2s linear;
+}
+
+:is(.scrollable, .navigation-panel) .column-link:hover,
+:is(.scrollable, .navigation-panel) .column-link:focus-visible,
+_ {
+  background-position: left center;
+  transition: none;
+  box-shadow: 0 2px 0 var(--背景色a);
+}
+
+/*** 単カラム構成のカラム幅の制御 ***/
+
+body.layout-single-column {
+  --カラム幅-間隔追加: 0px;
+  --カラム幅-間隔: calc(var(--スクロールバー幅) + var(--カラム幅-間隔追加));
+  --カラム幅-全間隔: 0px;
+  --カラム幅-投稿作成: 0px;
+  --カラム幅-メニュー: 54px;
+  --カラム幅-主要: calc(100vw - var(--カラム幅-全間隔) - var(--カラム幅-投稿作成) - var(--カラム幅-メニュー));
+}
+.columns-area__panels__main {
+  flex: 1 0 auto;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 25%;
+  max-width: 800px;
+  padding: unset;
+}
+.columns-area__panels__pane {
+  flex: none;
+  min-width: unset;
+}
+.columns-area__panels__pane--compositional,
+.columns-area__panels__pane--compositional > *,
+_ {
+  width: var(--カラム幅-投稿作成);
+}
+.columns-area__panels__pane--navigational,
+.columns-area__panels__pane--navigational > *:not(._),
+_ {
+  width: var(--カラム幅-メニュー);
+}
+.layout-single-column .columns-area,
+.layout-single-column .column,
+_ {
+  overflow: unset;
+}
+.compose-panel {
+  width: unset;
+}
+
+@media (min-width: 600px) {
+  body.layout-single-column {
+    --カラム幅-間隔追加: clamp(0px, 12px, (100vw - 890px) / 3 + 12px);
+    --カラム幅-全間隔: var(--カラム幅-間隔) * 3;
+  }
+  .columns-area__panels {
+    width: calc(100vw - var(--カラム幅-間隔) * 2);
+    margin-inline: var(--カラム幅-間隔) auto;
+    gap: var(--カラム幅-間隔);
+  }
+}
+@media (min-width: 720px) {
+  body.layout-single-column {
+    --note: '最小幅 720px = 主カラム 514px + 副カラム 170px + 間隔 12px * 3';
+    --note: '最大幅 1175px = 主カラム 760px + 副カラム 271px + 間隔 48px * 3';
+    --note: 'カラム間隔追加の変動区間 : 959px ... 1175px';
+    --note: 'メニューカラムの変動区間 1 : 720px ... 860px';
+    --note: 'メニューカラムの変動区間 2 : 1113px ... 1175px';
+    --カラム幅-間隔追加: clamp(0px, 36px, 0.5 * (100vw - 1175px) / 3 + 36px);
+    --カラム幅-メニュー: calc(170px
+      + clamp(0px, 70px, 0.5 * (100vw - 720px) + 0px) 
+      + clamp(0px, 31px, 0.5 * (100vw - 1175px) + 31px)
+    );
+  }
+}
+@media (min-width: 1175px) {
+  body.layout-single-column {
+    --note: '最小幅 1175px = 主カラム 559px + 副カラム 240px + 280px + 間隔 24px * 4';
+    --note: '最大幅 1892px = 主カラム 800px + 副カラム 450px * 2 + 間隔 48px * 4';
+    --note: '投稿作成カラムの変動区間 : 1178px ... 1518px';
+    --note: 'カラム間隔追加の変動区間 : 1358px ... 1550px';
+    --note: 'メニューカラムの変動区間 : 1518px ... 1938px';
+    --カラム幅-投稿作成: clamp(280px, 450px, 0.5 * (100vw - 1178px) + 280px);
+    --カラム幅-間隔追加: clamp(12px, 36px, 0.5 * (100vw - 1358px) / 4 + 12px);
+    --カラム幅-メニュー: clamp(240px, 450px, 0.5 * (100vw - 1518px) + 240px);
+    
+    --カラム幅-全間隔: var(--カラム幅-間隔) * 4;
+  }
+}
+
+/*** 単カラム : ヘッダー ***/
+
+.layout-single-column .ui__header {
+  border: none;
+  display: block;
+  height: 0;
+  margin-inline: 0;
+  z-index: 3;
+}
+@media (min-width: 1175px) {
+  .layout-single-column .ui__header {
+    display: none;
+  }
+}
+
+.ui__header__logo {
+  display: none;
+}
+.ui__header__links {
+  position: absolute;
+  inset-inline: auto 0;
+  min-width: var(--カラム幅-メニュー);
+  width: fit-content;
+  height: 48px;
+  padding-inline: calc(var(--カラム幅-間隔追加) + var(--スクロールバー幅));
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(to top, var(--背景色b) -100%, transparent 1000%);
+  --bd-filter: blur(1px);
+  -webkit-backdrop-filter: var(--bd-filter);
+  backdrop-filter: var(--bd-filter);
+  border-bottom-left-radius: 15px;
+}
+@media (min-width: 600px) {
+  .ui__header__links {
+    padding-inline-end: var(--カラム幅-間隔追加);
+  }
+}
+.ui__header__links .account__avatar {
+  width: 40px !important;
+  height: 40px !important;
+}
+.ui__header__links a.button[href='/search'] {
+  display: none;
+}
+.ui__header__links a.button[href='/publish'],
+.ui__header__links a.button[href^='/auth/'],
+_ {
+  flex: 1 0 auto;
+}
+
+.tabs-bar__wrapper {
+  top: 0;
+}
+@media screen and (max-height: 380px) {
+  .tabs-bar__wrapper {
+    --note: '縦が狭い時、カラムヘッダーを画面内に固定しない';
+    top: -44px;
+  }
+}
+
+.columns-area__panels {
+  margin-top: 48px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  justify-content: end;
+}
+
+.columns-area__panels__pane__inner {
+  height: calc(100vh - 48px);
+  height: calc(100dvh - 48px);
+}
+.columns-area__panels__pane--navigational .navigation-panel {
+  height: 100%;
+}
+@media (min-width: 720px) {
+  .columns-area__panels {
+    margin-top: 0;
+  }
+  .columns-area__panels__pane--navigational {
+    margin-top: 48px;
+  }
+}
+@media (min-width: 1175px) {
+  .columns-area__panels {
+    justify-content: center;
+  }
+  .columns-area__panels__pane--navigational {
+    margin-top: 0;
+  }
+  .columns-area__panels__pane__inner {
+    height: 100%;
+  }
+}
+
+/*** 単カラム : ヘッダー : 未ログインの時 ***/
+
+@media (min-width: 720px) {
+  .ui__header__links a.button[href='/auth/sign_up'] {
+    box-shadow: inset 0 0 0 1px var(--背景色a);
+    background: none;
+    color: var(--前景色3);
+    pointer-events: none;
+  }
+  .ui__header__links a.button[href='/auth/sign_up'] span {
+    display: none;
+  }
+  .ui__header__links a.button[href='/auth/sign_up']::after {
+    content: 'Logged out';
+  }
+  .ui__header__links a.button[href='/auth/sign_up']:lang(ja)::after {
+    content: '未ログイン';
+  }
+  .ui__header__links a.button[href='/auth/sign_in'] {
+    width: 40px; height: 40px;
+    flex: none;
+    padding: 0;
+    border: none;
+    border-radius: 20%;
+    background: url('/avatars/original/missing.png') center / contain;
+  }
+  .ui__header__links a.button[href='/auth/sign_in'] span {
+    display: none;
+  }
+}
+
+/*** 多カラム構成の調整 ***/
+
+.layout-multiple-columns .columns-area {
+  padding-inline-start: var(--スクロールバー幅);
+}
+.layout-multiple-columns .column,
+.layout-multiple-columns .drawer,
+_ {
+  flex: none;
+  width: calc(var(--カラム幅-主要) + var(--スクロールバー幅));
+  padding: unset;
+}
+.layout-multiple-columns .drawer > *,
+.layout-multiple-columns .column > :not(.scrollable):not(.explore__search-results),
+.layout-multiple-columns .column .scrollable:not(.about):not(.privacy-policy):not(.keyboard-shortcuts) > *,
+_ {
+  margin-inline-end: calc(100% - var(--カラム幅-主要));
+}
+.layout-multiple-columns .column-back-button {
+  width: unset;
+}
+
+.scrollable--flex {
+  overflow-y: auto;
+}
+
+/*** 投稿簡略表示 : カラム幅が広い時は画像などを中央揃え ***/
+
+.layout-single-column .status:not(.muted) .media-gallery,
+.layout-single-column .status .audio-player,
+.layout-single-column .status .video-player,
+.layout-single-column .status .status-card,
+.layout-single-column .status .poll,
+_ {
+  margin-inline-end: clamp(0px, var(--プロフ画像の半径) * 2 + 8px, 6400 * (var(--カラム幅-主要) - 720px));
+}
+
+/*** スタートメニュー ***/
+
+.navigation-panel .column-link {
+  padding-inline: 0;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+.navigation-panel .column-link__icon {
+  margin-inline: 4px;
+}
+
+@media (min-width: 720px){
+  .column-link,
+  .column-link:focus,
+  _ {
+    border-radius: 24px;
+  }
+  .navigation-panel .column-link {
+    padding-inline: 15px 10px;
+    text-align: start;
+  }
+  .column-link__icon {
+    margin-inline-start: 0;
+  }
+}
+.getting-started .column-link {
+  border-radius: 24px;
+}
+
+.getting-started .column-link,
+.scrollable .column-link,
+_ {
+  border: none;
+  padding-block: 13px;
+}
+.getting-started .column-subheading,
+.scrollable .column-subheading,
+_ {
+  margin-bottom: 2px;
+  padding: 12px 10px 6px;
+  border-bottom: 1px solid var(--背景色c);
+  font-weight: 600;
+}
+.compose-panel hr,
+.navigation-panel hr,
+_ {
+  margin: 2px 0;
+}
+.list-panel > .column-link {
+  padding-inline-start: 36px;
+}
+
+.column > .scrollable.getting-started {
+  background: transparent;
+}
+
+/*** カラムを囲う罫線を消す ***/
+
+.column > .scrollable,
+.column > .scrollable.about,
+.drawer__header,
+.error-column,
+_ {
+  border: none;
+}
+
+/*** リスト一覧のカラム ***/
+
+.column-inline-form {
+  border: none;
+}
+
+/*** カラム上下の余白を除去 ***/
+
+.column,
+.drawer,
+_ {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.tabs-bar__wrapper {
+  padding-top: 0;
+}
+.columns-area--mobile {
+  padding-bottom: 0;
+}
+.column > .scrollable {
+  border-radius: 0;
+}
+
+/*** カラムヘッダー ***/
+
+.column-header,
+.column-back-button,
+_ {
+  border-radius: 0;
+}
+.column-header__collapsible, 
+.column-back-button, 
+_ {
+  border: none;
+  margin-bottom: var(--小間隔);
+}
+
+/*** 「ブロックしたドメイン」などのカラムの変な表示への対策 ***/
+
+.column-back-button--slim-button {
+  position: static;
+  margin-top: var(--小間隔);
+}
+
+/*** 設定画面: 配色 ***/
+
+.admin .sidebar-wrapper__inner,
+.admin .nothing-here,
+.admin .page-header,
+.admin .table td, 
+.admin .table th, 
+.admin .table > tbody > tr > td,
+.admin .table > tbody > tr > th,
+.admin .table.inline-table > tbody > tr > td,
+.admin .table.inline-table > tbody > tr > th,
+.admin .batch-table__toolbar,
+.admin .batch-table__row,
+.admin .applications-list__item,
+.admin .filters-list__item,
+.admin .card__bar,
+.admin .card > a:active .card__bar,
+.admin .card > a:focus .card__bar,
+.admin .card > a:hover .card__bar,
+_ {
+  background-color: var(--背景色a);
+}
+body.admin,
+.admin .sidebar ul a:hover,
+.admin .sidebar ul .simple-navigation-active-leaf a:hover,
+_ {
+  background-color: var(--背景色b);
+  transition: none;
+}
+.admin .log-entry,
+.admin .announcements-list__item,
+.admin .directory__tag > a,
+.admin .directory__tag > div,
+.admin .sidebar ul ul,
+.admin .sidebar ul li:not(.simple-navigation-active-leaf) > a.selected,
+.admin .batch-table__row:hover,
+_ {
+  background-color: var(--背景色c);
+}
+
+.admin .applications-list__item,
+.admin .filters-list__item,
+.admin .permissions-list__item,
+.admin .announcements-list,
+.admin .announcements-list__item,
+.admin .filters-list,
+.admin .filters-list__item,
+_ {
+  border-color: var(--背景色a);
+}
+.admin .table td,
+.admin .table th,
+.admin .batch-table .nothing-here,
+.admin .batch-table__row,
+.admin .batch-table__toolbar,
+_ {
+  border-color: var(--背景色b);
+}
+.admin .content h4,
+_ {
+  border-color: var(--背景色c);
+}
+
+.admin .sidebar ul a,
+.admin .content h4,
+.admin .permissions-list__item__text__type,
+.admin .card__bar .display-name span,
+_ {
+  color: var(--前景色1);
+}
+.admin .simple_form .hint,
+.admin .simple_form p.hint,
+.admin .muted-hint,
+.admin .content .muted-hint,
+.admin .announcements-list__item__meta,
+.admin .filters-list__item__meta,
+_ {
+  color: var(--前景色2);
+}
+.admin .sidebar ul .simple-navigation-active-leaf a,
+_ {
+  background: var(--背景色b);
+  color: var(--強い彩色);
+}
+
+.flash-message,
+.flash-message.translation-prompt,
+_ {
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+  border-radius: 2px;
+  box-shadow: var(--弱い影);
+}
+.flash-message a {
+  color: inherit;
+}
+
+/*** 設定画面: メニュー ***/
+
+.admin .sidebar {
+  font-size: 1rem;
+}
+.admin .sidebar ul a {
+  padding: 12px 0 12px 30px;
+  border-radius: 20px 0 0 20px;
+}
+.admin .sidebar ul a.selected {
+  border-radius: 20px 0 0 0;
+}
+.admin .sidebar ul ul {
+  border-radius: 0 0 0 20px;
+}
+.admin .sidebar ul ul a {
+  padding: 12px 0 12px 30px;
+  margin-left: 25px;
+}
+.admin .sidebar ul .simple-navigation-active-leaf a {
+  border-radius: 20px 0 0 20px;
+}
+.admin .sidebar > ul > li:is(
+  #preferences, #security,
+  #data, #trends, #moderation, #admin
+) > a::before {
+  content: '';
+  width: 0; height: 0;
+  position: absolute;
+  transform: translate(-20px, 4px);
+  border-left: 10px solid var(--前景色2);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.admin .sidebar > ul > li:is(
+  #profile, #preferences, #security,
+  #data, #trends, #moderation, #admin
+).selected > a::before {
+  transform: translate(-20px, 6px) rotate(90deg);
+}
+
+/*** 設定画面: 幅が狭い時の全画面メニュー ***/
+
+.admin .sidebar > ul.visible {
+  background: var(--背景色a);
+}
+.admin .sidebar ul a,
+.admin .sidebar ul ul a,
+_ {
+  border: none;
+}
+.admin .sidebar__toggle {
+  background: var(--背景色c);
+  border: none;
+  height: 56px;
+}
+
+/*** 設定画面のタブ ***/
+
+:not(#_) .admin .content__heading__tabs a {
+  --背景色: var(--背景色a);
+  padding-block: 10px;
+  padding-inline: 15px;
+  font-size: 15px;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(to top, transparent -3px, var(--背景色) 6px);
+  color: var(--前景色1);
+}
+:not(#_) .admin .content__heading__tabs a:active,
+:not(#_) .admin .content__heading__tabs a:focus,
+:not(#_) .admin .content__heading__tabs a:hover,
+_ {
+  --背景色: var(--背景色c);
+}
+:not(#_) .admin .content__heading__tabs a.selected {
+  --背景色: var(--弱い彩色);
+  color: white;
+}
+
+/*** 設定画面の内容 ***/
+
+.ellipsized-ip {
+  white-space: nowrap;
+}
+
+.admin .simple_form > h4 {
+  font-size: 18px;
+  margin-top: 48px;
+}
+
+.admin .simple_form .fields-row__column-6 {
+  max-width: unset;
+  flex: 1 0 0;
+}
+
+.admin textarea#account_note {
+  height: 12em;
+}
+
+.admin label:hover {
+  background-color: var(--背景色c);
+}
+
+.admin .simple_form .input.with_label .label_input > label {
+  padding: 3px 0;
+  margin: 3px 0;
+  max-width: 480px;
+}
+.admin .simple_form .input.with_label .hint {
+  max-width: 480px;
+}
+.admin .simple_form .input.boolean label.checkbox {
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+}
+
+.admin .simple_form .input.radio_buttons .radio label {
+  padding: 3px 0 3px 28px;
+  margin: 3px 0;
+}
+.admin .simple_form .input.radio_buttons .radio {
+  margin: 0;
+}
+.admin .simple_form .input.radio_buttons .radio > label input {
+  top: 3px; left: 2px;
+}
+
+.admin .card__bar {
+  padding: 8px;
+}
+.admin .card__bar .avatar {
+  width: 72px;
+  height: 72px;
+  padding: 0;
+}
+.admin .card__bar .display-name {
+  margin-left: 8px;
+}
+
+.simple_form .recommended {
+  border-color: var(--弱い彩色);
+  background: var(--背景彩色);
+}
+
+/*** 設定画面: 横並びが連続する所を区切る ***/
+
+@media (min-width: 600px) {
+  .simple_form .fields-row + .fields-row {
+    border-top: 1px solid var(--背景色c);
+    padding-top: 25px;
+  }
+  .admin .simple_form .fields-row__column-6 {
+    --note: '親が flex なのが前提';
+    width: 0;
+  }
+}
+
+/*** 設定画面: 警告 ***/
+
+.strike-card {
+  background: var(--背景色a);
+  color: var(--前景色0);
+  line-height: 24px;
+}
+
+/*** 設定画面: Relationships ***/
+
+.admin .filters .filter-subset a {
+  color: var(--前景色2);
+  border-color: var(--背景色c);
+}
+.admin .filters .filter-subset a.selected {
+  color: var(--強い彩色);
+  border-color: unset;
+}
+.admin .accounts-table tbody td {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/*** 設定画面: Authorized applications, Filters ***/
+
+.admin .filters-list__item,
+.admin .applications-list__item,
+_ {
+  display: flex;
+  flex-direction: column;
+  margin-block: 0 var(--大間隔);
+  padding: var(--縦余白) var(--横余白);
+  border: none;
+  border-radius: var(--小カド);
+  box-shadow: var(--弱い影);
+}
+.admin .filters-list__item__title {
+  align-items: center;
+}
+.admin .applications-list .announcements-list__item__title,
+.admin .applications-list .filters-list__item__title,
+_ {
+  margin: 0;
+  padding: 0 16px;
+}
+.admin .applications-list .announcements-list__item__action-bar {
+  padding-bottom: 4px;
+}
+.admin .applications-list .announcements-list__item__permissions,
+.admin .applications-list .filters-list__item__permissions,
+_ {
+  margin: 0;
+  border-top: 1px solid var(--背景色b);
+  padding: 4px 16px;
+}
+.admin .applications-list .permissions-list__item,
+.admin .applications-list .permissions-list__item:last-child,
+_ {
+  padding: 4px 0;
+}
+
+.admin .filters-list__item .announcements-list__item__action-bar {
+  display: block;
+}
+.admin .filters-list__item .announcements-list__item__action-bar > .announcements-list__item__meta {
+  float: left;
+}
+.admin .filters-list__item .announcements-list__item__action-bar > div:not([class]) {
+  float: right;
+}
+.admin .filters-list__item__permissions {
+  order: 1;
+}
+
+/*** 設定画面: カスタム絵文字一覧 ***/
+.admin .new_form_custom_emoji_batch .batch-table__row:last-child:nth-child(2n+1) {
+  padding-bottom: 25px;
+}
+.admin .new_form_custom_emoji_batch .batch-table__row > * {
+  padding-block: 0;
+}
+.admin .new_form_custom_emoji_batch .batch-table__row__content {
+  overflow: unset;
+}
+.admin .new_form_custom_emoji_batch .batch-table__row .emojione {
+  width: 48px;
+  height: 48px;
+  margin-top: 0;
+  margin-bottom: -24px;
+  margin-inline-end: 50px;
+  background: var(--背景色a);
+}
+.admin .new_form_custom_emoji_batch .batch-table__row:hover .emojione {
+  background: var(--背景色c);
+}
+.admin .new_form_custom_emoji_batch .batch-table__row:nth-child(2n) .emojione {
+  transform: translate(50px, -25px);
+}
+.admin .new_form_custom_emoji_batch .batch-table__row__content__text {
+  line-height: 14px;
+  word-break: break-all;
+}
+.admin .new_form_custom_emoji_batch .batch-table__row__content__extra br {
+  display: none;
+}
+
+/*** About の体裁 ***/
+
+.about__mail {
+  color: unset;
+}
+
+.about__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: none;
+}
+@media (min-width: 600px) {
+  .about__meta {
+    flex-direction: row;
+  }
+}
+.about__meta__divider {
+  min-width: 1px; min-height: 1px;
+  width: unset; height: unset;
+  margin: unset;
+  flex: none;
+  border: none;
+  background: var(--背景色a);
+}
+.about__meta__column {
+  width: unset;
+  flex: 1 0 0;
+}
+
+.about__section {
+  margin: 0 -20px 1px;
+}
+.about__section.active {
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--背景色b);
+  padding-bottom: 10px;
+}
+.about__section__title:not(#_),
+_ {
+  border: none;
+  border-radius: 0;
+}
+.about__section__body {
+  border: none;
+  padding: 20px 8px;
+}
+@media (min-width: 600px) {
+  .layout-single-column .about__section__body {
+    padding-inline: 30px;
+  }
+}
+.about__footer {
+  margin-top: 40px;
+}
+
+.rules-list li {
+  padding-inline-end: 0;
+  border-color: var(--背景色b);
+}
+.rules-list li:before {
+  background: var(--弱い彩色);
+  color: white;
+}
+
+/*** 新規利用者の案内ページ ***/
+
+.onboarding__steps__item,
+.onboarding__link,
+_ {
+  background: var(--背景色b);
+}
+.onboarding__steps__item:active,
+.onboarding__steps__item:focus,
+.onboarding__steps__item:hover,
+.onboarding__link:active,
+.onboarding__link:focus,
+.onboarding__link:hover,
+_ {
+  box-shadow: inset 0 0 0 2px var(--弱い彩色);
+  background: var(--背景色b);
+}
+.onboarding__steps__item * {
+  white-space: unset;
+}
+.onboarding__steps__item__icon {
+  color: var(--前景色2);
+}
+.onboarding__steps__item__description h6,
+.onboarding__steps__item__go,
+.onboarding__link,
+_ {
+  color: var(--強い彩色);
+}
+.onboarding__steps__item__progress {
+  background: var(--強い彩色);
+  color: white;
+}
+
+/*** 初期おすすめアカウントのページ ***/
+
+.follow-recommendations {
+  background: none;
+}
+.follow-recommendations .account {
+  margin-block: var(--小間隔);
+  padding: var(--縦余白) var(--横余白);
+  background: var(--背景色b);
+  border-radius: var(--小カド);
+}
+
+/*** トレンドタグの体裁 ***/
+
+.trends__item {
+  font-size: 14px;
+}
+.trends__item__name a {
+  font-size: 15px;
+}
+html[lang=ja] .trends__item__name strong::before {
+  content: ' ';
+}
+
+/*** 非ログイン状態の左カラム ***/
+
+.server-banner {
+  position: relative;
+  padding-top: 0;
+}
+.server-banner__introduction {
+  display: none;
+}
+.server-banner__hero {
+  margin-block: 0 24px;
+  border-radius: var(--大カド);
+  aspect-ratio: 3 / 2;
+}
+.server-banner__description {
+  max-width: 350px;
+  margin-block: 0 24px;
+  margin-inline: auto;
+  padding: 0;
+  line-height: 22px;
+  font-size: 14px;
+  color: var(--前景色1);
+}
+.server-banner__meta {
+  display: block;
+  margin-block: 0 24px;
+  text-align: center;
+}
+.server-banner__meta * {
+  color: var(--前景色2);
+}
+.server-banner__meta__column {
+  width: unset;
+}
+.server-banner__meta__column h4 {
+  display: none;
+}
+.server-banner__meta__column:first-child {
+  display: none;
+}
+.server-banner br {
+  display: none;
+}
+strong.server-banner__number::before,
+strong.server-banner__number::after,
+_ {
+  content: ' ';
+}
+html[lang=ja] .server-banner__number-label::after {
+  content: '（過去30日）';
+}
+
+.server-banner a.button-secondary[href="/about"] {
+  display: flex;
+  position: absolute;
+  top: 0;
+  aspect-ratio: 3 / 2;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--大カド);
+  background: transparent !important;
+  opacity: 0.95;
+  transition: backdrop-filter 0.1s;
+}
+.server-banner a.button-secondary[href="/about"]:not(:hover) {
+  backdrop-filter: contrast(0.3333) saturate(1.2) brightness(1.5) blur(4px);
+}
+.server-banner a.button-secondary[href="/about"]::before {
+  content: 'About mofu.kemo.no';
+  min-width: 50%;
+  padding-block: 6px;
+  padding-inline: 13px;
+  border: 1px solid var(--前景色3);
+  border-radius: 300px / 400px;
+  background: linear-gradient(var(--背景色飽和) -700%, transparent 400%);
+  color: var(--前景色1);
+  font-weight: 500;
+  font-size: 15px;
+  transition: transform 0.1s, opacity 0.1s;
+}
+html[lang=ja] .server-banner a.button-secondary[href="/about"]::before {
+  content: 'もふけもの。について';
+}
+.server-banner a.button-secondary[href="/about"]:hover::before {
+  opacity: 0;
+  transform: scale(1.05);
+}
+.server-banner a.button-secondary[href="/about"] span {
+  display: none;
+}
+
+/*** 非ログイン状態の右カラム ***/
+
+
+.navigation-panel__sign-in-banner {
+  order: 1;
+}
+.compose-panel .flex-spacer,
+.navigation-panel .flex-spacer,
+.getting-started__trends,
+.link-footer,
+_ {
+  order: 2;
+}
+.sign-in-banner {
+  max-width: 350px;
+  margin-inline: auto;
+  padding: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--前景色1);
+}
+.sign-in-banner > p {
+  color: unset;
+}
+html:lang(ja) .sign-in-banner > p {
+  display: none;
+}
+.sign-in-banner > a.button:last-child {
+  margin-bottom: 0;
+}
+.navigation-panel__legal {
+  display: unset;
+}
+.navigation-panel__legal hr {
+  display: none;
+}
+@media (min-width: 720px) {
+  html:lang(ja) .navigation-panel__legal > a::after {
+    content: 'もふけもの。について';
+  }
+  html:lang(ja) .navigation-panel__legal > a > span {
+    display: none;
+  }
+  html:lang(ja) .sign-in-banner::before {
+    content: 'サーバー利用者の公開投稿を覗いてみるには「リアルタイムフィード」をご覧ください。詳しくは「もふけもの。について」をどうぞ。';
+    display: block;
+    margin-block: 24px;
+  }
+}
+
+/*** 横幅が狭くても右カラムに「もふけもの。」を表示する ***/
+
+.navigation-panel {
+  box-sizing: border-box;
+  margin-block: 0;
+  padding-top: var(--スクロールバー幅);
+  height: 100%;
+}
+.navigation-panel .navigation-panel__logo {
+  display: block;
+}
+.navigation-panel .navigation-panel__banner {
+  display: none;
+}
+.navigation-panel__sign-in-banner a.button {
+  display: none;
+}
+@media (min-width: 720px) {
+  .navigation-panel .navigation-panel__sign-in-banner,
+  .navigation-panel .navigation-panel__banner,
+  .navigation-panel__sign-in-banner a.button,
+  .navigation-panel .list-panel,
+  _ {
+    display: block;
+  }
+  .navigation-panel .column-link span,
+  _ {
+    display: unset;
+  }
+}
+@media (min-width: 890px) {
+  .navigation-panel .getting-started__trends {
+    display: block;
+  }
+}
+
+/*** Advanced UI への誘導 ***/
+
+.switch-to-advanced {
+  margin-block: 1px;
+  padding-block: 8px;
+  padding-inline: 15px 10px;
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+  border-radius: 8px;
+  box-shadow: var(--弱い影);
+}
+.switch-to-advanced .switch-to-advanced__toggle {
+  color: var(--強い彩色);
+}
+
+.switch-to-advanced {
+  --note: '幅が狭い場合の省略表示';
+  letter-spacing: -1em;
+  color: transparent;
+}
+.switch-to-advanced a {
+  letter-spacing: 0;
+}
+@media (min-width: 890px) {
+  .switch-to-advanced {
+    letter-spacing: unset;
+    color: var(--前景色注意);
+  }
+}
+
+/*** Explore の中の言い回し ***/
+
+html[lang=ja] .account__section-headline a[href='/explore/suggestions'] > div {
+  letter-spacing: -1em;
+  color: transparent;
+}
+html[lang=ja] .account__section-headline a[href='/explore/suggestions'] > div::after {
+  content: '人々';
+  letter-spacing: 0;
+  color: var(--前景色2);
+}
+html[lang=ja] .account__section-headline a[href='/explore/suggestions'].active > div::after {
+  color: var(--前景色0);
+}
+
+html[lang=ja] .explore__search-header + .scrollable .dismissable-banner__message > span {
+  display: none;
+}
+html[lang=ja] .explore__search-header + .scrollable .dismissable-banner__message::before {
+  content: 'ネットワーク内で今話題になっている投稿やハッシュタグを表示します。'
+}
+
+html[lang=ja] .explore__search-header ~ .scrollable .empty-column-indicator > span {
+  display: none;
+}
+html[lang=ja] .explore__search-header ~ .scrollable .empty-column-indicator::before {
+  content: '今は特にありません。またあとで見てみてね。';
+}
+
+/*** 共通の余白 ***/
+
+.account {
+  padding: 0;
+}
+.notification__report {
+  padding: 0;
+}
+.status,
+article > .domain,
+article > .account,
+.search-results .account,
+.explore__search-results .account,
+.notification,
+_ {
+  padding: var(--縦余白) var(--横余白);
+}
+.trends__item,
+_ {
+  padding: calc(var(--縦余白) + 8px) calc(var(--横余白) + 8px);
+}
+
+/*** 投稿簡略表示: 全般 ***/
+
+body {
+  --プロフ画像の半径: 24px;
+  --プロフ画像の縦ズレ: -2px;
+}
+body.layout-single-column {
+  --プロフ画像の半径: calc(24px
+    + clamp(0px, 2px, 200 * (var(--カラム幅-主要) - 688px))
+    + clamp(0px, 2px, 200 * (var(--カラム幅-主要) - 704px))
+  );
+}
+
+.status__prepend {
+  display: flex;
+  margin: 0 0 calc(-1 * var(--縦余白));
+  padding-block: var(--縦余白) 2px;
+  padding-inline: var(--横余白);
+  font-size: inherit;
+  line-height: 18px;
+  gap: 8px;
+}
+.status__prepend > span {
+  flex: 1 0 auto;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 50%;
+  white-space: nowrap;
+}
+.status__prepend a[href]:hover {
+  text-decoration: underline;
+}
+
+.status__info {
+  padding-bottom: 2px;
+  align-items: start;
+  line-height: 24px;
+}
+.status__info {
+  pointer-events: none;
+}
+.status__info > * {
+  pointer-events: auto;
+}
+
+.status__info .status__relative-time {
+  display: flex;
+  height: unset;
+  line-height: unset;
+}
+.status__relative-time abbr {
+  background: var(--icon-加筆) center / contain no-repeat;
+  width: 16px;
+  color: transparent;
+}
+.status__info .status__display-name {
+  flex: 1 0 auto;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 50%;
+  overflow: unset;
+  line-height: unset;
+  align-items: start;
+  gap: 8px;
+  pointer-events: none;
+}
+.status__info .account__avatar,
+.status__info .display-name__html,
+.status__info .display-name__account,
+_ {
+  pointer-events: auto;
+}
+.status__info .account__avatar-overlay-overlay .account__avatar {
+  pointer-events: none;
+}
+.status__info .display-name {
+  flex: 1 0 auto;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 50%;
+  margin-inline-start: calc(-8px - var(--プロフ画像の半径));
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  overflow: unset;
+}
+.status__info .display-name bdi {
+  padding: 8px 10px;
+  margin: -8px -10px;
+  max-width: 100%;
+}
+.status__info .display-name__account,
+.status__info .display-name__html,
+_ {
+  padding-inline-start: calc(8px + var(--プロフ画像の半径));
+}
+.status__info .display-name__html {
+  padding-block: 1px;
+  margin-block: -1px;
+}
+.ui .status__info .display-name__account {
+  display: unset;
+  overflow: unset;
+  padding-block: 2px;
+  margin-block: -2px;
+  line-height: 16px;
+  font-size: 13px;
+}
+
+@media (min-width: 600px) {
+  .layout-single-column .status {
+    padding-inline-start: calc(var(--横余白) + var(--プロフ画像の半径) * 2 + 8px);
+  }
+  .layout-single-column .status__info {
+    padding-bottom: 0;
+    padding-inline-end: 30px;
+  }
+  .layout-single-column .status__info .status__relative-time {
+  }
+  .layout-single-column .status__info .display-name {
+    display: block;
+    width: unset;
+    overflow: hidden;
+    padding: 8px;
+    margin: -8px;
+  }
+  .layout-single-column .status__info .display-name bdi {
+    overflow: unset;
+    padding: unset;
+    margin: unset;
+    max-width: unset;
+  }
+  .layout-single-column .status__info .display-name__account,
+  .layout-single-column .status__info .display-name__html,
+  _ {
+    padding-inline-start: 0;
+  }
+}
+
+.status .attachment-list {
+  margin-top: 4px;
+}
+.status__action-bar {
+  margin-block: 2px -2px;
+  justify-content: space-around;
+}
+.status__action-bar button {
+  height: 24px !important;
+}
+@media (pointer: coarse) {
+  .status__action-bar button {
+    margin-block: 3px;
+  }
+}
+
+/*** 投稿簡略表示: アクションバーを隠す ***/
+
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__action-bar {
+  position: relative;
+  z-index: 3;
+  padding-block: 3px;
+  margin-bottom: -32px;
+  transform: translateY(6px);
+  background: linear-gradient(var(--背景色a) -150%, transparent 150%);
+  transition: transform 0.1s ease-out;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__action-bar::before {
+  content: ' ';
+  position: absolute;
+  top: -12px; width: 48px; height: 12px;
+  --mask: var(--icon-矢尻下) center / 12px no-repeat;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  background: var(--前景色3);
+  transform: scaleY(-1);
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__action-bar .icon-button {
+  position: relative;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__action-bar:is(:hover, :has(:focus-visible)) {
+  transform: translateY(-26px);
+  backdrop-filter: blur(8px);
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__action-bar:not(:hover):not(:has(:focus-visible)) .icon-button.active::before {
+  content: ' ';
+  position: absolute;
+  pointer-events: none;
+  top: -9px; left: 2px; right: 2px;
+  height: 2px;
+  background-color: var(--弱い彩色);
+}
+
+/*** 投稿簡略表示: プロフ画像を回す ***/
+
+@media (hover: hover) {
+  .status__wrapper:not(:active) .account__avatar {
+    transition: transform 0.6s var(--transition-bounce);
+  }
+  .status__wrapper:active .account__avatar {
+    transform: rotate(-360deg);
+  }
+  .status__wrapper:active .account__avatar-overlay-overlay .account__avatar {
+    transform: rotate(360deg);
+  }
+}
+
+/*** 投稿簡略表示: 添付画像など ***/
+
+.status .media-gallery,
+.status .audio-player,
+.status .video-player,
+.status .status-card,
+_ {
+  margin: 8px 0;
+  width: unset;
+  min-width: 25%;
+  max-width: 100%;
+}
+
+/*** 投稿簡略表示: 添付画像の高さ制限 ***/
+
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status :is(.media-gallery, .video-player) {
+  max-height: calc(0.75 * (var(--カラム幅-主要) - var(--横余白) * 2));
+}
+
+/*** 投稿簡略表示: 名前を一行にする ***/
+
+.drawer:has(.search__input[value*="/compact"]) ~ .column {
+  --プロフ画像の半径: 16px;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__prepend-icon-wrapper:has(.fa-retweet) {
+  width: 54px;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__info .display-name {
+  display: block;
+  overflow: hidden;
+  margin-block: 2px;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .display-name__account {
+  padding-inline-start: 0;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__relative-time {
+  padding-block: 2px;
+}
+.drawer:has(.search__input[value*="/compact"]) ~ .column .status__content__text::before {
+  content: unset;
+}
+
+/*** 投稿簡略表示: プロフィール画像 ***/
+
+.status__avatar {
+  flex: none;
+  width: calc(var(--プロフ画像の半径) * 2); height: calc(var(--プロフ画像の半径) * 2);
+  margin-top: var(--プロフ画像の縦ズレ);
+}
+@media (min-width: 600px) {
+  .layout-single-column .status__wrapper {
+    --プロフ画像の縦ズレ: calc(36px - var(--プロフ画像の半径));
+  }
+  .layout-single-column .status__avatar {
+    position: absolute;
+    margin-inline-start: calc(-8px - var(--プロフ画像の半径) * 2);
+  }
+}
+.status__avatar > .account__avatar,
+.status__avatar > .account__avatar-overlay,
+_ {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+}
+.status__avatar > .account__avatar,
+.status__avatar .account__avatar-overlay-base > .account__avatar,
+.status__avatar .account__avatar-overlay-overlay > .account__avatar,
+_ {
+  border-radius: 50%;
+}
+
+.status__avatar .account__avatar-overlay-base {
+  position: absolute;
+  width: calc(var(--プロフ画像の半径) * 2);
+  height: calc(var(--プロフ画像の半径) * 2);
+  inset: unset;
+  z-index: 1;
+}
+.status__avatar .account__avatar-overlay-overlay {
+  position: absolute;
+  width: 28px; height: 28px;
+  inset-block: -18px auto;
+  inset-inline: -2px auto;
+  inset-inline: 0 auto;
+  --mask: radial-gradient(circle at bottom calc(10px - var(--プロフ画像の半径)) right calc(28px - var(--プロフ画像の半径)), transparent calc(0.7px + var(--プロフ画像の半径)), black calc(1.3px + var(--プロフ画像の半径)));
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  z-index: 0;
+}
+.status__avatar .account__avatar-overlay .account__avatar {
+  width: 100% !important;
+  height: 100% !important;
+}
+@media (min-width: 600px) {
+  .layout-single-column .status__avatar .account__avatar-overlay-base {
+  }
+  .layout-single-column .status__avatar .account__avatar-overlay-overlay {
+    width: 32px; height: 32px;
+    inset-block: -24px auto;
+    inset-inline: -4px auto;
+    --mask: radial-gradient(circle at bottom calc(8px - var(--プロフ画像の半径)) right calc(28px - var(--プロフ画像の半径)), transparent calc(0.7px + var(--プロフ画像の半径)), black calc(1.3px + var(--プロフ画像の半径)));
+  }
+}
+
+/*** 投稿簡略表示: 「続き」 ***/
+
+html[lang=ja] .status__wrapper-reply:not([data-featured=true]):not([aria-label$='さんがブースト']) .status__prepend::after {
+  content: '続き';
+}
+html[lang|=en] .status__wrapper-reply:not([data-featured=true]):not([aria-label$=' boosted']) .status__prepend::after {
+  content: 'Continued';
+}
+html[lang=ja] .status__wrapper-reply:not([data-featured=true]):not([aria-label$='さんがブースト']) .status__prepend > span,
+html[lang|=en] .status__wrapper-reply:not([data-featured=true]):not([aria-label$=' boosted']) .status__prepend > span,
+_ {
+  display: none;
+}
+
+/*** 投稿簡略表示: フィルターされました ***/
+
+.status__wrapper--filtered {
+  padding: var(--縦余白) var(--横余白);
+  color: var(--前景色2);
+  text-align: start;
+}
+.status__wrapper--filtered__button {
+  color: var(--強い彩色);
+  float: right;
+  float: inline-end;
+}
+
+/*** 投稿詳細表示 ***/
+
+.detailed-status__wrapper {
+  --縦余白追加: 0px;
+  padding-block: calc(var(--縦余白) + var(--縦余白追加));
+  padding-inline: var(--横余白);
+}
+body.layout-single-column .detailed-status__wrapper {
+  --縦余白追加: clamp(0px, 8px, 800 * (var(--カラム幅-主要) - 720px));
+}
+.detailed-status {
+  padding: 8px 0;
+}
+.detailed-status .status__content__text {
+  margin-inline: var(--投稿詳細の横余白追加);
+}
+.detailed-status__action-bar {
+  padding: 8px 0 0;
+}
+
+.detailed-status .media-gallery,
+.detailed-status .video-player,
+_ {
+  margin-inline: calc(2px - var(--横余白));
+  width: unset !important;
+  max-width: unset;
+}
+
+.status-card__content {
+  padding: 8px var(--横余白);
+}
+.account__header__bar {
+  padding-inline: var(--横余白);
+}
+
+/*** 投稿詳細表示: ヘッダー部分 ***/
+
+.detailed-status__display-name {
+  margin: 0 0 14px;
+  gap: 12px;
+}
+.detailed-status__display-avatar .account__avatar {
+  width: 60px !important;
+  height: 60px !important;
+}
+.detailed-status__display-name strong {
+  font-size: 18px;
+}
+.detailed-status__display-name,
+.detailed-status__display-name span,
+.detailed-status__display-name strong,
+_ {
+  overflow: unset;
+}
+
+/*** 投稿詳細表示: メタ情報 ***/
+
+.detailed-status__meta {
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  line-height: 22px;
+  font-size: 0;
+  color: var(--前景色2);
+  --余白: 3px;
+}
+.detailed-status__meta > * {
+  flex: 0 0 auto;
+  font-size: 15px;
+  margin-inline: var(--余白);
+}
+
+.detailed-status__datetime + span { order: 0; }
+.detailed-status__meta::before { order: 1; }
+.detailed-status__meta > i.fa { order: 11; }
+.detailed-status__application { order: 11; }
+@media (min-width: 600px) {
+  .layout-single-column .detailed-status__meta::before { order: 12; }
+  .layout-single-column .detailed-status__datetime { order: 13; }
+  .layout-single-column .detailed-status__datetime + span { order: 13; }
+}
+.detailed-status__meta::after { order: 14; }
+.detailed-status__link { order: 15; }
+
+.detailed-status__meta::before {
+  content: '';
+  flex: 0 0 100%;
+  height: 2px;
+}
+.detailed-status__meta::after {
+  content: '';
+  flex: 1 0 1px;
+    height: 1px;
+    background: linear-gradient(
+      to right, transparent calc(var(--余白) + 6px + 5%), var(--背景色b) 0 calc(100% - var(--余白) - 6px - 5%), transparent 0
+    );
+}
+@media (min-width: 600px) {
+  .layout-single-column .detailed-status__meta {
+    justify-content: end;
+  }
+  .layout-single-column .detailed-status__meta::before {
+    flex: 0 0 1px;
+    height: 18px;
+    margin-inline: var(--余白);
+    background: var(--前景色3);
+  }
+}
+
+.detailed-status__datetime {
+  color: var(--前景色1);
+}
+.detailed-status__datetime + span {
+  font-size: 13px;
+}
+.detailed-status__datetime + span::before {
+  content: '';
+  margin-inline-end: var(--余白);
+  padding-inline-end: 16px;
+  background: var(--icon-加筆) center / contain no-repeat;
+}
+.detailed-status__meta > i.fa {
+  width: unset;
+  padding-inline: 8px;
+  margin-block: 0;
+  display: flex;
+  gap: 4px;
+}
+.detailed-status__meta > i.fa::after {
+  content: attr(title);
+  font-family: 'mastodon-font-sans-serif', sans-serif;
+  font-size: 12px;
+}
+.detailed-status__application {
+}
+.detailed-status__application[href]:hover {
+  color: var(--前景色1);
+}
+.detailed-status__link {
+  color: var(--前景色3);
+  margin-inline: 1px;
+  padding-inline: var(--余白);
+}
+.detailed-status__link:hover {
+  color: var(--前景色2);
+}
+.detailed-status__link .fa {
+  font-size: 12px;
+  vertical-align: 1px;
+}
+.detailed-status__reblogs,
+.detailed-status__favorites,
+_ {
+  margin-inline-start: 3px;
+  font-size: unset;
+}
+.detailed-status__reblogs .animated-number,
+.detailed-status__favorites .animated-number,
+_ {
+  height: 17px;
+}
+
+.animated-number {
+  user-select: none;
+}
+
+/*** 投稿内共通: ハッシュタグバー ***/
+
+.hashtag-bar {
+  gap: 0;
+  margin-block: 10px 8px;
+  color: var(--前景色3);
+}
+.hashtag-bar::before {
+  content: ' ';
+  width: 20px;
+  margin-inline-start: 4px;
+  padding-block: 2px;
+  background: var(--icon-タグ束) center / contain no-repeat;
+}
+.hashtag-bar a {
+  --note: '不必要に display: inline-flex になっていて、コピーすると改行が入る';
+  display: unset;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-block: 2px;
+  padding-inline: 4px;
+  border-radius: 3px;
+  color: transparent;
+  letter-spacing: -1em;
+}
+.hashtag-bar a span {
+  color: var(--前景色1);
+  letter-spacing: 0;
+}
+.hashtag-bar a:is(:hover, :focus-visible) {
+  background: var(--背景彩色);
+  box-shadow: 0 0 0 1px var(--背景彩色);
+}
+.hashtag-bar a:is(:hover, :focus-visible) span {
+  color: var(--強い彩色);
+}
+.hashtag-bar a span:is(*, :hover) {
+  text-decoration: none;
+}
+
+.hashtag-bar .link-button {
+  margin-inline-start: 2px;
+  padding: 2px 2px;
+  color: var(--前景色2);
+}
+
+/*** 投稿内共通: 言語コード ***/
+
+.status__content__text::before {
+  content: attr(lang);
+  position: absolute;
+  pointer-events: none;
+  inset-inline: auto 4px;
+  inset-block: -18px auto;
+  padding-block: 3px;
+  height: 1em;
+  line-height: 1em;
+  font-size: 9px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--前景色2);
+}
+@media (min-width: 600px) {
+  .layout-single-column .status__wrapper .status__content__text::before {
+    inset-block: -15px auto;
+    width: 24px;
+    border-inline: 1px solid var(--前景色3);
+    text-align: center;
+  }
+}
+.detailed-status__wrapper .status__content__text::before {
+  inset-block: -36px auto;
+  inset-inline: auto 0;
+}
+
+/*** リアクションボタン群 ***/
+
+.status__action-bar {
+  gap: 0;
+  justify-content: flex-end;
+}
+.status__action-bar > * {
+  flex: 0 1 max(8%, 48px);
+  padding: 0;
+  justify-content: center;
+  z-index: 2;
+}
+.status__action-bar > * > span > button {
+  width: 100% !important;
+}
+
+.detailed-status__action-bar {
+  border: none;
+  justify-content: flex-end;
+}
+.detailed-status__action-bar > * {
+  flex: 0 1 max(8%, 48px);
+  display: block;
+}
+.detailed-status__button > button,
+.detailed-status__action-bar-dropdown > span > button,
+_ {
+  width: 100% !important;
+}
+.detailed-status__action-bar button {
+  height: 32px !important;
+}
+@media (pointer: coarse) {
+  .detailed-status__action-bar button {
+    height: 36px !important;
+  }
+}
+.status__action-bar button:not(._),
+.detailed-status__action-bar button:not(._),
+_ {
+  background: none;
+  color: var(--前景色3);
+}
+
+:where(.status__action-bar, .detailed-status__action-bar) .icon-button {
+  --弱い彩色: var(--前景色3);
+}
+.icon-button:has(.fa-retweet) {
+  --弱い彩色: var(--前景色ブースト);
+}
+.icon-button.star-icon {
+  --弱い彩色: var(--前景色お気に入り);
+}
+.icon-button.bookmark-icon {
+  --弱い彩色: var(--前景色ブックマーク);
+}
+
+.icon-button__counter {
+  font-size: 15px;
+}
+
+/*** ブーストだけ SVG で色を指定されてるので差し替える ***/
+
+button.icon-button i.fa-retweet, 
+button.icon-button:hover i.fa-retweet, 
+_ {
+  background-image: var(--icon-ブースト);
+}
+button.icon-button.disabled i.fa-retweet,
+button.icon-button.disabled:hover i.fa-retweet,
+_ {
+  background-image: var(--icon-ブースト不可);
+}
+
+/*** 投稿内共通: 公開範囲のアイコン ***/
+
+.status__visibility-icon > i.fa,
+.detailed-status__meta > i.fa,
+_ {
+  font-size: 18px;
+  line-height: 20px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle farthest-side, transparent -200%, var(--前景色3) 900%
+  );
+  color: var(--前景色2);
+}
+.status__visibility-icon > i.fa {
+  margin-block: -1px;
+  padding-inline: 3px;
+  width: 26px;
+  text-align: center;
+}
+.status__wrapper-private .status__visibility-icon > .fa-lock,
+.detailed-status__wrapper-private .detailed-status__meta > .fa-lock,
+_ {
+  background: var(--前景色3);
+  color: var(--背景色飽和);
+}
+.status__wrapper-direct .status__visibility-icon > .fa-at,
+.detailed-status__wrapper-direct .detailed-status__meta > .fa-at,
+_ {
+  background: var(--前景色特別);
+  color: var(--背景色飽和);
+}
+
+/*** 投稿簡略表示: 公開範囲アイコン ***/
+
+.status__visibility-icon {
+  order: 1;
+  padding: 0;
+}
+.status__visibility-icon > i.fa {
+  margin-inline-start: 4px;
+  vertical-align: text-bottom;
+}
+.status__visibility-icon > i.fa-globe {
+  display: none;
+}
+
+/*** 投稿詳細表示: カラム幅が広い時 ***/
+@media (min-width: 600px) {
+  .layout-single-column .detailed-status__display-name {
+    margin-bottom: 18px;
+  }
+  .layout-single-column .detailed-status__meta {
+    margin-top: 24px;
+  }
+
+  .layout-single-column .detailed-status .status__content,
+  .layout-single-column .detailed-status .media-gallery,
+  .layout-single-column .detailed-status .audio-player,
+  .layout-single-column .detailed-status .video-player,
+  .layout-single-column .detailed-status .status-card,
+  .layout-single-column .detailed-status .hashtag-bar,
+  .layout-single-column .detailed-status__meta,
+  _ {
+    margin-inline: 20px;
+    width: unset !important;
+  }
+}
+
+/*** アカウント一覧項目 ***/
+
+.account__wrapper {
+  flex-wrap: wrap;
+  gap: 8px 0;
+}
+.account__wrapper > * {
+  flex: auto;
+}
+.account__wrapper .account__relationship {
+  display: unset;
+  text-align: end;
+}
+
+.account .display-name {
+  display: flex;
+  flex-direction: column;
+  white-space: unset;
+}
+.account .account__display-name .display-name {
+  margin-bottom: 2px;
+}
+.account__details {
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .layout-single-column .account .display-name {
+    display: block;
+  }
+  .layout-single-column .account__details {
+    flex-direction: row;
+  }
+}
+
+.account__display-name strong,
+.account__display-name .display-name strong,
+_ {
+  color: unset;
+}
+
+/*** 投稿内のカード ***/
+
+.status-card {
+  border: none;
+  background: unset;
+  box-shadow: inset 0 0 0 1px var(--背景彩色);
+  border-radius: 16px;
+}
+.status-card a {
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.status-card__host {
+  white-space: unset;
+}
+.status-card__description {
+  font-size: 14px;
+  line-height: 21px;
+}
+.status-card__author {
+  color: unset;
+}
+#mastodon .status-card__title {
+  color: var(--前景色1);
+}
+#mastodon .status-card__description {
+  color: var(--前景色1);
+}
+.status-card__host,
+#mastodon .status-card__author,
+_ {
+  color: var(--前景色2);
+}
+
+a.status-card:is(:hover, :focus, :active),
+.status-card a:is(:hover, :focus, :active),
+_ {
+  box-shadow: inset 0 0 0 1px var(--弱い彩色);
+}
+a.status-card:is(:hover, :focus, :active) .status-card__host,
+.status-card a:is(:hover, :focus, :active) .status-card__host,
+_ {
+  color: var(--強い彩色);
+}
+
+/*** 投稿内のカード: 行数制限を外す ***/
+
+.detailed-status .status-card:not(.expanded) {
+  flex-direction: column;
+  align-items: stretch;
+}
+.detailed-status .status-card:not(.expanded) .status-card__image {
+  width: unset;
+  height: 120px;
+  border-radius: 0;
+}
+.detailed-status .status-card:not(.expanded) .status-card__image-image {
+  border-radius: 0;
+  object-fit: contain;
+}
+:not(#_) .detailed-status .status-card__title {
+  white-space: unset;
+  -webkit-line-clamp: unset;
+}
+.detailed-status .status-card__description {
+  white-space: unset;
+}
+
+/*** 投稿本文の要素 ***/
+
+:not(._) blockquote {
+  color: unset;
+  border-inline-start: 3px solid;
+}
+
+/*** スレッド表示、返信連鎖の線 ***/
+
+.status--in-thread {
+  padding-inline-start: calc(var(--横余白) + 15px);
+}
+.status--in-thread .status__info {
+  margin-inline-start: -5px;
+}
+
+.status--in-thread .status__line {
+  position: absolute;
+  width: unset; height: unset;
+  inset-block: 0;
+  inset-inline-start: calc(var(--横余白) + 10px);
+  inset-inline-end: auto;
+  border: none;
+  pointer-events: none;
+}
+@media (min-width: 600px) {
+  .layout-single-column .status--in-thread .status__info {
+    margin-inline-start: 0;
+  }
+  .layout-single-column .status--in-thread .status__line {
+    inset-inline-start: var(--横余白);
+  }
+}
+
+.detailed-status__wrapper {
+  position: relative;
+}
+.scrollable > :not(:first-child) .detailed-status__wrapper::before,
+.scrollable > :not(:last-child) .detailed-status__wrapper::after,
+_ {
+  content: '';
+  position: absolute;
+  inset-inline: var(--横余白) auto;
+  transform: translate(2px, 0);
+  border-left: 2px dashed var(--前景色2);
+  width: 0; height: 16px;
+}
+@media (min-width: 600px) {
+  .layout-single-column .scrollable > :not(:first-child) .detailed-status__wrapper::before,
+  .layout-single-column .scrollable > :not(:last-child) .detailed-status__wrapper::after,
+  _ {
+  transform: translate(-8px, 0);
+  }
+}
+.detailed-status__wrapper::before {
+  inset-block: 0 auto;
+}
+.detailed-status__wrapper::after {
+  inset-block: auto 0;
+}
+
+.status__line--full:not(.status__line--first)::before,
+.status__line:not(.status__line--full)::before,
+.status__line--first::after,
+.status__line--full:not(.status__line--first)::after,
+_ {
+  content: '';
+  position: absolute;
+  box-sizing: border-box;
+  inset-inline: -8px auto;
+  width: 29px;
+  border: 0 solid var(--前景色2);
+  background: none;
+}
+.status__line--full:not(.status__line--first)::before,
+.status__line:not(.status__line--full)::before,
+_ {
+  inset-block: 0 auto;
+  height: calc(var(--縦余白) + var(--プロフ画像の縦ズレ) + var(--プロフ画像の半径) - 1px);
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-bottom-left-radius: 9px;
+}
+.status__line--first::after,
+.status__line--full:not(.status__line--first)::after,
+_ {
+  inset-block: calc(var(--縦余白) + var(--プロフ画像の縦ズレ) + var(--プロフ画像の半径) + 1px) 0;
+  height: auto;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-top-left-radius: 9px;
+}
+
+.status--in-thread .attachment-list,
+.status--in-thread .audio-player,
+.status--in-thread .hashtag-bar,
+.status--in-thread .media-gallery,
+.status--in-thread .picture-in-picture-placeholder,
+.status--in-thread .status-card,
+.status--in-thread .status__action-bar,
+.status--in-thread .status__content,
+.status--in-thread .video-player,
+_ {
+  margin-inline-start: unset;
+  width: unset;
+}
+  
+/*** アカウント名を太字にする ***/
+
+.display-name strong,
+.status__prepend a strong,
+.notification__display-name,
+_ {
+  font-weight: 700;
+}
+
+/*** 通知: 全般 ***/
+
+.notification__message {
+  padding-block: 2px;
+  padding-inline: 0;
+  gap: 8px;
+  line-height: 20px;
+  user-select: none;
+}
+.notification__favourite-icon-wrapper {
+  flex: none;
+  width: 20px;
+  text-align: center;
+}
+@media (min-width: 600px) {
+  .layout-single-column .notification__favourite-icon-wrapper {
+    width: calc(var(--プロフ画像の半径) * 2);
+    text-align: end;
+  }
+}
+.notification__message .fa {
+  color: var(--前景色2);
+}
+.notification__message .fa-retweet {
+  color: var(--前景色ブースト);
+}
+.notification__message .fa-star {
+  color: var(--前景色お気に入り);
+}
+
+.notification .account strong.display-name__html {
+  display: none;
+}
+
+/*** 通知: hover でアット名を表示する ***/
+
+.notification__message > span {
+  overflow: unset;
+}
+.notification__display-name {
+  position: relative;
+}
+.notification__display-name::after {
+  content: '@' attr(title);
+  position: absolute;
+  pointer-events: none;
+  margin: 2px;
+  padding: 2px 8px;
+  z-index: 3;
+  inset-block: 15px auto;
+  inset-inline: 6px auto;
+  line-height: 14px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--前景色1);
+  background: var(--背景色a);
+  border-radius: 0 6px 6px 6px;
+  box-shadow: 0 0 0 1px var(--前景色3);
+  opacity: 0;
+  transition: 0.2s opacity ease-out;
+}
+.notification:not(.notification-follow):not(.notification-admin-sign-up):hover .notification__display-name::after {
+  opacity: 1;
+  transition: none;
+}
+ 
+/*** 通知に含まれる投稿本文 ***/
+
+.status.muted {
+  padding: 0;
+  min-height: unset;
+  display: flex;
+  user-select: none;
+}
+@media (min-width: 600px) {
+  .layout-single-column .notification .status.muted {
+    padding-inline-start: calc(8px + var(--プロフ画像の半径) * 2);
+  }
+}
+.status.muted .status__info,
+.status.muted .status__action-bar,
+.status.muted .hashtag-bar,
+.status.muted .status-card,
+.status.muted .spoiler-button,
+.status.muted .audio-player,
+.status.muted .video-player,
+.status.muted .status__content__read-more-button,
+_ {
+  display: none;
+}
+.status.muted .status__content {
+  --note: '投票結果を先頭に移動する為の flex';
+  display: flex;
+  flex-direction: column;
+  
+  max-height: 4.5em;
+  flex: auto;
+  overflow: hidden;
+  line-height: 1.333;
+  font-size: inherit;
+  border-radius: 4px;
+  --mask: linear-gradient(
+    black 4em,
+    transparent
+  );
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+.status.muted .status__content a {
+  pointer-events: none;
+}
+.status.muted .status__content a,
+.status.muted .status__content a > span,
+_ {
+  text-decoration: none;
+}
+
+.attachment-list.compact ul li {
+  display: inline-block;
+  margin-inline-end: 1em;
+}
+
+/*** 通知に含まれる投稿の添付画像 ***/
+
+.status.muted .media-gallery {
+  flex: none;
+  display: flex;
+  justify-content: end;
+  min-width: unset; min-height: unset;
+  max-width: 50%;
+  width: fit-content; height: 48px;
+  aspect-ratio: unset !important;
+  margin-block: 0 -4px;
+  margin-inline: 8px 0;
+  border-radius: 0;
+}
+.status.muted .media-gallery__item {
+  border-radius: 0;
+}
+.status.muted .media-gallery__item:last-child {
+  flex: none;
+}
+.status.muted .media-gallery__item-thumbnail {
+  width: unset;
+}
+.status.muted .media-gallery__item-thumbnail img {
+  width: unset; height: 48px;
+  max-width: 96px;
+  min-width: 24px;
+  vertical-align: bottom;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.status.muted .media-gallery__item > * {
+  border-radius: 0;
+  box-shadow: none;
+}
+.status.muted .media-gallery__item__badges {
+  display: none;
+}
+
+/*** 通知に含まれる投稿の投票結果 ***/
+
+.status.muted .poll {
+  order: -1;
+  margin-block: 2px 4px;
+  pointer-events: none;
+}
+.status.muted .poll * {
+  color: var(--前景色1);
+}
+.status.muted .poll ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+.status.muted .poll__option,
+.status.muted .poll__number,
+.status.muted .poll__option__text,
+_ {
+  display: inline;
+}
+.status.muted .poll__number {
+  margin-inline-end: 4px;
+}
+.status.muted .poll__voted,
+.status.muted .poll__chart,
+.status.muted .poll li::after,
+.status.muted .poll__footer,
+_ {
+  display: none;
+}
+
+/*** ブーストやお気に入りのアイコン ***/
+
+.status__prepend-icon-wrapper {
+  width: calc(var(--プロフ画像の半径) * 2);
+  flex: none;
+  text-align: end;
+}
+.status__prepend-icon.fa {
+  width: unset;
+}
+.status__prepend .fa-thumb-tack {
+  font-size: 18px;
+}
+
+.icon-button.star-icon.active,
+.icon-button.star-icon.active:hover,
+.icon-button.star-icon.active:focus,
+_ {
+  color: var(--前景色お気に入り);
+}
+.icon-button.bookmark-icon.active,
+.icon-button.bookmark-icon.active:hover,
+.icon-button.bookmark-icon.active:focus,
+_ {
+  color: var(--前景色ブックマーク);
+}
+
+/*** 固定された投稿 ***/
+
+.status__wrapper[data-featured=true]::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0 auto;
+  width: 4px;
+  background: var(--弱い彩色);
+}
+.status__wrapper[data-featured=true] .status__prepend-icon-wrapper .fa {
+  display: flex;
+  align-items: center; justify-content: center;
+  width: 26px;
+  height: calc(100% + var(--縦余白));
+  margin-block: calc(-1 * var(--縦余白)) auto;
+  margin-inline: calc(-1 * var(--横余白)) auto;
+  border-radius: 0 0 10px 0;
+  background: var(--弱い彩色);
+  color: white;
+  transform: none;
+}
+
+.media-gallery__item-thumbnail,
+.media-gallery__item > .media-gallery__preview,
+_ {
+  box-shadow: 0 0 1px 1px #80808020;
+}
+
+/*** ブーストされた投稿 ***/
+
+.status__prepend .fa-retweet::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0 auto;
+  width: 4px;
+  background: var(--弱い彩色);
+}
+
+/*** ダイレクトメッセージ一覧 ***/
+
+.conversation {
+  padding: var(--縦余白) var(--横余白);
+}
+.conversation__avatar {
+  padding: 0;
+}
+.conversation .account__avatar-composite {
+  border-radius: unset;
+}
+.conversation__unread {
+  background: var(--前景色新着);
+}
+.conversation__content {
+  overflow: unset;
+  padding-block: 0;
+  padding-inline: 8px 0;
+}
+.conversation__content__names a {
+  color: var(--前景色0);
+}
+.conversation__content__names .display-name__html {
+  font-weight: 600;
+}
+.conversation__content__relative-time,
+.conversation--unread .conversation__content__relative-time,
+_ {
+  color: var(--前景色0);
+}
+.conversation .status__content {
+  margin: 0 -4px;
+  padding: 4px;
+  border: 1px solid var(--背景彩色);
+  font-size: 15px;
+  line-height: 21px;
+}
+.conversation .status__content * {
+  pointer-events: none;
+}
+.conversation .status__content p,
+.conversation .status__content p *,
+_ {
+  color: var(--前景色2);
+}
+.conversation .status__content p:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+/*** Explore のニュース ***/
+
+.story {
+  padding: 16px;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: var(--大カド);
+}
+.story + .story {
+  margin-top: 8px;
+}
+.story__details {
+  padding: 0;
+}
+.story__details__title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.story__thumbnail {
+  margin: 0;
+}
+.story__thumbnail img,
+.story__thumbnail__preview,
+_ {
+  border-radius: var(--大カド);
+}
+
+.story,
+.story:is(:active, :focus, :hover),
+_ {
+  color: unset;
+}
+.story__details__publisher,
+.story__details__shared,
+.story:is(:hover, :focus, :active) .story__details__shared,
+_ {
+  color: var(--前景色2);
+}
+.story__details__title,
+.story:is(:hover, :focus, :active) .story__details__title,
+_ {
+  color: var(--前景色1);
+}
+.story:is(:hover, :focus, :active) .story__details__publisher,
+_ {
+  color: var(--強い彩色);
+}
+
+/*** お知らせの体裁 ***/
+
+.announcements {
+  border: none;
+  background: var(--弱い彩色);
+  border-radius: var(--小カド);
+  font-size: 15px;
+  line-height: 20px;
+}
+.announcements__mastodon {
+  display: none;
+}
+.announcements__container {
+  flex: 1 0 auto;
+}
+.announcements .react-swipeable-view-container {
+}
+.announcements .react-swipeable-view-container > * {
+  position: relative;
+  background: var(--背景色a);
+  border-radius: calc(var(--小カド) - 3px);
+  width: calc(100% - 8px) !important;
+  height: calc(100% - 8px) !important;
+  margin: 4px;
+}
+.announcements .react-swipeable-view-container > *::before {
+  content: ''; 
+  background: url('/packs/media/images/elephant_ui_plane-72f8702db120a51a1cdbc4fb7f5ef59d.svg') no-repeat bottom left / contain;
+  position: absolute;
+  width: 80%; height: 80%; inset: auto auto 0 0;
+  filter: grayscale(1) brightness(1.4) contrast(2);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.announcements__item {
+  padding: 16px var(--横余白);
+  overflow-y: auto;
+}
+.announcements__item__range {
+  margin: 0;
+  padding-right: 100px;
+  font-weight: 700;
+  color: var(--前景色2);
+}
+.announcements__item__range > span {
+  display: inline-block;
+}
+.announcements__item__range > span::after {
+  content: ' ';
+}
+.announcements__item__range > span > span {
+  font-weight: 400;
+}
+.announcements__item__content {
+  margin: 20px 0;
+  font-size: 15px;
+  line-height: 24px;
+  overflow: visible;
+}
+.announcements__item__content p:not(:last-child) {
+  margin-bottom: 14px;
+}
+.announcements__item .reactions-bar {
+  width: unset;
+  margin: 0;
+}
+.announcements__pagination {
+  padding: 12px 8px;
+  inset: 4px 16px auto auto;
+  background: var(--背景色b);
+  border-radius: 0 0 16px 16px;
+  color: var(--前景色0);
+  font-size: 18px;
+}
+.announcements__pagination button {
+  margin: -5px 0;
+  padding: 5px;
+  box-sizing: content-box;
+  color: var(--強い彩色);
+}
+
+
+/*** リアクション絵文字バー ***/
+
+.reactions-bar {
+  justify-content: end;
+  gap: 4px;
+}
+.reactions-bar__item,
+.reactions-bar__item:hover,
+.reactions-bar__item.active,
+_ {
+  background: unset;
+}
+.reactions-bar__item {
+  margin: 0;
+  border: none;
+  padding: 1px 2px 1px 6px;
+  border-radius: 300px / 400px;
+  box-shadow: 0 0 4px -1px var(--前景色3);
+}
+.reactions-bar__item.active {
+  background: var(--弱い彩色);
+  box-shadow: 0 0 0 1px var(--弱い彩色);
+}
+.reactions-bar__item__emoji {
+  margin: 0;
+  padding: 0 2px;
+  height: 24px; width: unset;
+  min-width: 24px; max-width: 36px;
+}
+.reactions-bar__item:hover img.emojione {
+  pointer-events: none;
+}
+.reactions-bar__item .reactions-bar__item__count {
+  margin: 0 3px;
+  color: var(--前景色2);
+}
+.reactions-bar__item.active .reactions-bar__item__count {
+  color: white;
+}
+.reactions-bar__item.active .emojione {
+  filter: 
+    drop-shadow(0 0 1px white)
+    drop-shadow(0 0 0 white)
+    drop-shadow(0 0 0 white)
+    drop-shadow(0 0 0 white)
+  ;
+}
+.reactions-bar .emoji-button,
+.reactions-bar .emoji-button:hover,
+_ {
+  color: var(--前景色2);
+}
+.reactions-bar .emoji-button::after {
+  content: url('/emoji/1f642.svg');
+  width: 22px; height: 22px;
+  margin-left: 4px;
+}
+.reactions-bar .emoji-button:not(:hover)::after {
+  filter: grayscale(100%);
+}
+
+/*** カラムヘッダーのボタン ***/
+
+.column-header {
+  overflow: unset;
+  border: none;
+}
+.column-header__buttons {
+  margin-inline-end: var(--小カド);
+  gap: 1px;
+  user-select: none;
+}
+.column-header__buttons > button,
+.column-header__buttons > button:last-child,
+_ {
+  border-radius: 8px 8px 0 0;
+}
+.column-header__buttons > button:hover,
+.column-header__buttons > button:focus,
+_ {
+  background: var(--カラム内透過背景色);
+}
+.column-header__buttons > button:not(.column-header__back-button) {
+  width: 48px;
+  padding: 0;
+  color: var(--前景色2);
+  font-size: 22px;
+}
+.column-header__buttons > button .fa-check {
+  color: var(--前景色新着);
+}
+.column-header__buttons > button.active,
+.column-header__buttons > button:focus.active,
+.column-header__buttons > button:hover.active,
+_ {
+  background: var(--grad), var(--弱い彩色);
+  color: white;
+  transform: translate(0, 1px);
+}
+
+/*** カラムヘッダーの新着 ***/
+
+.column-header__wrapper{
+  margin-bottom: var(--小間隔);
+}
+.column-header__wrapper.active {
+  box-shadow: none;
+}
+.column-header__wrapper::before,
+.column-header__wrapper.active::before,
+_ {
+  content: '';
+  position: absolute;
+  width: unset; height: 12px;
+  inset-inline: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    farthest-side at 50% -50%, var(--前景色新着) -50%, transparent 75%
+  ), radial-gradient(
+    farthest-side at 50% -50%, var(--前景色新着) -50%, transparent
+  ), radial-gradient(
+    farthest-side at 50% -100%, white 52%, transparent 57%
+  ), transparent;
+  transition: bottom 0.5s linear 0.25s, visibility 0.75s linear;
+}
+.column-header__wrapper::before {
+  bottom: 0;
+  visibility: hidden;
+}
+.column-header__wrapper.active::before {
+  bottom: -12px;
+  visibility: visible;
+}
+.column-header {
+  background: linear-gradient(
+    18deg, transparent 44.5%, var(--背景色a) 55.5%
+  ) top right / 225% 225%, var(--新着の背景彩色);
+  transition:
+    color 0.25s linear,
+    background-position 0.25s linear,
+    box-shadow 0.5s linear 0.25s;
+}
+.column-header.active {
+  color: var(--前景色新着);
+  box-shadow: 0 2px 6px -4px var(--前景色新着);
+  background-position: bottom left;
+}
+.column-header.active .column-header__icon {
+  color: unset;
+  text-shadow: unset;
+}
+
+/*** 新着取得中のボタンがスクロール位置をずらしてしまうのを抑制 ***/
+
+.load-gap {
+  position: absolute;
+  z-index: 3;
+  width: 120px;
+  left: 50%;
+  border: none;
+  transform: translateX(-60px);
+  background: linear-gradient(
+    var(--背景色b),
+    transparent 200%
+  );
+  border-radius: 0 0 50% 50%;
+  box-shadow: 0 4px 6px -6px var(--影の色);
+}
+
+/*** カラム説明バナー ***/
+
+.dismissable-banner,
+.account-memorial-banner,
+.follow-request-banner,
+.moved-account-banner,
+_ {
+  background-color: var(--背景色c);
+}
+
+.dismissable-banner {
+  overflow: unset;
+  padding-inline: max(var(--横余白), 1em);
+  border: none;
+}
+.dismissable-banner__action {
+  padding-inline: 0;
+}
+.dismissable-banner__message {
+  padding-inline: 0;
+}
+
+.dismissable-banner__action .icon-button,
+.warning-banner__action .icon-button,
+_ {
+  color: unset;
+}
+.dismissable-banner__message h1,
+.warning-banner__message h1,
+_ {
+  color: var(--前景色1);
+}
+
+.dismissable-banner__background-image,
+.warning-banner__background-image,
+_ {
+  display: none;
+}
+.dismissable-banner::before,
+.warning-banner::before,
+_ {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--小カド);
+  background: url(/packs/media/images/friends-cropped-40409bf96999902fa49757ebce824ce6.png) center / cover;
+  opacity: 0.125;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+.dismissable-banner > *,
+.warning-banner > *,
+_ {
+  --note: '背景画像より手前に表示する為に';
+  position: relative;
+}
+.dismissable-banner__action {
+  --note: '元々 float によって手前に出ているが、ほかを relative にした事で隠れてしまう';
+  z-index: 1;
+}
+
+/*** ダイレクトメッセージの警告 ***/
+
+.follow_requests-unlocked_explanation {
+  border: none;
+  text-align: start;
+  font-size: 14px;
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+}
+.follow_requests-unlocked_explanation > span {
+  max-width: 600px;
+}
+.follow_requests-unlocked_explanation a {
+  white-space: nowrap;
+  color: var(--強い彩色);
+}
+
+/*** 引っ越したアカウント ***/
+
+.detailed-status__display-name .account__avatar-overlay {
+  width: unset !important; 
+  height: unset !important;
+}
+.detailed-status__display-name .account__avatar-overlay-overlay .account__avatar {
+  display: none;
+}
+
+.account-memorial-banner__action,
+.follow-request-banner__action,
+.moved-account-banner__action,
+_ {
+  flex-direction: column;
+}
+@media (min-width: 600px) {
+  .layout-single-column .account-memorial-banner__action,
+  .layout-single-column .follow-request-banner__action,
+  .layout-single-column .moved-account-banner__action,
+  _ {
+      flex-direction: row;
+  }
+}
+
+/*** ハッシュタグタイムラインのヘッダー ***/
+
+.hashtag-header {
+  border: none;
+  color: unset;
+  text-align: center;
+}
+.hashtag-header__header {
+  flex-direction: column;
+}
+.hashtag-header__header h1 {
+  line-height: 28px;
+  white-space: unset;
+  color: unset;
+}
+.hashtag-header__header > button {
+  flex: none;
+}
+
+@media (min-width: 600px) {
+  .layout-single-column .hashtag-header {
+    text-align: start;
+  }
+  .layout-single-column .hashtag-header__header {
+    flex-direction: row;
+  }
+}
+
+/*** 多カラム構成の左端カラムの上のボタン ***/
+
+.drawer__header {
+  margin-bottom: var(--スクロールバー幅);
+  box-shadow: var(--弱い影);
+  border-bottom-left-radius: var(--小カド);
+  border-bottom-right-radius: var(--小カド);
+}
+.drawer__header a:hover {
+  transition: none;
+}
+.drawer__header .fa {
+  font-size: 18px;
+  line-height: 17px;
+}
+
+/*** 検索欄 ***/
+
+.search {
+  margin-bottom: 24px;
+}
+.search + .navigation-bar,
+.drawer .search + .drawer__pager,
+_ {
+  margin-top: -24px;
+}
+
+/*** 投稿記入欄の上の投稿者情報 ***/
+
+.navigation-bar {
+  padding-block: 24px;
+}
+
+.navigation-bar > a {
+  border-radius: 20%;
+}
+.navigation-bar .account__avatar {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.navigation-bar__profile {
+  overflow: unset;
+}
+.navigation-bar__profile a {
+  padding: 2px 0.5em;
+  margin: 0 -0.5em;
+  border-radius: 9em;
+}
+strong.navigation-bar__profile-account {
+  display: unset;
+  font-size: 15px;
+  color: var(--前景色1);
+}
+a.navigation-bar__profile-edit {
+  display: none;
+}
+
+.navigation-bar a:hover {
+  outline: 2px solid var(--弱い彩色);
+  outline-offset: 2px;
+}
+
+.column > .navigation-bar,
+.column > .compose-form,
+_ {
+  width: min(100% - 30px, 560px);
+  align-self: center;
+}
+
+.column > .navigation-bar::before {
+  --note: '偽のカラムヘッダー';
+  content: 'Write a post';
+  position: absolute;
+  top: 0; inset-inline: 0;
+  padding-block: 15px;
+  padding-inline: 40px 0;
+  font-size: 16px; line-height: 18px;
+  background: var(--背景色a);
+  color: var(--前景色1);
+  box-shadow: var(--弱い影);
+  border-radius: 0 0 var(--小カド) var(--小カド);
+}
+.column > .navigation-bar:lang(ja)::before {
+  content: '投稿を書く';
+}
+.column > .navigation-bar {
+  margin-top: calc(48px + var(--小間隔));
+}
+
+/*** 投稿記入欄 ***/
+
+.compose-form {
+  padding-block: 0;
+}
+.compose-panel > .compose-form {
+  --note: 'アット名などの候補メニューが切り抜かれないように';
+  overflow: visible;
+  z-index: 2;
+}
+
+.compose-panel .compose-form,
+.drawer__inner .compose-form,
+_ {
+  padding: 0;
+}
+.compose-panel .compose-form {
+  padding-bottom: 71px;
+}
+.columns-area .drawer__inner {
+  border: none;
+}
+.columns-area .drawer__inner:not(.darker) {
+  background: transparent;
+}
+.drawer__inner__mastodon {
+  display: none;
+}
+
+.compose-form__autosuggest-wrapper {
+  border: none;
+}
+.autosuggest-textarea {
+  padding: 7px 0;
+  border-radius: 8px 8px 0 0;
+}
+.autosuggest-textarea:focus-within {
+  box-shadow: inset 0 0 0 1px var(--強い彩色);
+}
+.compose-form .autosuggest-textarea__textarea {
+  min-height: 10em !important;
+  line-height: 24px;
+  font-size: 15px;
+  padding: 0 7px;
+  overflow: hidden;
+}
+@media (pointer: coarse) {
+  .compose-form .autosuggest-textarea__textarea {
+    _note: 'iPhoneのズームを抑制';
+    font-size: 16px;
+  }
+}
+
+.compose-form .emoji-picker-dropdown {
+  inset-block: -20px auto;
+  inset-inline: auto 8px;
+  border-radius: 99px 99px 0 0;
+  height: 20px;
+  background: var(--背景色a);
+  border: solid transparent;
+  border-width: 1px 1px 0;
+  transition: border-color 0.1s ease-out;
+}
+.compose-form__autosuggest-wrapper:has(.autosuggest-textarea:focus-within) ~ .emoji-picker-dropdown {
+  border-color: var(--強い彩色);
+}
+.compose-form .emoji-button {
+  padding: 5px;  
+  border-radius: 99px;
+}
+
+.compose-form .compose-form__buttons-wrapper {
+  border: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.compose-form__buttons button {
+  width: 28px !important;
+}
+.compose-form__publish-button-wrapper {
+  width: 100%;
+}
+
+.compose-form .compose-form__warning {
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+}
+
+/*** 投稿記入欄 : 公開範囲の警告を投稿ボタンの近くへ移動 ***/
+
+.drawer__inner > .compose-form,
+.column > .compose-form,
+_ {
+  display: flex;
+  flex-direction: column;
+}
+.compose-form__warning,
+.compose-form__publish,
+_ {
+  order: 1;
+}
+.compose-form__highlightable {
+  margin-bottom: var(--スクロールバー幅);
+}
+.compose-form .compose-form__publish .compose-form__publish-button-wrapper {
+  padding: 0;
+}
+
+/*** 投稿記入欄 : フォーカス移動時のハイライト ***/
+
+.compose-form__highlightable {
+  box-shadow: none !important;
+}
+.autosuggest-textarea {
+  transition: box-shadow 0.1s ease-out;
+}
+.compose-form__highlightable.active .autosuggest-textarea {
+  box-shadow: inset 0 0 0 6px var(--前景色新着);
+  transition: none;
+}
+
+/*** 投稿記入欄 : 予測候補 ***/
+
+.compose-form .autosuggest-account-icon, 
+.compose-form .autosuggest-emoji img,
+_ {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  margin-block: -8px;
+  margin-inline-start: -6px;
+}
+.compose-form .autosuggest-account-icon .account__avatar {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/*** 投稿記入欄 : 画像添付枠 ***/
+
+.compose-form .compose-form__upload-thumbnail .icon-button:hover {
+  outline-offset: -2px;
+}
+.compose-form .compose-form__modifiers .compose-form__upload .icon-button {
+  padding: 0 4px;
+}
+.compose-form .compose-form__modifiers .compose-form__upload__actions {
+  margin: 1px;
+  border-radius: 3px;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5) 75%,
+    transparent
+  );
+}
+.compose-form .compose-form__modifiers .compose-form__upload__warning {
+  left: 1px; right: 1px;
+  bottom: 1px;
+  border-radius: 3px;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.5) 25%
+  );
+}
+.compose-form .compose-form__modifiers .compose-form__upload-thumbnail {
+  outline: 1px solid var(--前景色3);
+  outline-offset: -1px;
+}
+
+/*** 投稿記入欄 : 画像添付の閲覧注意ボタン ***/
+
+.compose-form__sensitive-button > .icon-button {
+  color: var(--前景色1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.compose-form__sensitive-button > .icon-button.active {
+  color: var(--強い彩色);
+}
+.compose-form__sensitive-button input[type=checkbox] {
+  display: unset;
+}
+.compose-form__sensitive-button span.checkbox {
+  display: none;
+}
+
+/*** 投稿記入欄 : 返信対象枠 ***/
+
+.reply-indicator {
+  border: none;
+}
+.reply-indicator__header {
+  overflow: unset;
+  position: relative;
+}
+.reply-indicator__cancel {
+  float: none;
+  position: absolute;
+  inset-block: 0 auto;
+  inset-inline: auto 0;
+}
+.reply-indicator__display-name {
+  overflow: unset;
+  display: flex;
+  gap: 8px;
+}
+.reply-indicator__display-avatar {
+  float: none;
+  width: 24px; height: 24px;
+  flex: none;
+  margin: 0;
+}
+.reply-indicator__display-avatar .account__avatar {
+  border-radius: 50%;
+  margin: -2px;
+  width: calc(100% + 4px) !important;
+  height: calc(100% + 4px) !important;
+}
+
+/*** 多カラムの検索 ***/
+
+.search-results__section__header,
+_ {
+  background: var(--背景色c);
+  border: none;
+  margin-bottom: var(--小間隔);
+}
+.drawer__inner .status__wrapper {
+  background: var(--背景色a);
+}
+
+/*** 右下の動画再生枠 ***/
+
+.picture-in-picture {
+  --note: '右カラムの重ね順に影響されて隠れるので';
+  z-index: 1;
+}
+
+/*** モーダルの影 ***/
+
+.actions-modal,
+.block-modal,
+.boost-modal,
+.compare-history-modal,
+.confirmation-modal,
+.mute-modal,
+.report-modal,
+.report-dialog-modal,
+.interaction-modal,
+.list-editor,
+.list-adder,
+_ {
+  box-shadow: 0 4px 20px -8px var(--影の色);
+  border: none;
+  color: var(--前景色0);
+  background-color: var(--背景色a);
+}
+
+/*** ドロップダウンメニューの影 ***/
+
+.dropdown-menu,
+.compose-form .autosuggest-textarea__suggestions,
+.emoji-picker-dropdown__menu,
+.privacy-dropdown__dropdown,
+.language-dropdown__dropdown,
+.search-popout,
+_ {
+  box-shadow: 0 2px 10px -4px var(--影の色);
+}
+
+/*** ドロップダウンメニュー ***/
+
+.dropdown-menu {
+  border: none;
+  border-radius: 6px;
+}
+.dropdown-menu__item a,
+.dropdown-menu__item button,
+_ {
+  padding-block: 4px;
+}
+@media (pointer: coarse) {
+  .dropdown-menu__item a,
+  .dropdown-menu__item button,
+  _ {
+    padding-block: 10px;
+  }
+}
+.dropdown-menu__item--dangerous a {
+  color: var(--前景色危険);
+}
+
+/*** 左下の通知 ***/
+
+.notification-bar {
+  border: none;
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px -4px var(--影の色);
+}
+.notification-bar-action,
+.notification-bar-action:hover,
+_ {
+  color: var(--強い彩色);
+  background: none;
+}
+.notification-bar-action:hover {
+  text-decoration: underline;
+}
+
+/*** 検索欄の下に現れる説明 ***/
+
+.search__popout {
+  display: block;
+  width: calc(100% - 8px);
+  margin-top: -4px;
+  margin-inline: 4px;
+  padding: 4px;
+  background: var(--背景色a);
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.03s linear, margin-top 0.03s linear, z-index 0.03s step-end;
+}
+.search.active .search__popout {
+  opacity: 1;
+  margin-top: 4px;
+  z-index: 99;
+  pointer-events: auto;
+  transition: opacity 0.03s linear, margin-top 0.03s linear, z-index 0.03s step-start;
+}
+
+.search__popout h4 {
+  margin: 0;
+  padding-block: 6px;
+  padding-inline: 8px;
+  color: var(--前景色2);
+  font-weight: 600;
+}
+.search__popout__menu {
+  margin: 0;
+}
+.search__popout__menu__item,
+.search__popout__menu__message,
+_ {
+  padding-block: 6px;
+  padding-inline: 24px 6px;
+}
+.search__popout__menu__item {
+  color: unset;
+}
+.search__popout__menu__message {
+  color: var(--前景色2);
+}
+.search__popout__menu__item mark {
+  color: unset;
+}
+.search__popout__menu__item .icon-button {
+  box-sizing: content-box;
+  flex: none;
+  width: 18px;
+  margin: -6px;
+  padding: 4px;
+  border: 2px solid transparent;
+  line-height: unset;
+  border-radius: 4px;
+}
+.search__popout__menu__item:hover,
+.search__popout__menu__item.selected,
+_ {
+  background: var(--grad), var(--弱い彩色);
+  color: white;
+}
+.search__popout__menu__item:hover .icon-button,
+.search__popout__menu__item.selected .icon-button,
+_ {
+  color: white;
+}
+.search__popout__menu__item .icon-button:hover {
+  color: var(--強い彩色);
+  background: var(--背景色a) padding-box;
+  outline: none;
+}
+
+/*** 投票作成枠 ***/
+
+.compose-form__poll-wrapper,
+_ {
+  background-color: var(--背景色c);
+  border: none;
+  border-bottom: 1px solid var(--背景色a);
+}
+.compose-form__poll-wrapper .poll__footer,
+_ {
+  border: none;
+}
+.compose-form__poll-wrapper .icon-button,
+.compose-form__poll-wrapper .icon-button.disabled,
+_ {
+  color: var(--前景色2);
+}
+.icon-button.disabled {
+  opacity: 0.333;
+}
+.compose-form__poll-wrapper .icon-button.disabled {
+  opacity: 0.2;
+}
+.poll__input {
+  border-color: var(--前景色2);
+}
+.compose-form .poll__option {
+  padding: 2px 0;
+}
+
+/*** 投稿記入欄: 言語選択メニュー ***/
+
+.language-dropdown__dropdown .emoji-mart-search {
+  padding-inline: 8px;
+}
+
+/*** 投稿記入欄で絵文字を際立たせるための措置 ***/
+
+.compose-form .autosuggest-textarea__textarea:focus {
+  filter: var(--filter-絵文字強調);
+}
+
+/*** 画像添付枠が空の場合も表示されているのが邪魔なので消す ***/
+
+.compose-form .compose-form__modifiers .compose-form__uploads-wrapper:empty {
+  padding: 0;
+}
+
+/*** 投稿記入欄のメッセージ ***/
+
+.autosuggest-textarea:has(.autosuggest-textarea__textarea:empty)::after {
+  content: 'ケモノや小さいモノの話には「#もふけもの」を付けてね';
+  display: block;
+  position: absolute;
+  top: 28px;
+  padding: 7px;
+  font-size: 12px;
+  line-height: 16px;
+  pointer-events: none;
+  color: var(--前景色3);
+}
+
+/*** 左カラム全体をスクロール可能にする ***/
+
+.compose-panel {
+  margin-top: 0;
+  padding-top: var(--スクロールバー幅);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.compose-panel > :not(.flex-spacer) {
+  flex: 0 0 auto;
+}
+.compose-panel > .compose-form {
+  overflow-y-: auto;
+  min-height: unset;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.compose-panel > .link-footer {
+  flex: 1 0 auto;
+  align-content: end;
+}
+.compose-panel .link-footer p {
+  margin: 0;
+}
+
+/*** リンクフッターの体裁 ***/
+
+.link-footer {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--前景色2);
+}
+.about .link-footer {
+  justify-content: center;
+}
+.link-footer p {
+  font-weight: 600;
+  display: contents;
+  color: unset;
+}
+.link-footer p a::before {
+  content: '❖ ';
+}
+.link-footer p a {
+  margin: 0 0.5em 0 0;
+  font-weight: 400;
+  color: var(--前景色1);
+}
+.link-footer p a:not(:hover) {
+  text-decoration: none;
+}
+.link-footer p a:hover {
+  text-decoration: underline;
+}
+
+.link-footer strong,
+.link-footer span[aria-hidden],
+_ {
+  display: none;
+}
+.link-footer span[aria-hidden]:last-child {
+  display: unset;
+  visibility: hidden;
+  width: 0.5em;
+}
+:where(.compose-panel, .about) .link-footer a[href='/about'],
+.link-footer a[href='/invites'],
+.link-footer a[href='https://joinmastodon.org/apps'],
+.link-footer a[href^='https://github.com/'],
+_ {
+  display: none;
+}
+
+.link-footer a[href='/about'] {
+  order: -6;
+}
+.link-footer a[href='/directory'] {
+  order: -5;
+}
+.link-footer a[href='/keyboard-shortcuts'] {
+  order: -4;
+}
+.link-footer a[href='/privacy-policy'] {
+  order: -3;
+}
+.link-footer a[href='https://status.masto.host/'] {
+  order: -2;
+}
+.link-footer a[href='https://joinmastodon.org'] {
+  order: -1;
+}
+
+.link-footer a[href='https://joinmastodon.org']::after {
+  content: 'JoinMastodon.org';
+}
+html[lang=ja] .link-footer a[href='/about']::after {
+  content: 'もふけもの。について';
+}
+html[lang=ja] .link-footer a[href='https://status.masto.host/']::after {
+  content: 'サーバーの状態';
+}
+html[lang=ja] .link-footer a[href='/directory']::after {
+  content: 'プロフィール一覧';
+}
+html[lang=ja] .link-footer a[href='https://joinmastodon.org']::after {
+  content: 'Mastodon 公式サイト';
+}
+.link-footer a[href='https://joinmastodon.org'] > span,
+html[lang=ja] .link-footer a[href='/about'] > span,
+html[lang=ja] .link-footer a[href='https://status.masto.host/'] > span,
+html[lang=ja] .link-footer a[href='/directory'] > span,
+_ {
+  display: none;
+}
+
+/*** 未読の印 ***/
+
+.notification.unread:before,
+.status__wrapper.unread:before,
+_ {
+  border: none;
+  background-image: linear-gradient(
+    -135deg, var(--前景色新着) 12px, transparent 13px
+  );
+}
+
+/*** 概要ページや左カラムの管理者名 ***/
+
+.about .account,
+.server-banner .account,
+_ {
+  padding: 0;
+}
+.account__relationship:empty {
+  display: none;
+}
+
+/*** スクロール下端に余白を追加 ***/
+
+.scrollable:not(.scrollable--flex) {
+  padding-bottom: 50vh;
+}
+.empty-column-indicator {
+  margin-bottom: 50vh;
+}
+.column .compose-form {
+  margin-bottom: 50vh;
+}
+
+/*** 「他サーバーのフォローは表示されません」などの高さを確保 ***/
+
+.empty-column-indicator {
+  min-height: 10em;
+  line-height: 24px;
+}
+
+/*** Not found ***/
+
+.regeneration-indicator {
+  border: none;
+  color: unset;
+}
+.regeneration-indicator__label strong {
+  color: unset;
+}
+
+/*** キーボードショートカット ***/
+
+.keyboard-shortcuts kbd {
+  min-width: 1.2em;
+  margin: 0 0.25em;
+  border: none;
+  padding: 0.1em 0.25em;
+  text-align: center;
+  background-color: var(--背景色c);
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+/*** 絵文字パレットの体裁 ***/
+
+.emoji-picker-dropdown__menu {
+  --スクロールバー幅: 10px;
+  --スクロールバー空き: 1px;
+  --内余白: 15px;
+  --ボタン幅: 34px;
+  --width: calc(var(--内余白) * 2 + var(--ボタン幅) * 8);
+  width: var(--width) !important;
+  margin-inline: calc((300px - var(--width)) / 2);
+}
+
+.emoji-mart {
+  width: 100% !important;
+}
+
+.emoji-mart-bar:first-child {
+  background-color: var(--背景色c);
+  border: none;
+}
+.emoji-mart-anchor,
+.emoji-mart-anchor:hover,
+_ {
+  color: var(--前景色2);
+}
+.emoji-mart-anchor-selected,
+.emoji-mart-anchor-selected:hover,
+_ {
+  color: var(--強い彩色);
+}
+.emoji-mart-anchor-bar {
+  background-color: var(--強い彩色);
+}
+.emoji-mart-anchor > div {
+  border-radius: 9999px;
+  width: 24px; height: 24px;
+  padding: 3px 0;
+}
+
+.emoji-mart-anchor {
+  overflow: unset;
+  padding-inline: 0;
+}
+.emoji-mart-anchor-icon {
+  margin-inline: auto;
+}
+
+.emoji-mart-search {
+  padding-inline: var(--内余白) 45px;
+}
+.emoji-mart-scroll {
+  margin-inline-start: -2px;
+  margin-inline-end: calc(-2px - var(--スクロールバー幅));
+  padding-inline: calc(2px + var(--内余白));
+  overflow-x: hidden;
+  background: none;
+}
+.emoji-mart-scroll::-webkit-scrollbar {
+  border-radius: 999px;
+}
+.emoji-mart-scroll::-webkit-scrollbar:hover {
+  background: var(--背景色a);
+}
+.emoji-mart-category {
+  padding-bottom: 8px;
+}
+.emoji-mart-category-label span {
+  background: linear-gradient(
+    var(--背景色a),
+    transparent 200%
+  );
+  backdrop-filter: blur(2px);
+}
+.emoji-mart-category-list > li {
+  vertical-align: bottom;
+}
+
+.emoji-mart-category button.emoji-mart-emoji {
+  padding: 0;
+  width: var(--ボタン幅);
+  height: var(--ボタン幅);
+  vertical-align: bottom;
+}
+.emoji-mart-category button.emoji-mart-emoji > * {
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+.emoji-mart-category button.emoji-mart-emoji > span {
+  padding: 4px !important;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+.emoji-mart-category button.emoji-mart-emoji-custom > img {
+  padding: 1px !important;
+}
+.emoji-mart-category button.emoji-mart-emoji:hover {
+  z-index: 3;
+}
+.emoji-mart-category button.emoji-mart-emoji:not(:hover) > * {
+  transition: transform 0.1s;
+}
+.emoji-mart-category button.emoji-mart-emoji:hover > * {
+  transform: scale(1.75);
+}
+.emoji-mart-category button.emoji-mart-emoji:hover::before {
+  content: '';
+  border-radius: 9px;
+  background: radial-gradient(var(--前景色1), transparent 200%);
+  transform: scale(2);
+  pointer-events: none;
+}
+
+.emoji-mart-anchor:hover > div,
+.emoji-mart-anchor:focus > div,
+_ {
+  outline: 2px solid var(--弱い彩色);
+  outline-offset: 2px;
+}
+
+/*** 投稿の名前のフォーカス ***/
+
+a.detailed-status__display-name {
+  border-radius: 12px;
+}
+a.detailed-status__display-name:hover *,
+a.detailed-status__display-name:focus *,
+_ {
+  text-decoration: none;
+}
+a.detailed-status__display-name:hover,
+a.detailed-status__display-name:focus,
+_ {
+  outline: 2px solid var(--弱い彩色);
+  outline-offset: 2px;
+}
+
+/*** カラムの設定欄 ***/
+
+.column-header__collapsible {
+  max-height: 50vh;
+  margin-bottom: 0;
+}
+.column-header__collapsible.collapsed {
+  opacity: 1;
+}
+.column-header__collapsible-inner {
+  border: none;
+  padding: var(--縦余白) var(--横余白);
+  background: var(--背景色c);
+  border-radius: var(--小カド);
+}
+.column-header__collapsible__extra {
+  overflow: hidden;
+}
+.column-header__collapsible__extra:not(:last-child) {
+  border-bottom: 1px solid var(--背景色b);
+}
+
+/*** カラムの設定欄 : 内容一般 ***/
+
+.column-header__collapsible__extra .column-settings__section,
+.column-header__collapsible__extra [role=group],
+.column-header__collapsible__extra :not([role=group]) > .column-settings__row,
+.column-header__collapsible__extra > .column-settings__row,
+.column-header__collapsible__extra > .setting-toggle,
+_ {
+  margin: 0;
+  padding: 6px 0;
+}
+.column-header__collapsible__extra .radio-button,
+_ {
+  margin: 0;
+  padding: 4px 0;
+}
+.column-header__collapsible:not(#_) .text-btn {
+  margin: 0 1px;
+  border: 1px solid var(--前景色3);
+  padding: 2px 11px;
+  border-radius: 300px / 400px;
+  text-decoration: none;
+}
+.column-header__collapsible:not(#_) .text-btn:hover,
+.column-header__collapsible:not(#_) .text-btn:focus,
+_ {
+  background: var(--grad), var(--弱い彩色);
+  color: white;
+  border-color: transparent;
+}
+.column-header__collapsible:not(#_) .text-btn:active,
+_ {
+  background: var(--grad), var(--強い彩色);
+  color: white;
+  border-color: var(--前景色3);
+}
+
+.setting-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+  line-height: 18px;
+}
+.setting-toggle__label {
+  margin: unset;
+  padding: 3px 0;
+}
+
+/*** カラム設定欄 : 多カラムでのピン留めボタン ***/
+
+.column-header__collapsible__extra + .column-header__setting-btn {
+  font-weight: 700;
+}
+.column-header__collapsible__extra + .column-header__setting-btn:not(#_),
+.column-header__setting-arrows,
+_ {
+  margin-top: 6px;
+}
+
+/*** カラム設定欄 : 通知 ***/
+
+.column-header__collapsible__extra > div:not([class]):not([role]) {
+  display: flex;
+  flex-wrap: wrap;
+}
+.column-header__collapsible__extra > div:not([class]):not([role]) > * {
+  flex: 1 0 75%;
+}
+.column-header__collapsible__extra > div:not([class]):not([role]) > [role=group] {
+  flex-basis: 240px;
+  border-top: 1px solid var(--背景色b);
+}
+.column-header__collapsible__extra > div:not([class]):not([role]) > [role=group] .setting-toggle {
+  padding: 2px 0;
+}
+
+/*** カラムの設定欄 : 色 ***/
+
+.react-toggle-track,
+.react-toggle:is(:hover, :focus-within):not(.react-toggle--disabled) .react-toggle-track,
+_{
+  background-color: var(--前景色3);
+}
+.react-toggle--checked .react-toggle-track,
+.react-toggle.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track,
+.react-toggle--checked:is(:hover,:focus-within):not(.react-toggle--disabled) .react-toggle-track,
+_ {
+  background-color: var(--弱い彩色);
+}
+.react-toggle-thumb {
+  border: none;
+}
+.column-header__collapsible,
+.column-settings__section,
+.setting-toggle__label,
+_{
+  color: var(--前景色1);
+}
+.react-toggle--disabled {
+  opacity: 0.25;
+}
+
+/*** 連携アプリ認証画面 ***/
+
+.account-header {
+  border-color: var(--背景色c);
+}
+.account-header .name {
+  color: var(--前景色0);
+}
+
+.oauth-prompt h3,
+.oauth-prompt .permissions-list__item,
+.oauth-prompt .permissions-list__item__text__type,
+.follow-prompt,
+.oauth-prompt,
+.follow-prompt strong,
+.oauth-prompt strong,
+_ {
+  color: var(--前景色0);
+}
+.oauth-prompt .permissions-list {
+  border-color: var(--背景色b);
+  background: var(--背景色a);
+}
+.permissions-list__item {
+  border-color: var(--背景色b);
+}
+
+/*** 概要: 表紙絵を枠一杯にする ***/
+
+.about {
+  padding-top: 0;
+}
+.about__header {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.about__header__hero {
+  border-radius: 0;
+}
+
+/*** 概要: 表紙絵のキャプション ***/
+
+.about__header__hero {
+  overflow: unset;
+  background: transparent;
+}
+.about__header__hero::after {
+  content: var(--表紙絵キャプション);
+  display: block;
+  text-align: end;
+  padding: 2px 8px 0 0;
+}
+
+/*** 概要: 全般 ***/
+
+.about__section__body .prose {
+  line-height: 1.75em;
+}
+.prose b, .prose strong,
+_ {
+  color: unset;
+}
+.prose h1, .prose h2, .prose h3,
+.prose h4, .prose h5, .prose h6,
+_ {
+  color: var(--前景色1);
+}
+.prose h1 {
+  margin: 2.5em 0 0;
+}
+.prose p {
+  margin: 1.5em 0;
+}
+.about__section__body .fa {
+  font-size: 16px;
+}
+
+/*** 概要: 制限中のサーバー ***/
+
+.about__domain-blocks:empty {
+  text-align: center;
+  padding: 2em 0;
+}
+.about__domain-blocks {
+  background-color: var(--背景色b);
+  border: none;
+}
+.about__domain-blocks__domain__header {
+  justify-content: start;
+}
+.about__domain-blocks__domain__type {
+  order: -1;
+}
+.about__domain-blocks__domain__type::after {
+  content: ' :';
+}
+.about__domain-blocks__domain p {
+  white-space: unset;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/*** 画像拡大表示の画面 ***/
+
+.modal-root__overlay {
+  --bd-filter: blur(0.5vmax);
+  -webkit-backdrop-filter: var(--bd-filter);
+  backdrop-filter: var(--bd-filter);
+  transition: none;
+}
+
+.media-modal__navigation {
+  transition: opacity 0.05s linear;
+}
+.media-modal__navigation--hidden {
+  transition: none;
+}
+
+.media-modal__zoom-button,
+.media-modal__zoom-button:hover,
+.media-modal__zoom-button:focus,
+.media-modal__close,
+.media-modal__close:hover,
+.media-modal__close:focus,
+.media-modal__nav,
+.media-modal__nav:hover,
+.media-modal__nav:focus,
+_ {
+  color: white;
+}
+
+.media-modal__zoom-button,
+.media-modal__close,
+_ {
+  background: #0006;
+  transition:
+    opacity 0.05s linear,
+    top 0.05s linear
+  ;
+}
+.media-modal__zoom-button--hidden,
+.media-modal__navigation--hidden .media-modal__close,
+_ {
+  transition: none;
+  top: -4px;
+}
+
+.media-modal__nav {
+  height: 64px;
+  background: #0006;
+}
+.media-modal__nav--left {
+  border-radius: 0 20px 20px 0;
+}
+.media-modal__nav--right {
+  border-radius: 20px 0 0 20px;
+}
+
+.media-modal__nav--left {
+  transition: left 0.05s linear;
+}
+.media-modal__nav--right {
+  transition: right 0.05s linear;
+}
+.media-modal__overlay {
+  transition: bottom 0.05s linear;
+}
+.media-modal__navigation--hidden .media-modal__nav--left {
+  left: -12px;
+}
+.media-modal__navigation--hidden .media-modal__nav--right {
+  right: -12px;
+}
+.media-modal__navigation--hidden .media-modal__overlay {
+  bottom: -12px;
+}
+
+.media-modal__overlay .picture-in-picture__footer {
+  justify-content: space-around;
+  background: #0006;
+  border-radius: 20px 20px 0 0;
+}
+.media-modal__overlay .icon-button:not(._):not(._) {
+  box-sizing: content-box;
+  padding: 1px 8px;
+  background: none;
+}
+.media-modal__overlay .picture-in-picture__footer .icon-button.active {
+  color: var(--前景色ブースト);
+}
+.media-modal__overlay .picture-in-picture__footer button.icon-button i.fa-retweet {
+  background-image: var(--icon-ブースト-白);
+}
+.media-modal__overlay .picture-in-picture__footer .icon-button.star-icon.active {
+  color: var(--前景色お気に入り);
+}
+
+/*** ログアウト状態でお気に入りなどを押した時のモーダル ***/
+
+.modal-root__overlay:not([style]) {
+}
+
+.interaction-modal__icon {
+  color: var(--強い彩色);
+  margin: 0 10px 0 0;
+}
+.interaction-modal__lead h3 .emojione {
+  width: 24px; height: 24px;
+}
+.interaction-modal__lead > p {
+  text-align: start;
+  line-height: 1.5;
+}
+.interaction-modal__lead > p > span,
+html[lang=ja] .interaction-modal__lead > p::before,
+html[lang=ja] .interaction-modal__lead > p::after,
+_ {
+  display: block;
+  font-size: 15px;
+  margin: 16px 0 0;
+}
+.interaction-modal__choices__choice p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+.interaction-modal__choices__choice {
+  flex: 3;
+  width: unset;
+}
+.interaction-modal__choices__choice:first-child {
+  flex: 2;
+}
+.copypaste input {
+  border: none;
+  color: var(--前景色1);
+  background-color: var(--背景色b);
+}
+
+/*** リスト関連モーダル ***/
+
+.list-editor,
+.list-adder,
+_ {
+  max-width: 100vw;
+  background: var(--背景色b);
+}
+.list-editor .column-inline-form,
+.list-adder .column-inline-form,
+_ {
+  background: var(--背景色c);
+}
+
+.list-editor .search {
+  margin: 10px;
+}
+.list-editor .drawer__inner {
+  border: none;
+  background: unset;
+}
+.list-editor .account {
+  border: unset;
+  padding: 4px 8px;
+  margin-bottom: 2px;
+  background: var(--背景色a);
+  border-radius: 6px;
+}
+.list-editor .account .display-name,
+.list-adder .account .display-name,
+_ {
+  margin: 0;
+}
+
+.list-adder__account {
+  background: none;
+}
+.list-adder .account {
+  border: unset;
+  padding: 4px 8px;
+  background: var(--背景色a);
+}
+.list-adder__lists {
+  background: none;
+}
+.list-adder .list {
+  border: none;
+}
+.list-adder__lists .list {
+  padding: 13px 15px;
+}
+.list-adder .list__display-name,
+.list-adder .account__relationship,
+_ {
+  padding: 0;
+}
+
+.account__relationship button .fa-times {
+  color: var(--強い彩色);
+}
+
+/*** 編集履歴のモーダル ***/
+
+.compare-history-modal__container {
+  padding: 16px 24px;
+}
+.compare-history-modal .account__avatar {
+  width: 40px !important;
+  height: 40px !important;
+  margin-block: -20px;
+  border-radius: 0;
+}
+
+/*** 通報のモーダル ***/
+
+.report-dialog-modal__lead,
+.report-dialog-modal .poll__option.dialog-option > .poll__option__text,
+.report-dialog-modal .poll__option.dialog-option > .poll__option__text strong,
+.status-check-box__status .detailed-status__display-name,
+.report-dialog-modal .status__content,
+.report-dialog-modal .status__content p,
+_ {
+  color: unset;
+}
+.report-dialog-modal .status__content a,
+_ {
+  color: var(--強い彩色);
+}
+
+.report-dialog-modal__container,
+.report-dialog-modal .poll__option.dialog-option,
+_ {
+  border-color: var(--前景色3);
+}
+
+.report-dialog-modal .button.button-secondary {
+  border-color: var(--前景色0);
+  color: var(--前景色0);
+}
+
+/*** 通報のモーダル: ラジオボタンやチェックボックス ***/
+.report-dialog-modal .dialog-option .poll__input.active {
+  display: inline-block;
+  background: var(--強い彩色);
+}
+.report-dialog-modal .dialog-option .poll__input.checkbox.active {
+  background: unset;
+}
+.report-dialog-modal .dialog-option .poll__input svg {
+  display: none;
+}
+
+/*** 無理やり文字列置換 ***/
+
+html[lang=ja] .notification-reblog .notification__favourite-icon-wrapper + span > span {
+  letter-spacing: -1em;
+  color: transparent;
+}
+html[lang=ja] :is(.notification-favourite, .notification-reblog) .notification__favourite-icon-wrapper + span > span::after,
+html[lang=ja] :is(.notification-favourite, .notification-reblog) .notification__favourite-icon-wrapper + span > span > bdi,
+_ {
+  font-size: 15px;
+  letter-spacing: 0;
+  color: var(--前景色1);
+}
+html[lang=ja] .notification-reblog .notification__favourite-icon-wrapper + span > span::after {
+  content: "さんがブーストしました";
+}
+
+:is([aria-label=連合タイムライン], [aria-label=ローカルタイムライン]) .dismissable-banner__message > span {
+  display: none;
+}
+[aria-label=ローカルタイムライン] .dismissable-banner__message::after {
+  content: "「もふけもの。」サーバー内にいる全アカウントの公開投稿を表示します。";
+}
+[aria-label=連合タイムライン] .dismissable-banner__message::after {
+  content: "外部サーバーも含めて、「もふけもの。」が認知している全アカウントの公開投稿を表示します。";
+}
+
+.about__domain-blocks:empty::after {
+  content: "—";
+}
+html[lang=ja] .about__domain-blocks:empty::after {
+  content: "現在、連合を制限している外部サーバーはありません。";
+}
+
+html[lang=ja] .about__meta + .about__section + .about__section + .about__section > .about__section__body > p > span {
+  display: none;
+}
+html[lang=ja] .about__meta + .about__section + .about__section + .about__section > .about__section__body > p::after {
+  content: "Mastodon は原則的にあらゆるサーバー同士で連合して交流することができますが、当サーバーでは次のような制限を設けています。"
+}
+
+html[lang=ja] .interaction-modal__lead > h3::after {
+  content: "するには"
+}
+html[lang=ja] .interaction-modal__choices__choice > h3::after {
+  content: "なら"
+}
+html[lang=ja] .interaction-modal__lead > p > span,
+html[lang=ja] .interaction-modal__lead > p > strong,
+_ {
+  display: none;
+}
+html[lang=ja] .interaction-modal__lead > p::before {
+  content: "Mastodon のアカウントをお持ちなら、サーバーをまたいでこの人をフォローしたり、投稿に反応を送ったり、投稿を友達と共有したりできます。";
+}
+html[lang=ja] .interaction-modal__lead > p::after {
+  content: "「もふけもの。」サーバーか、ほかの Mastodon サーバーか、Mastodon 以外の互換サービスにログインしてください。";
+}
+html[lang=ja] .interaction-modal__choices__choice:last-child > p > span {
+  display: none;
+}
+html[lang=ja] .interaction-modal__choices__choice:last-child > p::after {
+  content: "次の URL をコピーし、お使いの Mastodon サーバーの検索欄に貼り付けてください。";
+}
+
+html[lang=ja] .admin-wrapper #web > a {
+  letter-spacing: -1em;
+  color: transparent;
+}
+html[lang=ja] .admin-wrapper #web > a::after,
+html[lang=ja] .admin-wrapper #web > a > i,
+_ {
+  letter-spacing: 0;
+  color: var(--前景色1);
+}
+html[lang=ja] .admin-wrapper #web > a::after {
+  content: "ホームへ戻る";
+}
+
+/*** 「/share」で投稿欄の幅が不等号のメディアクエリーで表現されてるのを修正 ***/
+
+.account-header,
+.compose-standalone .compose-form,
+_ {
+  width: 100%;
+  max-width: 400px;
+}
+.container-alt {
+  width: 100%;
+  max-width: 700px;
+}
+
+/*** サインアップ画面とログイン画面 ***/
+
+body.lighter .container-alt {
+  width: unset;
+}
+body.lighter .form-container {
+  max-width: 600px;
+}
+
+body.lighter .actions,
+body.lighter .stacked-actions,
+_ {
+  max-width: 400px;
+  margin: auto;
+}
+
+html[lang=ja] .simple_form.new_user[action='/auth'] h1,
+html[lang=ja] .simple_form.new_user[action='/auth/sign_in'] h1,
+_ {
+  letter-spacing: -1em;
+  color: transparent;
+}
+html[lang=ja] .simple_form.new_user[action='/auth'] h1::before {
+  content: '新しいアカウントを mofu.kemo.no に作成します';
+  color: var(--前景色0);
+  letter-spacing: 0;
+}
+html[lang=ja] .simple_form.new_user[action='/auth/sign_in'] h1::before {
+  content: 'mofu.kemo.no にログインします';
+  color: var(--前景色0);
+  letter-spacing: 0;
+}
+
+html[lang=ja] .simple_form.new_user[action='/auth'] h1 + p.lead,
+html[lang=ja] .simple_form.new_user[action='/auth/sign_in'] h1 + p.lead,
+_ {
+  letter-spacing: -1em;
+  color: transparent;
+}
+html[lang=ja] .simple_form.new_user[action='/auth/sign_in'] h1 + p.lead::before {
+  content: "このサーバーで作成した、お持ちのアカウントの情報を入力してください。";
+  letter-spacing: 0;
+  color: var(--前景色0);
+  line-height: 1.5;
+}
+html[lang=ja] .simple_form.new_user[action='/auth'] h1 + p.lead::before {
+  content: "アカウントの情報を入力してください。";
+  letter-spacing: 0;
+  color: var(--前景色0);
+  line-height: 1.5;
+}
+.simple_form.new_user[action='/auth'] h1 + p.lead::after {
+  content: "登録時の確認メールは mofu@masto.host からお送りします。";
+  display: block;
+  margin: 20px 0 40px;
+  padding: 1em;
+  letter-spacing: 0;
+  border-radius: 2px;
+  background: var(--背景色注意);
+  color: var(--前景色注意);
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+body.lighter .simple_form .fields-group {
+  margin: 40px 0;
+}
+body.lighter .simple_form .fields-group + .fields-group {
+  margin-top: -34px;
+}
+
+body.lighter .simple_form[action='/auth/sign_in'] .input.with_label .label_input > label {
+  margin: 0;
+}
+
+body.lighter .simple_form[action='/auth'] .hidden {
+  display: none;
+}
+body.lighter .simple_form[action='/auth'] input::placeholder {
+  color: var(--前景色3);
+  opacity: 0.5;
+}
+body.lighter .simple_form[action='/auth'] .input {
+  margin-bottom: 6px;
+}
+body.lighter .simple_form[action='/auth'] .input::before {
+  font-size: 14px;
+}
+body.lighter .simple_form[action='/auth'] .user_account_display_name::before {
+  content: '表示名';
+}
+body.lighter .simple_form[action='/auth'] .user_account_username::before {
+  content: 'ユーザー名';
+}
+body.lighter .simple_form[action='/auth'] .user_email::before {
+  content: 'メールアドレス';
+}
+body.lighter .simple_form[action='/auth'] .user_password::before {
+  content: 'パスワード';
+}
+body.lighter .simple_form[action='/auth'] .user_password_confirmation::before {
+  content: 'パスワード再入力';
+}
+
+@media (max-width: 600px) {
+  .progress-tracker {
+    width: 30px;
+    margin-bottom: 0;
+    flex-direction: column;
+  }
+  .progress-tracker .separator {
+    width: 2px; height: 15px;
+  }
+  .progress-tracker li:nth-child(n) .label {
+    width: unset; height: 30px;
+    inset-block: 0 auto;
+    inset-inline: 45px 0;
+    padding: 0;
+    line-height: 30px;
+    text-align: start;
+    transform: none;
+    white-space: nowrap;
+  }
+}
+
+/*** 本文の行高（絵文字考慮） ***/
+
+.status__content {
+  border-radius: 6px;
+}
+.reply-indicator__content {
+  line-height: 20px;
+}
+.status .status__content,
+.compare-history-modal .status__content,
+_ {
+  line-height: 24px;
+  font-size: 15px;
+}
+.detailed-status .status__content {
+  line-height: 30px;
+  font-size: 18px;
+}
+.reply-indicator__content p:not(:last-child) {
+  margin-bottom: 8px;
+}
+.status .status__content p:not(:last-child),
+.compare-history-modal .status__content p:not(:last-child),
+_ {
+  margin-bottom: 14px;
+}
+.detailed-status .status__content p:not(:last-child) {
+  margin-bottom: 19px;
+}
+.status.muted .status__content p:not(:last-child) {
+  margin-bottom: 0;
+}
+.reply-indicator .attachment-list {
+  margin-top: 8px;
+}
+
+/*** 絵文字の大きさ調整 ***/
+
+.status .status__content {
+  margin: -4px;
+  padding: 4px;
+}
+.detailed-status .status__content {
+  overflow: visible;
+  padding: 0;
+}
+.status:not(.muted) .status__content img.emojione,
+.compare-history-modal .status__content img.emojione,
+.account__header__content img.emojione,
+.account-card__bio img.emojione,
+.announcements__item__content img.emojione,
+_ {
+  margin: -3px 0;
+  vertical-align: text-top;
+  width: unset; min-width: 24px; height: 24px;
+}
+.status:not(.muted) .status__content img.emojione.custom-emoji,
+.compare-history-modal .status__content img.emojione.custom-emoji,
+.account__header__content img.emojione.custom-emoji,
+.account-card__bio img.emojione.custom-emoji,
+.announcements__item__content img.emojione.custom-emoji,
+_ {
+  margin: -7px 0px;
+  width: unset; min-width: 32px; height: 32px;
+}
+.detailed-status .status__content img.emojione,
+_ {
+  margin: -4px 0;
+  vertical-align: text-top;
+  width: unset; min-width: 30px; height: 30px;
+}
+.detailed-status .status__content img.emojione.custom-emoji,
+_ {
+  margin: -9px 0;
+  width: unset; min-width: 40px; height: 40px;
+}
+
+.status:not(.muted) .display-name__html img.emojione,
+.notification__display-name img.emojione,
+_ {
+  margin: 0 1px;
+  vertical-align: text-top;
+  width: unset; min-width: 18px; height: 18px;
+}
+.account__header__tabs__name .emojione,
+.detailed-status .display-name__html .emojione,
+.account-card .display-name__html .emojione,
+_ {
+  margin: -3px 2px;
+  vertical-align: text-top;
+  width: unset; min-width: 26px; height: 26px;
+}
+
+.status:not(.muted) .status__content img.emojione.custom-emoji, 
+.compare-history-modal .status__content img.emojione.custom-emoji, 
+.detailed-status .status__content img.emojione.custom-emoji, .announcements__item__content img.emojione.custom-emoji,
+.account__header__content img.emojione.custom-emoji, 
+.account-card__bio img.emojione.custom-emoji, 
+.reply-indicator__content img.emojione.custom-emoji,
+_ {
+  max-width: 100%;
+}
+
+.custom-emoji[alt=':mastodance:'],
+_ {
+  transform: translate(-5%, 2%) scale(1.3);
+}
+.custom-emoji[alt=':mastodon_oops:'],
+_ {
+  transform: translate(-4%, -20%) scale(1.3);
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+.custom-emoji[alt=':ablobcatresonyance:'],
+_ {
+  transform: scale(1.15);
+}
+
+/*** 絵文字の色反転 ***/
+
+button.emoji-mart-emoji-custom:is(
+  [title='genbaneko_yoshi'],
+  [title='MatsuriBrush'],
+  [title^='Kao'],
+_) img,
+img.custom-emoji:is(
+  [alt=':genbaneko_yoshi:'],
+  [alt=':MatsuriBrush:'],
+  [alt^=':Kao'],
+_):not([src*='/cache/']),
+_ {
+  --invert-個別判定: var(--invert-if-dark);
+}
+button.emoji-mart-emoji-custom img,
+img.custom-emoji,
+_ {
+  filter: var(--invert-個別判定);
+}
+
+/*** 絵文字に hover で拡大する ***/
+
+.status__content {
+  z-index: 2;
+}
+.status__content:not(.status__content--collapsed) {
+  overflow: unset;
+}
+
+.status:not(.muted) .emojione:hover,
+.detailed-status .emojione:hover,
+.announcements__item__content .emojione:hover,
+.account__header__bar .emojione:hover,
+.reactions-bar__item:hover img.emojione,
+_ {
+  position: relative;
+  z-index: 1;
+  transform: scale(2);
+  filter: 
+    drop-shadow(0 0 0.5px var(--前景色飽和)) 
+    var(--invert-個別判定) 
+    drop-shadow(0 0 2px var(--背景色a)) 
+    drop-shadow(0 0 0.5px var(--背景色a)) 
+  ;
+  transition: 
+    transform 0.1s var(--transition-bounce);
+}
+.status__display-name:not(.muted) .emojione:not(:hover) {
+  opacity: 0.6;
+}
+.status__display-name.muted .emojione {
+  opacity: 0.3;
+  filter: saturate(0.5);
+}
+
+/*** フォーカス時のみ、カスタム絵文字の行高を大きくする ***/
+
+.detailed-status .status__content:focus-visible img.emojione.custom-emoji {
+  margin: 0;
+  vertical-align: middle;
+  transition: margin 0.05s;
+}
+
+/*** 本文中のハッシュタグ ***/
+
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+) {
+  --単余白: calc(1em * 2 / 14);
+  --倍余白: calc(1em * 4 / 14);
+  padding-block: calc(var(--単余白) * 1.5);
+  padding-inline: calc(14px + var(--倍余白)) var(--倍余白);
+  --note: '14/15 = 0.9333';
+  font-size: 93.33%;
+  background: var(--icon-タグ単) left var(--単余白) center / 14px 14px no-repeat, var(--背景彩色);
+  border-radius: var(--倍余白);
+}
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+):not(.mention),
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+).mention span,
+_ {
+  color: var(--前景色0);
+  letter-spacing: 0;
+  text-decoration: none;
+}
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+).mention {
+  color: transparent;
+  letter-spacing: -1em;
+}
+
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+):not(.mention):is(:hover, :focus-visible),
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+).mention:is(:hover, :focus-visible) span,
+_ {
+  color: var(--強い彩色);
+}
+
+/*** 警告の「もっと見る」の体裁 ***/
+
+.ui .status__content--with-spoiler > p:first-child {
+  position: relative;
+  padding-block: 1px;
+  padding-inline: 1em 0;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--前景色1);
+  background: var(--背景彩色);
+  box-shadow: 0 0 0 2px var(--背景色a);
+  border-radius: 4px;
+  font-size: 14px;
+}
+.status__content--with-spoiler > p:first-child::before {
+  content: 'Warning : ';
+  margin-inline-start: 1em;
+  color: var(--前景色2);
+}
+html[lang=ja] .status__content--with-spoiler > p:first-child::before {
+  content: '警告 : ';
+}
+.ui .status__content .status__content__spoiler-link {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  border-radius: 4px;
+}
+.status__content__spoiler-link > span {
+  color: transparent;
+  font-size: 0;
+}
+.status__content__spoiler-link::before {
+  content: ' ';
+  position: absolute;
+  inset: 0 auto auto 0;
+  padding: 1px 0;
+  width: 2em;
+  background: var(--強い彩色);
+  --mask: var(--icon-矢尻右) center / contain;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  transition: transform 0.1s var(--transition-bounce);
+}
+.status__content__spoiler-link--show-more::before {
+}
+.status__content__spoiler-link--show-less::before {
+  transform: rotate(90deg);
+}
+
+.status__content--with-spoiler .status__content__text {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  color: var(--前景色1);
+}
+.status__content--with-spoiler .status__content__text--visible {
+  max-height: 2400px;
+  transition:
+    max-height 1s linear;
+}
+
+.detailed-status .status__content--with-spoiler > p:first-child {
+  font-size: 17px;
+}
+.detailed-status .status__content--with-spoiler .status__content__text--visible {
+  max-height: 3000px;
+}
+
+.muted .status__content--with-spoiler p:first-child {
+  font: inherit;
+}
+.muted .status__content__spoiler-link {
+  pointer-events: none;
+}
+
+/*** アカウントの自己紹介部分の体裁 ***/
+
+.account__header__image {
+  margin-bottom: 0;
+  height: 300px;
+  border: none;
+  background: none;
+  cursor: zoom-out;
+}
+.account__header__image img {
+  height: 300px;
+  background: var(--背景色c);
+  transition: height 0.2s var(--transition-bounce);
+  -webkit-user-drag: none;
+}
+.account__header__image:active img {
+  height: 190px;
+}
+.account__header__bar {
+  margin-top: -60px;
+  padding-top: 8px;
+  --bd-filter: saturate(1.4) blur(1px);
+  -webkit-backdrop-filter: var(--bd-filter);
+  backdrop-filter: var(--bd-filter);
+  background: linear-gradient(
+    transparent -30px, 
+    var(--背景色a) 120px
+  ), linear-gradient(
+    transparent 30px, 
+    var(--背景色a) 60px
+  );
+}
+
+@media (min-width: 600px) {
+  .layout-single-column .account__header__image,
+  .layout-single-column .account__header__image img,
+  _ {
+    height: 480px;
+  }
+  .layout-single-column .account__header__image:active img {
+    height: 240px;
+  }
+  .layout-single-column .account__header__bar {
+    margin-top: -240px;
+    background: linear-gradient(
+      to right,
+      var(--背景色a) -50%,
+      transparent, 
+      var(--背景色a) 150%
+    ), linear-gradient(
+      transparent -120px, 
+      var(--背景色a) 240px
+    );
+  }
+}
+
+.relationship-tag {
+  padding: 5px 8px;
+  line-height: 1;
+  background: none;
+  border-radius: 99px;
+  -webkit-backdrop-filter: var(--filter-画像上の白字);
+  backdrop-filter: var(--filter-画像上の白字);
+}
+
+.account__header__tabs {
+  margin: 0;
+  margin-top: -8px;
+  padding: 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.account__header__tabs__buttons {
+  flex: 1 0 auto;
+  height: 48px;
+  align-items: flex-end;
+  justify-content: end;
+}
+.account__header__tabs__buttons .icon-button {
+  background: var(--背景色a);
+}
+.account__header__tabs__name h1 {
+  font-size: 18px;
+}
+.account__header__bar .avatar {
+  --note: 'カラム幅 410px → 45px, 600px → 64px';
+  --画像半径: clamp(45px, 64px, 0.1 * (var(--カラム幅-主要) - 410px) + 45px);
+  margin-top: -48px;
+  width: calc(var(--画像半径) * 2);
+  height: calc(var(--画像半径) * 2);
+  margin-top: calc(-3px - var(--画像半径));
+  border: 3px solid transparent;
+  background: radial-gradient(var(--背景色a) -500%, transparent 600%);
+  border-radius: calc(var(--画像半径) * 0.4 + 3px);
+}
+.account__header__bar .avatar .account__avatar {
+  box-sizing: content-box;
+  width: 100% !important;
+  height: 100% !important;
+  border: unset;
+  background: unset;
+}
+.account__header__tabs__buttons {
+  padding-top: 0;
+}
+.account__header__content {
+  overflow: visible;
+  font-size: 15px;
+  line-height: 24px;
+}
+.account__header__content p {
+  margin-bottom: 14px;
+}
+.account__header__content a {
+  color: var(--強い彩色);
+  text-decoration: none;
+}
+.account__header__content a:hover {
+  text-decoration: underline;
+}
+
+.account__header__bio .account__header__fields dl {
+  border-bottom-color: var(--背景色a);
+}
+@media (min-width: 600px) {
+  .layout-single-column .account__header__bio .account__header__fields dt {
+    float: left;
+    margin-right: 8px;
+  }
+  .layout-single-column .account__header__bio .account__header__fields dd {
+    margin-left: 30%;
+  }
+}
+.account__header__fields dd {
+  overflow: unset;
+  white-space: unset;
+}
+.account__header__fields .invisible {
+  font-size: unset;
+  line-height: unset;
+  display: unset;
+  width: unset;
+  height: unset;
+  position: unset;
+}
+.account__header__fields .ellipsis::after {
+  content: '';
+}
+
+.unhandled-link,
+.account__header__fields a,
+_ {
+  word-break: break-all;
+}
+
+/*** 自己紹介部分のメモ欄 ***/
+
+.account__header__bio {
+  --note: '順序を変える為の flex';
+  display: flex;
+  flex-direction: column;
+}
+.account__header__account-note {
+  order: 1;
+  margin: 16px 0 0;
+  border: 1px solid var(--背景色b);
+  padding: 6px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 4px var(--背景色b);
+}
+.account__header__account-note:focus-within {
+  border-color: var(--強い彩色);
+}
+.account__header__account-note > label {
+  color: var(--前景色2);
+}
+.account__header__account-note > textarea {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.account__header__account-note > textarea:focus {
+  background: unset;
+}
+.account__header__account-note > textarea::placeholder {
+  color: var(--前景色3);
+}
+
+/*** 長い名前を折り返して最後まで表示する ***/
+
+.detailed-status .display-name {
+  flex: 1 0 auto;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 50%;
+  white-space: unset;
+}
+.detailed-status .display-name__html {
+  line-height: 26px;
+}
+.detailed-status .display-name__account {
+  line-height: 18px;
+  word-break: break-all;
+}
+
+.account__header__tabs__name h1 {
+  white-space: unset;
+  overflow: unset;
+}
+.account__header__tabs__name h1 > span {
+  line-height: 26px;
+}
+.account__header__tabs__name h1 small {
+  line-height: 18px;
+  word-break: break-all;
+}
+
+/*** アカウントのメディアタイムライン ***/
+
+.account-gallery__item {
+  border-radius: unset;
+}
+.account-gallery__item a {
+  background: none;
+}
+
+/*** ディレクトリ（名簿）の体裁 ***/
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--縦余白) var(--横余白);
+  border: none;
+  gap: 8px;
+  justify-content: space-evenly;
+  background: transparent;
+}
+.columns-area--mobile .filter-form {
+  flex-direction: row;
+}
+.filter-form__column {
+  padding: 0;
+}
+.filter-form .radio-button {
+  padding: 2px 0;
+}
+
+.scrollable .account-card {
+  margin: 0;
+  margin-bottom: 2px;
+  border: none;
+  padding-bottom: 16px;
+  border-radius: 0;
+  background: none;
+}
+.account-card__permalink {
+  display: block;
+  margin-bottom: 8px;
+}
+.account-card__header {
+  position: relative;
+  padding: 0;
+  height: 200px;
+}
+.account-card__header::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 104px;
+  --note: 誤差で隙間が生じないように少し重ねる;
+  bottom: -4px;
+  --bd-filter: saturate(1.4) blur(1px);
+  -webkit-backdrop-filter: var(--bd-filter);
+  backdrop-filter: var(--bd-filter);
+  background: linear-gradient(
+    to right,
+    var(--背景色a) -200px,
+    transparent 400px
+  ), linear-gradient(
+    transparent -50px,
+    var(--背景色a) 100px
+  );
+}
+.account-card__title {
+  position: relative;
+  margin-top: -100px;
+  padding: 0 var(--横余白);
+  align-items: flex-start;
+}
+.account-card__title__avatar {
+  padding: 0;
+  margin-top: -48px;
+  margin-inline-end: 8px;
+}
+.account-card__title .display-name {
+  padding: 8px;
+  color: unset;
+  white-space: unset;
+}
+.account-card__title .display-name bdi {
+  line-height: 22px;
+  font-size: 18px;
+  color: var(--前景色飽和);
+}
+.account-card__title .display-name__account {
+  color: var(--前景色2);
+}
+.scrollable .account-card__title__avatar .account__avatar {
+  box-sizing: content-box;
+  width: 90px !important;
+  height: 90px !important;
+  border: 3px solid transparent;
+  background: radial-gradient(var(--背景色a) -500%, transparent 600%);
+}
+.scrollable .account-card__title__avatar img {
+  width: 100%;
+  height: 100%;
+}
+.account-card__bio {
+  --最大行数: 10;
+  margin: 0 0 8px;
+  padding: 8px var(--横余白);
+  max-height: calc(24px * var(--最大行数));
+  line-height: 24px;
+  color: var(--前景色飽和);
+  --mask: linear-gradient(black calc(24px * var(--最大行数) - 32px), transparent);
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+@media (min-width: 500px) {
+  .layout-single-column .account-card__bio { --最大行数: 9; }
+}
+@media (min-width: 600px) {
+  .layout-single-column .account-card__bio { --最大行数: 8; }
+}
+.account-card__bio > p:not(:last-child) {
+  margin-bottom: 14px;
+}
+.account-card__bio a {
+  color: var(--強い彩色);
+}
+.scrollable .account-card__bio::after {
+  display: none;
+}
+.account-card__actions {
+  position: relative;
+  padding: 0 var(--横余白);
+  gap: 8px;
+  flex-direction: column;
+}
+@media (min-width: 600px) {
+  .layout-single-column .account-card__actions {
+    flex-direction: row;
+  }
+}
+.account-card__actions__button {
+  padding: 0;
+}
+.account-card__counters {
+  gap: 8px;
+}
+.account-card__counters__item {
+  padding: 0;
+  color: var(--前景色1);
+}
+.account-card__counters__item small {
+  color: unset;
+}
+.account-card__counters__item:nth-child(2) {
+  order: 1;
+}
+
+/*** 添付画像 ***/
+
+.icon-button.overlayed,
+.icon-button.overlayed:hover,
+_ {
+  border-radius: 9999px;
+  background: transparent;
+  color: white;
+  -webkit-backdrop-filter: var(--filter-画像上の白字);
+  backdrop-filter: var(--filter-画像上の白字);
+}
+.spoiler-button--minified {
+  inset-block: 0 auto;
+  inset-inline: 0 auto;
+  padding: 4px;
+  border-bottom-right-radius: 16px;
+}
+
+.media-gallery {
+  --note: 'Mastodon v4.2.1 では「50% 50%」と gap「2px」で 100% を超過している';
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 0;
+}
+.media-gallery__item,
+.media-gallery__gifv,
+.audio-player,
+.status .video-player,
+.status .video-player video,
+_ {
+  border-radius: 16px;
+}
+.detailed-status .media-gallery__item,
+.detailed-status .media-gallery__gifv,
+.detailed-status .audio-player,
+.detailed-status .video-player,
+.detailed-status .video-player video,
+_ {
+    border-radius: 0;
+}
+.video-player.detailed {
+  border-radius: unset;
+}
+.video-player.detailed video:focus {
+  outline: none;
+}
+
+.media-gallery:has(.media-gallery__item:last-child:nth-child(5)) .media-gallery__item:nth-child(2),
+_ {
+  border-bottom-right-radius: 0;
+}
+.media-gallery:has(.media-gallery__item:last-child:nth-child(5)) .media-gallery__item:nth-child(3),
+.media-gallery:has(.media-gallery__item:last-child:nth-child(4)) .media-gallery__item:nth-child(3),
+_ {
+  border-bottom-left-radius: 0;
+}
+.media-gallery:has(.media-gallery__item:last-child:nth-child(5)) .media-gallery__item:nth-child(4),
+_ {
+  border-top-right-radius: 0;
+}
+.media-gallery:has(.media-gallery__item:last-child:nth-child(5)) .media-gallery__item:nth-child(5),
+.media-gallery:has(.media-gallery__item:last-child:nth-child(4)) .media-gallery__item:nth-child(4),
+_ {
+  border-top-left-radius: 0;
+}
+
+.media-gallery__item-gifv-thumbnail {
+  vertical-align: bottom;
+}
+
+/*** 投稿内共通 : 添付音声 ***/
+
+.audio-player {
+  border: none;
+  background-image: radial-gradient(
+    circle farthest-corner, #fff5, transparent
+  );
+}
+.audio-player .video-player__seek {
+  top: 14px;
+  margin-inline: 14px;
+}
+
+/*** 投稿簡略表示 : 添付画像の縦幅制限 ***/
+
+.status .media-gallery,
+.status .video-player,
+_ {
+  max-height: max(50vh, 400px);
+}
+.standalone .media-gallery__item-thumbnail img {
+  object-fit: contain;
+}
+
+.status > div[style]:not([class]),
+.detailed-status > div[style]:not([class]),
+_ {
+  --note: 'video-player などを囲っている謎の div';
+  aspect-ratio: unset !important;
+}
+
+/*** 投稿簡略表示: 添付画像とカードの透過背景 ***/
+
+.media-gallery__item,
+.status-card__image,
+_ {
+  object-fit: contain;
+  background: conic-gradient(#fff1 90deg, #0001 0 180deg, #fff1 0 270deg, #0001 0) center / 8px 8px, transparent;
+}
+.media-gallery__item:hover,
+.status-card:hover .status-card__image,
+_ {
+  background: var(--背景彩色);
+}
+
+/*** 投稿単体の詳細表示では添付画像を縦に並べる ***/
+
+.detailed-status .media-gallery {
+  aspect-ratio: unset !important;
+  min-height: 128px;
+  display: block;
+}
+.detailed-status .media-gallery__item {
+  width: unset !important;
+  height: unset !important;
+  min-height: 128px;
+  float: none;
+}
+.detailed-status .media-gallery__item + .media-gallery__item {
+  margin-top: 20px;
+}
+.detailed-status .media-gallery__item-thumbnail {
+  max-height: 8640px;
+  min-height: 128px;
+}
+.detailed-status .media-gallery__item-thumbnail img,
+.detailed-status .media-gallery__preview,
+_ {
+  vertical-align: bottom;
+}
+
+.detailed-status .media-gallery__item-gifv-thumbnail {
+  transform: unset;
+}
+
+/*** 投票枠 ***/
+
+.poll {
+  color: var(--前景色0);
+}
+.poll > ul > li {
+  margin: 0;
+  padding: 0;
+}
+.poll .poll__option {
+  padding: 5px 0 10px;
+}
+.poll .poll__option__text {
+  max-width: unset;
+}
+.poll > ul > li::after {
+  content: '';
+  display: block;
+  height: 3px;
+  margin-top: -9px;
+  margin-bottom: 6px;
+  background: gray;
+  border-radius: 4px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.poll .poll__chart,
+.muted .poll__chart,
+_ {
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  background-color: var(--前景色3);
+  pointer-events: none;
+}
+.poll .poll__chart.leading,
+.muted .poll__chart.leading,
+_ {
+  background-color: var(--強い彩色);
+}
+.poll .poll__footer {
+  color: var(--前景色2);
+}
+.poll .poll__link {
+  color: unset;
+}
+.muted .poll__chart,
+.muted .poll__footer,
+_ {
+  opacity: 0.5;
+}
+
+/*** ラジオボタンとチェックボックスの見た目 ***/
+
+.poll__input,
+.poll__input.active,
+.radio-button__input,
+.radio-button__input.checked,
+_ {
+  margin: 0px 9px 0px 1px;
+  border: none;
+  box-shadow: inset 0 0 0 1px var(--前景色3);
+  background: var(--背景色0);
+}
+label:hover .poll__input,
+.poll__input:focus,
+label:hover .radio-button__input,
+.radio-button__input:focus,
+_ {
+  outline: 2px solid var(--強い彩色) !important;
+  outline-offset: -1px;
+}
+
+.poll__input:not(.checkbox).active,
+.radio-button__input.checked,
+_ {
+  box-shadow: 
+    inset 0 0 0 1px var(--前景色3),
+    inset 0 0 0 4px var(--背景色0)
+  ;
+  background: var(--強い彩色);
+}
+.poll__input.checkbox.active:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 14px;
+  height: 6px;
+  border: 4px var(--強い彩色);
+  border-style: none none solid solid;
+  transform: scaleX(0.9) translateX(2.5px) rotate(-45deg);
+}
+
+/*** カラム背景を透明にし、各投稿に背景色を付け、border ではなく margin で区切る ***/
+
+.column > .scrollable:not(.about):not(.privacy-policy):not(.keyboard-shortcuts),
+.explore__search-results,
+_ {
+  background: none;
+}
+.scrollable .status,
+.scrollable .detailed-status,
+.scrollable .detailed-status__action-bar,
+.scrollable .status__wrapper--filtered,
+.domain,
+.scrollable .account,
+.scrollable .account__header__bar,
+.scrollable .account-card,
+.scrollable .conversation,
+.scrollable .trends__item,
+.scrollable .notification__report,
+.scrollable .story,
+_ {
+  border: none;
+}
+.account-memorial-banner,
+.follow-request-banner,
+.moved-account-banner,
+.dismissable-banner,
+.follow_requests-unlocked_explanation,
+_ {
+  margin: 0 0 var(--小間隔);
+  border-radius: var(--小カド);
+}
+
+.columns-area .column-inline-form,
+_ {
+  margin: 0 0 1px;
+  border-radius: var(--小カド);
+}
+
+article,
+.scrollable .explore__search-results > .account,
+.scrollable > div > .status__wrapper,
+.scrollable > div > div > .status__wrapper,
+.scrollable > div > .detailed-status__wrapper,
+.scrollable .account__header,
+.scrollable .account-card,
+.scrollable .timeline-hint,
+.scrollable .account-gallery__container,
+.scrollable .search-results__section .account,
+.scrollable .trends__item,
+.story,
+_ {
+  margin: 0 0 var(--小間隔);
+}
+.scrollable article > div > .status__wrapper,
+.scrollable article > div > div > .status__wrapper,
+.scrollable article > div > .notification,
+.scrollable article > div > .conversation,
+.scrollable article > .account,
+article > .domain,
+.scrollable .explore__search-results > .account,
+.scrollable > div > .status__wrapper,
+.scrollable > div > div > .status__wrapper,
+.scrollable > div > .detailed-status__wrapper,
+.scrollable .account__header,
+.scrollable .account-card,
+.scrollable .timeline-hint,
+.scrollable .account-gallery__container,
+.scrollable .search-results__section .account,
+.scrollable .trends__item,
+.story,
+_ {
+  background: linear-gradient(
+    to bottom, transparent 34%, var(--背景彩色-先頭なら上書き) 35% 40%, transparent 66%
+  ) center bottom / 100% 300% no-repeat, repeating-linear-gradient(
+    146.31deg, #0000, var(--背景彩色) 0.3px 1px, #0000 1.3px 3px
+  ) center center / 0% 100% no-repeat var(--背景色a);
+}
+.scrollable article,
+article > .domain,
+.scrollable .explore__search-results > .account,
+.scrollable > div > .status__wrapper,
+.scrollable > div > div > .status__wrapper,
+.scrollable > div > .detailed-status__wrapper,
+.scrollable .account__header,
+.scrollable .account-card,
+.scrollable .timeline-hint,
+.scrollable .account-gallery__container,
+.scrollable .search-results__section .account,
+.scrollable .trends__item,
+.story,
+_ {
+  --背景彩色-先頭なら上書き: var(--背景彩色);
+}
+.column-header,
+.column-back-button,
+_ {
+  box-shadow: var(--弱い影);
+}
+.notification,
+.conversation,
+.trends__item,
+article > .domain,
+article > .account,
+.search-results__section > .account,
+.detailed-status__wrapper,
+article > * > .status__wrapper,
+.scrollable > * > .status__wrapper,
+.scrollable .timeline-hint,
+.scrollable .account__header,
+_ {
+  border-radius: var(--小カド);
+  overflow: hidden;
+}
+.column-header,
+.column-back-button,
+_ {
+  border-radius: 0 0 var(--小カド) var(--小カド) !important;
+}
+
+.search-results__section {
+  margin-bottom: 8px;
+}
+.search-results__header,
+.search-results .trends__header,
+.search-results h5,
+.search-results .account,
+.search-results .trends__item,
+.search-results .load-more,
+.search-results .search-results__info,
+_ {
+  border: none;
+  margin-bottom: 1px;
+}
+
+.scrollable article[data-id^='f-'] {
+  margin-bottom: var(--大間隔);
+}
+.scrollable article[data-id^='f-'] + article[data-id^='f-'] {
+  margin-top: calc(var(--小間隔) - var(--大間隔));
+}
+.scrollable .account-card,
+_ {
+  margin-bottom: 8px;
+  border-radius: var(--大カド);
+  overflow: hidden;
+}
+.scrollable .account-gallery__container,
+.scrollable .empty-column-indicator,
+_ {
+  border-radius: var(--大カド);
+}
+
+.scrollable .account__header,
+.scrollable .timeline-hint,
+.scrollable > div:last-child > .detailed-status__wrapper,
+.scrollable > div:last-child > .status__wrapper,
+.scrollable > .item-list > article:last-child > div > .status__wrapper,
+_ {
+  border-bottom-left-radius: var(--大カド);
+  border-bottom-right-radius: var(--大カド);
+}
+
+/*** 非公開の返信 ***/
+
+.scrollable article > div > .status__wrapper-direct,
+.scrollable > div > .status__wrapper-direct,
+.scrollable > div > .detailed-status__wrapper-direct,
+_ {
+  background-color: var(--背景色特別);
+}
+.status__wrapper-direct .status__prepend,
+.detailed-status__wrapper-direct .status__prepend,
+_ {
+  display: none;
+}
+.detailed-status__wrapper-direct .detailed-status,
+.detailed-status__wrapper-direct .detailed-status__action-bar,
+_ {
+  background: none;
+}
+
+/*** タイムラインを虹色にする ***/
+
+.column article:nth-of-type(12n+01) { --背景彩色: var(--背景彩色の順序01); }
+.column article:nth-of-type(12n+02) { --背景彩色: var(--背景彩色の順序02); }
+.column article:nth-of-type(12n+03) { --背景彩色: var(--背景彩色の順序03); }
+.column article:nth-of-type(12n+04) { --背景彩色: var(--背景彩色の順序04); }
+.column article:nth-of-type(12n+05) { --背景彩色: var(--背景彩色の順序05); }
+.column article:nth-of-type(12n+06) { --背景彩色: var(--背景彩色の順序06); }
+.column article:nth-of-type(12n+07) { --背景彩色: var(--背景彩色の順序07); }
+.column article:nth-of-type(12n+08) { --背景彩色: var(--背景彩色の順序08); }
+.column article:nth-of-type(12n+09) { --背景彩色: var(--背景彩色の順序09); }
+.column article:nth-of-type(12n+10) { --背景彩色: var(--背景彩色の順序10); }
+.column article:nth-of-type(12n+11) { --背景彩色: var(--背景彩色の順序11); }
+.column article:nth-of-type(12n+12) { --背景彩色: var(--背景彩色の順序12); }
+
+.column article:nth-of-type(12n+01) { --強い彩色: var(--強い彩色の順序01); }
+.column article:nth-of-type(12n+02) { --強い彩色: var(--強い彩色の順序02); }
+.column article:nth-of-type(12n+03) { --強い彩色: var(--強い彩色の順序03); }
+.column article:nth-of-type(12n+04) { --強い彩色: var(--強い彩色の順序04); }
+.column article:nth-of-type(12n+05) { --強い彩色: var(--強い彩色の順序05); }
+.column article:nth-of-type(12n+06) { --強い彩色: var(--強い彩色の順序06); }
+.column article:nth-of-type(12n+07) { --強い彩色: var(--強い彩色の順序07); }
+.column article:nth-of-type(12n+08) { --強い彩色: var(--強い彩色の順序08); }
+.column article:nth-of-type(12n+09) { --強い彩色: var(--強い彩色の順序09); }
+.column article:nth-of-type(12n+10) { --強い彩色: var(--強い彩色の順序10); }
+.column article:nth-of-type(12n+11) { --強い彩色: var(--強い彩色の順序11); }
+.column article:nth-of-type(12n+12) { --強い彩色: var(--強い彩色の順序12); }
+
+.column article:nth-of-type(12n+01) { --弱い彩色: var(--弱い彩色の順序01); }
+.column article:nth-of-type(12n+02) { --弱い彩色: var(--弱い彩色の順序02); }
+.column article:nth-of-type(12n+03) { --弱い彩色: var(--弱い彩色の順序03); }
+.column article:nth-of-type(12n+04) { --弱い彩色: var(--弱い彩色の順序04); }
+.column article:nth-of-type(12n+05) { --弱い彩色: var(--弱い彩色の順序05); }
+.column article:nth-of-type(12n+06) { --弱い彩色: var(--弱い彩色の順序06); }
+.column article:nth-of-type(12n+07) { --弱い彩色: var(--弱い彩色の順序07); }
+.column article:nth-of-type(12n+08) { --弱い彩色: var(--弱い彩色の順序08); }
+.column article:nth-of-type(12n+09) { --弱い彩色: var(--弱い彩色の順序09); }
+.column article:nth-of-type(12n+10) { --弱い彩色: var(--弱い彩色の順序10); }
+.column article:nth-of-type(12n+11) { --弱い彩色: var(--弱い彩色の順序11); }
+.column article:nth-of-type(12n+12) { --弱い彩色: var(--弱い彩色の順序12); }
+
+.focusable {
+  --hover色: transparent;
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 2px var(--背景色a);
+}
+.focusable:focus {
+  outline: 2px solid;
+}
+@media (hover: hover) {
+  .focusable:not(:has(.status__content:is(:hover, :focus-visible))) {
+    transition: background-size 0s linear 0.35s;
+  }
+  .focusable:is(.status__wrapper, .notification):has(.status__content:hover):not(:has(:is(a, label, button):hover)),
+  .focusable:is(.status__wrapper, .notification):has(.status__content:focus-visible),
+  _ {
+    --hover色: var(--背景彩色);
+    background-size: 100% 300%, 100% 100%;
+    transition: none;
+  }
+  .focusable:is(.status__wrapper, .notification) .status__content {
+    box-shadow: inset 0 0 0 1px var(--hover色);
+    transition: box-shadow 0.05s linear 0.35s
+      , background-color 0s linear 0.35s
+    ;
+  }
+  .focusable:is(.status__wrapper, .notification) .status__content:is(:hover, :focus-visible) {
+    background: var(--背景色a);
+    transition: none;
+  }
+}
+
+.column article:first-of-type {
+  --背景彩色-先頭なら上書き: var(--新着の背景彩色);
+}
+.column article:first-of-type:not([data-id^='f-']):not(:has(.status__prepend .fa-retweet)) .status__relative-time,
+.column article[data-id^='f-'] + article:not([data-id^='f-']):not(:has(.status__prepend .fa-retweet)) .status__relative-time,
+.column article:first-of-type .status__prepend:has(.fa-retweet),
+.column article[data-id^='f-'] + article:not([data-id^='f-']) .status__prepend:has(.fa-retweet),
+_ {
+  color: var(--前景色新着);
+}
+.column article:first-of-type .status__prepend:has(.fa-retweet) .emojione,
+.column article[data-id^='f-'] + article:not([data-id^='f-']) .status__prepend:has(.fa-retweet) .emojione,
+_ {
+  opacity: 1;
+}
+
+/*** 新着投稿のフラッシュ ***/
+
+@keyframes 新着背景上昇 {
+  from {
+    background-position: center top;
+  }
+}
+
+.column article:nth-child(-n+8) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear 0.25s;
+}
+.column article:nth-child(9) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear 0s;
+}
+.column article:nth-child(10) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear -0.25s;
+}
+.column article:nth-child(11) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear -0.5s;
+}
+.column article:nth-child(12) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear -0.75s;
+}
+.column article:nth-child(13) > div > :is(.status__wrapper, .notification) {
+  animation: 新着背景上昇 1s linear -1s;
+}
+
+.status {
+  animation: none;
+}
+
+/*** タイムラインの「もっと見る」に読み込み中の印を表示する ***/
+
+@keyframes 回転 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.load-more {
+  user-select: none;
+}
+.scrollable > .item-list > .load-more[disabled] {
+  visibility: unset !important;
+  pointer-events: none;
+  color: transparent;
+  background: radial-gradient(
+    circle, 
+    transparent 6px, 
+    var(--強い彩色) 12px, 
+    transparent 18px
+  );
+  --mask: conic-gradient(
+    transparent, black
+  );
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  animation: 回転 1s infinite linear;
+}
+
+/*** 画面が狭い時にメニューを下部に表示する ***/
+
+@keyframes 透明度 {
+  0% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+
+@media (max-width: 400px) {
+  body.layout-single-column {
+    --カラム幅-メニュー: 0px;
+  }
+  .layout-single-column .ui {
+  }
+  .layout-single-column .ui__header {
+  }
+  .layout-single-column .columns-area__panels {
+  }
+  .layout-single-column .columns-area__panels__main {
+    width: 100%;
+  }
+  .layout-single-column .columns-area__panels__pane--navigational {
+    min-width: unset;
+  }
+  .layout-single-column .columns-area__panels__pane__inner {
+    height: 72px;
+    width: 100%;
+    inset: auto 0 0 0;
+  }
+  .layout-single-column .columns-area__panels__pane__inner::before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    inset: 16px 0 auto 0;
+    background: 
+      var(--icon-左矢印) top left / 50% 100% no-repeat,
+      var(--icon-右矢印) top right / 50% 100% no-repeat,
+      linear-gradient(to right, transparent -20%, var(--背景色c), transparent 120%) center / 100% 12px no-repeat,
+    transparent;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .layout-single-column .columns-area__panels__pane__inner:hover::before {
+    animation: 透明度 1s alternate 2;
+  }
+  .layout-single-column .navigation-panel {
+    padding-top: 24px;
+    flex-direction: row;
+  }
+  .layout-single-column .navigation-panel::before,
+  .layout-single-column .navigation-panel::after,
+  _ {
+    content: '';
+    flex: 1 0 15px;
+  }
+  .layout-single-column .navigation-panel::before {
+    border-top-left-radius: 15px;
+  }
+  .layout-single-column .navigation-panel::after {
+    border-top-right-radius: 15px;
+  }
+  .layout-single-column .navigation-panel .navigation-panel__logo,
+  .layout-single-column .navigation-panel .list-panel,
+  .layout-single-column .navigation-panel hr,
+  .layout-single-column .navigation-panel .getting-started__trends,
+  .layout-single-column .navigation-panel .flex-spacer,
+  _ {
+    display: none;
+  }
+  .layout-single-column .navigation-panel__legal {
+    display: contents;
+  }
+  .layout-single-column .navigation-panel .column-link {
+    flex: none;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .layout-single-column .navigation-panel::before,
+  .layout-single-column .navigation-panel::after,
+  .layout-single-column .navigation-panel .column-link,
+  _ {
+    background: linear-gradient(
+      to bottom, var(--背景色b) -100%, transparent 1000%
+    ), linear-gradient(
+      to bottom, var(--背景色b) -2px, transparent 4px
+    );
+    --bd-filter: blur(1px);
+    -webkit-backdrop-filter: var(--bd-filter);
+    backdrop-filter: var(--bd-filter);
+  }
+  .layout-single-column .navigation-panel .column-link:hover {
+    background: var(--背景色c);
+  }
+  .layout-single-column .navigation-panel .column-link__icon {
+    margin: 0;
+  }
+  .layout-single-column .notification-list {
+    margin-bottom: 48px;
+  }
+}
