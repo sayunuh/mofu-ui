@@ -1309,6 +1309,7 @@ _ {
   background: var(--前景色3);
   background-clip: padding-box;
   border-radius: 99px;
+  box-shadow: unset;
 }
 :hover::-webkit-scrollbar-thumb,
 :focus-within::-webkit-scrollbar-thumb,
