@@ -803,9 +803,6 @@ _ {
   color: var(--前景色0);
   background-color: var(--背景色a);
 }
-.compose-form .autosuggest-textarea {
-  background-color: var(--背景色a);
-}
 
 .simple_form input[type=text],
 .simple_form input[type=email],
@@ -942,7 +939,6 @@ _ {
 _ {
   background-color: var(--背景色a);
 }
-.reply-indicator,
 .compose-form .compose-form__buttons-wrapper,
 .block-modal__action-bar, 
 .boost-modal__action-bar, 
@@ -4230,20 +4226,11 @@ _ {
 .search {
   margin-bottom: 24px;
 }
-.search + .navigation-bar,
-.drawer .search + .drawer__pager,
-_ {
-  margin-top: -24px;
-}
 
 /*** 投稿記入欄の上の投稿者情報 ***/
 
-.navigation-bar {
-  padding-block: 24px;
-}
-
-.navigation-bar > a {
-  border-radius: 20%;
+.navigation-bar a.account__display-name {
+  border-radius: calc(60px * 0.2);
 }
 .navigation-bar .account__avatar {
   width: 60px !important;
@@ -4310,6 +4297,9 @@ _ {
   z-index: 2;
 }
 
+.drawer__pager {
+  border: none;
+}
 .compose-panel .compose-form,
 .drawer__inner .compose-form,
 _ {
@@ -4352,19 +4342,6 @@ _ {
   }
 }
 
-.compose-form .emoji-picker-dropdown {
-  inset-block: -20px auto;
-  inset-inline: auto 8px;
-  border-radius: 99px 99px 0 0;
-  height: 20px;
-  background: var(--背景色a);
-  border: solid transparent;
-  border-width: 1px 1px 0;
-  transition: border-color 0.1s ease-out;
-}
-.compose-form__autosuggest-wrapper:has(.autosuggest-textarea:focus-within) ~ .emoji-picker-dropdown {
-  border-color: var(--強い彩色);
-}
 .compose-form .emoji-button {
   padding: 5px;  
   border-radius: 99px;
@@ -4402,6 +4379,9 @@ _ {
 }
 .compose-form__highlightable {
   margin-bottom: var(--スクロールバー幅);
+  border: none;
+  background: var(--背景色a);
+  border-radius: 8px;
 }
 .compose-form .compose-form__publish .compose-form__publish-button-wrapper {
   padding: 0;
@@ -4410,12 +4390,9 @@ _ {
 /*** 投稿記入欄 : フォーカス移動時のハイライト ***/
 
 .compose-form__highlightable {
-  box-shadow: none !important;
-}
-.autosuggest-textarea {
   transition: box-shadow 0.1s ease-out;
 }
-.compose-form__highlightable.active .autosuggest-textarea {
+.compose-form__highlightable.active {
   box-shadow: inset 0 0 0 6px var(--前景色新着);
   transition: none;
 }
@@ -4486,9 +4463,6 @@ _ {
 
 /*** 投稿記入欄 : 返信対象枠 ***/
 
-.reply-indicator {
-  border: none;
-}
 .reply-indicator__header {
   overflow: unset;
   position: relative;
@@ -4731,20 +4705,6 @@ _ {
 
 .compose-form .compose-form__modifiers .compose-form__uploads-wrapper:empty {
   padding: 0;
-}
-
-/*** 投稿記入欄のメッセージ ***/
-
-.autosuggest-textarea:has(.autosuggest-textarea__textarea:empty)::after {
-  content: 'ケモノや小さいモノの話には「#もふけもの」を付けてね';
-  display: block;
-  position: absolute;
-  top: 28px;
-  padding: 7px;
-  font-size: 12px;
-  line-height: 16px;
-  pointer-events: none;
-  color: var(--前景色3);
 }
 
 /*** 左カラム全体をスクロール可能にする ***/
