@@ -2500,6 +2500,7 @@ article > .account,
 .search-results .account,
 .explore__search-results .account,
 .notification,
+.notification-group,
 _ {
   padding: var(--縦余白) var(--横余白);
 }
@@ -3456,6 +3457,10 @@ _ {
 
 /*** 通知: 全般 ***/
 
+.filtered-notifications-banner {
+  border: none;
+  margin-bottom: var(--小間隔);
+}
 .notification__message {
   padding-block: 2px;
   padding-inline: 0;
@@ -6674,6 +6679,7 @@ _ {
 .scrollable .detailed-status,
 .scrollable .detailed-status__action-bar,
 .scrollable .status__wrapper--filtered,
+.notification-group,
 .domain,
 .scrollable .account,
 .scrollable .account__header__bar,
@@ -6719,6 +6725,7 @@ _ {
 .scrollable article > div > .status__wrapper,
 .scrollable article > div > div > .status__wrapper,
 .scrollable article > div > .notification,
+.notification-group,
 .scrollable article > div > .conversation,
 .scrollable article > .account,
 article > .domain,
@@ -6762,6 +6769,7 @@ _ {
   box-shadow: var(--弱い影);
 }
 .notification,
+.notification-group,
 .conversation,
 .trends__item,
 article > .domain,
