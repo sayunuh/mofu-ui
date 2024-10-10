@@ -3535,18 +3535,53 @@ _ {
   transition: none;
 }
 
-/*** 通知: 幅が狭くても時刻を表示する ***/
+/*** 通知の時刻 ***/
 
+.notification-group__main__header__label {
+  display: block;
+}
 .notification-group__main__header__label > span {
-  flex: 1 0 0;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
-  width: 25%;
 }
 .notification-group__main__header__label > time {
-  flex: 0 0 auto;
   display: unset;
+  float: right;
+  white-space: nowrap;
+  color: var(--前景色2);
 }
- 
+
+/*** 通知: お気に入りとブースト ***/
+
+.notification-group__icon {
+  width: 28px;
+}
+:is(.notification-group--favourite, .notification-group--reblog) .notification-group__icon {
+  margin-inline-end: -36px;
+}
+:is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper {
+  margin-inline-start: 36px;
+}
+
+@media (min-width: 600px) {
+  .layout-single-column .notification-group__icon {
+    width: calc(var(--プロフ画像の半径) * 2);
+  }
+  .layout-single-column :is(.notification-group--favourite, .notification-group--reblog) .notification-group__icon {
+    margin-inline-end: 0;
+  }
+  .layout-single-column :is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper {
+    margin-inline-start: 0;
+  }
+}
+
+.notification-group__avatar-group {
+  gap: 2px;
+}
+.notification-group__avatar-group a,
+.notification-group__avatar-group .account__avatar,
+_ {
+  border-radius: 50%;
+}
+
 /*** 通知に埋め込まれた投稿本文 ***/
 
 @media (min-width: 600px) {
@@ -3619,6 +3654,17 @@ _ {
 }
 .notification-ungrouped .status > .status__content {
   margin-inline: -4px;
+}
+
+/*** 通知: 通報 ***/
+
+.notification-group--admin-report bdi {
+  word-break: break-all;
+}
+.notification-group--admin-report bdi::before,
+.notification-group--admin-report bdi::after,
+_ {
+  content: ' ';
 }
 
 /*** ブーストやお気に入りのアイコン ***/
@@ -4797,8 +4843,8 @@ _ {
 
 /*** 未読の印 ***/
 
-.notification.unread:before,
-.status__wrapper.unread:before,
+.notification-group--unread:before,
+.notification-ungrouped--unread:before,
 _ {
   border: none;
   background-image: linear-gradient(
