@@ -2502,6 +2502,9 @@ article > .account,
 _ {
   padding: var(--縦余白) var(--横余白);
 }
+.notification-ungrouped {
+  padding: 0;
+}
 .trends__item,
 _ {
   padding: calc(var(--縦余白) + 8px) calc(var(--横余白) + 8px);
@@ -2614,7 +2617,9 @@ _ {
 }
 
 @media (min-width: 600px) {
-  .layout-single-column .status {
+  .layout-single-column .status,
+  .layout-single-column .notification-ungrouped .status,
+  _ {
     padding-inline-start: calc(var(--横余白) + var(--プロフ画像の半径) * 2 + 8px);
   }
   .layout-single-column .status__info {
@@ -2756,8 +2761,13 @@ _ {
 
 .status__avatar {
   flex: none;
-  width: calc(var(--プロフ画像の半径) * 2); height: calc(var(--プロフ画像の半径) * 2);
   margin-top: var(--プロフ画像の縦ズレ);
+}
+.status__avatar,
+.notification-ungrouped .status__avatar,
+_ {
+  width: calc(var(--プロフ画像の半径) * 2);
+  height: calc(var(--プロフ画像の半径) * 2);
 }
 @media (min-width: 600px) {
   .layout-single-column .status__wrapper {
@@ -3522,132 +3532,91 @@ _ {
   opacity: 1;
   transition: none;
 }
- 
-/*** 通知に含まれる投稿本文 ***/
 
-.status.muted {
-  padding: 0;
-  min-height: unset;
-  display: flex;
-  user-select: none;
+/*** 通知: 幅が狭くても時刻を表示する ***/
+
+.notification-group__main__header__label > span {
+  flex: 1 0 0;
+  --note: 'flex を前提として width は 0 でもいいが念の為';
+  width: 25%;
 }
+.notification-group__main__header__label > time {
+  flex: 0 0 auto;
+  display: unset;
+}
+ 
+/*** 通知に埋め込まれた投稿本文 ***/
+
 @media (min-width: 600px) {
   .layout-single-column .notification .status.muted {
     padding-inline-start: calc(8px + var(--プロフ画像の半径) * 2);
   }
 }
-.status.muted .status__info,
-.status.muted .status__action-bar,
-.status.muted .hashtag-bar,
-.status.muted .status-card,
-.status.muted .spoiler-button,
-.status.muted .audio-player,
-.status.muted .video-player,
-.status.muted .status__content__read-more-button,
-_ {
+
+.notification-group__main__status {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--前景色2);
+  user-select: none;
+}
+.notification-group__embedded-status__account {
   display: none;
 }
-.status.muted .status__content {
-  --note: '投票結果を先頭に移動する為の flex';
-  display: flex;
-  flex-direction: column;
-  
-  max-height: 4.5em;
-  flex: auto;
+.notification-group__embedded-status__content {
+  font: unset;
+  color: unset;
+  max-height: 5em;
   overflow: hidden;
-  line-height: 1.333;
-  font-size: inherit;
-  border-radius: 4px;
-  --mask: linear-gradient(
-    black 4em,
-    transparent
-  );
+  font-size: unset;
+  --mask: linear-gradient(black 4em, transparent);
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
-.status.muted .status__content a {
+.notification-group__embedded-status__content:not(._) {
+  line-height: unset;
+}
+.notification-group__embedded-status__content * {
   pointer-events: none;
 }
-.status.muted .status__content a,
-.status.muted .status__content a > span,
-_ {
-  text-decoration: none;
+.notification-group__embedded-status__content p {
+  display: block;
+}
+.notification-group__embedded-status__content p:not(._) {
+  margin: 0;
+}
+.notification-group__embedded-status__content a {
+  color: inherit;
+}
+.notification-group__embedded-status .reply-indicator__attachments {
+  font: unset;
+  color: unset;
 }
 
-.attachment-list.compact ul li {
-  display: inline-block;
-  margin-inline-end: 1em;
-}
+/*** 通知: 返信など ***/
 
-/*** 通知に含まれる投稿の添付画像 ***/
-
-.status.muted .media-gallery {
-  flex: none;
-  display: flex;
-  justify-content: end;
-  min-width: unset; min-height: unset;
-  max-width: 50%;
-  width: fit-content; height: 48px;
-  aspect-ratio: unset !important;
-  margin-block: 0 -4px;
-  margin-inline: 8px 0;
-  border-radius: 0;
+.notification-ungrouped__header {
+  margin: 0 var(--横余白);
+  padding: var(--縦余白) 0;
+  border-bottom: 1px solid var(--背景色b);
 }
-.status.muted .media-gallery__item {
-  border-radius: 0;
+.notification-ungrouped__header__icon {
+  width: calc(var(--プロフ画像の半径) * 2);
+  justify-content: flex-end;
 }
-.status.muted .media-gallery__item:last-child {
-  flex: none;
-}
-.status.muted .media-gallery__item-thumbnail {
-  width: unset;
-}
-.status.muted .media-gallery__item-thumbnail img {
-  width: unset; height: 48px;
-  max-width: 96px;
-  min-width: 24px;
-  vertical-align: bottom;
-  border-radius: 4px;
-  object-fit: cover;
-}
-.status.muted .media-gallery__item > * {
-  border-radius: 0;
+.notification-ungrouped .status__wrapper {
   box-shadow: none;
 }
-.status.muted .media-gallery__item__badges {
-  display: none;
+.notification-ungrouped .status {
+  padding: var(--縦余白) var(--横余白);
 }
-
-/*** 通知に含まれる投稿の投票結果 ***/
-
-.status.muted .poll {
-  order: -1;
-  margin-block: 2px 4px;
-  pointer-events: none;
+.notification-ungrouped .status > * {
+  margin-inline: 0;
+  width: unset;
 }
-.status.muted .poll * {
-  color: var(--前景色1);
-}
-.status.muted .poll ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 24px;
-}
-.status.muted .poll__option,
-.status.muted .poll__number,
-.status.muted .poll__option__text,
-_ {
-  display: inline;
-}
-.status.muted .poll__number {
-  margin-inline-end: 4px;
-}
-.status.muted .poll__voted,
-.status.muted .poll__chart,
-.status.muted .poll li::after,
-.status.muted .poll__footer,
-_ {
-  display: none;
+.notification-ungrouped .status > .status__content {
+  margin-inline: -4px;
 }
 
 /*** ブーストやお気に入りのアイコン ***/
@@ -6642,6 +6611,7 @@ _ {
 .scrollable .detailed-status__action-bar,
 .scrollable .status__wrapper--filtered,
 .notification-group,
+.notification-ungrouped,
 .domain,
 .scrollable .account,
 .scrollable .account__header__bar,
@@ -6688,6 +6658,7 @@ _ {
 .scrollable article > div > div > .status__wrapper,
 .scrollable article > div > .notification,
 .notification-group,
+.notification-ungrouped,
 .scrollable article > div > .conversation,
 .scrollable article > .account,
 article > .domain,
@@ -6732,6 +6703,7 @@ _ {
 }
 .notification,
 .notification-group,
+.notification-ungrouped,
 .conversation,
 .trends__item,
 article > .domain,
