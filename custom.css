@@ -3026,6 +3026,7 @@ _ {
   gap: 0;
   margin-block: 10px 8px;
   color: var(--前景色3);
+  font-size: unset;
 }
 .hashtag-bar::before {
   content: ' ';
@@ -3044,6 +3045,7 @@ _ {
   border-radius: 3px;
   color: transparent;
   letter-spacing: -1em;
+  background: unset;
 }
 .hashtag-bar a span {
   color: var(--前景色1);
