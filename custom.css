@@ -4244,10 +4244,14 @@ _ {
 /*** 検索欄 ***/
 
 .search {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 /*** 投稿記入欄の上の投稿者情報 ***/
+
+.navigation-bar {
+  margin-inline: 4px;
+}
 
 .navigation-bar a.account__display-name {
   border-radius: calc(60px * 0.2);
@@ -4483,32 +4487,46 @@ _ {
 
 /*** 投稿記入欄 : 返信対象枠 ***/
 
-.reply-indicator__header {
-  overflow: unset;
-  position: relative;
+.reply-indicator {
+  padding: 10px;
+  background: var(--背景色c);
+  border-radius: var(--小カド);
+  gap: 0 8px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  grid-template-rows: 48px max-content;
 }
-.reply-indicator__cancel {
-  float: none;
-  position: absolute;
-  inset-block: 0 auto;
-  inset-inline: auto 0;
+.reply-indicator__line::before {
+  background: var(--前景色2);
+  height: calc(100% + 36px);
 }
-.reply-indicator__display-name {
-  overflow: unset;
-  display: flex;
-  gap: 8px;
-}
-.reply-indicator__display-avatar {
-  float: none;
-  width: 24px; height: 24px;
-  flex: none;
-  margin: 0;
-}
-.reply-indicator__display-avatar .account__avatar {
+.reply-indicator .detailed-status__display-avatar .account__avatar {
+  width: 100% !important;
+  height: 100% !important;
   border-radius: 50%;
-  margin: -2px;
-  width: calc(100% + 4px) !important;
-  height: calc(100% + 4px) !important;
+}
+.reply-indicator .display-name {
+  line-height: 20px;
+  overflow: hidden;
+}
+.reply-indicator .detailed-status__display-name {
+  margin-bottom: 4px;
+}
+.reply-indicator .detailed-status__display-name strong {
+  font-size: unset;
+}
+.reply-indicator .detailed-status__display-name strong {
+  display: inline;
+  color: unset;
+}
+.reply-indicator .display-name__account {
+  display: inline;
+}
+.reply-indicator__content {
+  -webkit-line-clamp: 6;
+  max-height: unset;
+}
+.reply-indicator__attachments {
+  color: unset;
 }
 
 /*** 多カラムの検索 ***/
