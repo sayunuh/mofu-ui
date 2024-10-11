@@ -3551,6 +3551,13 @@ _ {
 
 /*** 通知: お気に入りとブースト ***/
 
+.notification-group__main {
+  gap: 4px;
+}
+.notification-group__main__header {
+  gap: 4px;
+}
+
 .notification-group__icon {
   width: 28px;
 }
@@ -3574,7 +3581,7 @@ _ {
 }
 
 .notification-group__avatar-group {
-  gap: 2px;
+  gap: 4px;
 }
 .notification-group__avatar-group a,
 .notification-group__avatar-group .account__avatar,
@@ -4004,7 +4011,7 @@ _ {
   color: var(--前景色2);
   font-size: 22px;
 }
-.column-header__buttons > button .fa-check {
+.column-header__button .icon-done-all {
   color: var(--前景色新着);
 }
 .column-header__buttons > button.active,
