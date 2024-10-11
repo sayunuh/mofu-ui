@@ -3535,12 +3535,14 @@ _ {
   transition: none;
 }
 
-/*** 通知の時刻 ***/
+/*** 通知: 主文と時刻 ***/
 
 .notification-group__main__header__label {
   display: block;
+  color: var(--前景色1);
 }
-.notification-group__main__header__label > span {
+.notification-group__main__header__label bdi {
+  color: unset;
 }
 .notification-group__main__header__label > time {
   display: unset;
@@ -3608,7 +3610,7 @@ _ {
 .notification-group__embedded-status__account {
   display: none;
 }
-.notification-group__embedded-status__content {
+.notification-group__embedded-status__content:not(._) {
   font: unset;
   color: unset;
   max-height: 5em;
@@ -4522,7 +4524,7 @@ _ {
   display: inline;
 }
 .reply-indicator__content {
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: unset;
   max-height: unset;
 }
 .reply-indicator__attachments {
