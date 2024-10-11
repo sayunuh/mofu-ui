@@ -3676,18 +3676,14 @@ _ {
 
 /*** ブーストやお気に入りのアイコン ***/
 
-.status__prepend-icon-wrapper {
+.status__prepend__icon {
   width: calc(var(--プロフ画像の半径) * 2);
-  flex: none;
-  text-align: end;
-}
-.status__prepend-icon.fa {
-  width: unset;
-}
-.status__prepend .fa-thumb-tack {
-  font-size: 18px;
+  justify-content: flex-end;
 }
 
+.icon-button.active .icon-retweet {
+  color: var(--前景色ブースト);
+}
 .icon-button.star-icon.active,
 .icon-button.star-icon.active:hover,
 .icon-button.star-icon.active:focus,
