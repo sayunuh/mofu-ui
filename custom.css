@@ -2920,7 +2920,10 @@ _ {
   color: var(--前景色2);
   --余白: 3px;
 }
-.detailed-status__meta > * {
+.detailed-status__meta__line {
+  display: contents;
+}
+.detailed-status__meta__line > * {
   flex: 0 0 auto;
   font-size: 15px;
   margin-inline: var(--余白);
@@ -2928,12 +2931,12 @@ _ {
 
 .detailed-status__datetime + span { order: 0; }
 .detailed-status__meta::before { order: 1; }
-.detailed-status__meta > i.fa { order: 11; }
+.detailed-status__meta svg.icon { order: 11; }
 .detailed-status__application { order: 11; }
 @media (min-width: 600px) {
   .layout-single-column .detailed-status__meta::before { order: 12; }
   .layout-single-column .detailed-status__datetime { order: 13; }
-  .layout-single-column .detailed-status__datetime + span { order: 13; }
+  .layout-single-column .dropdown-menu__text-button { order: 13; }
 }
 .detailed-status__meta::after { order: 14; }
 .detailed-status__link { order: 15; }
@@ -2966,14 +2969,19 @@ _ {
 .detailed-status__datetime {
   color: var(--前景色1);
 }
-.detailed-status__datetime + span {
+.dropdown-menu__text-button {
   font-size: 13px;
 }
-.detailed-status__datetime + span::before {
+.dropdown-menu__text-button::before {
   content: '';
+  height: 16px;
   margin-inline-end: var(--余白);
   padding-inline-end: 16px;
   background: var(--icon-加筆) center / contain no-repeat;
+}
+.dropdown-menu__text-button .animated-number {
+  color: var(--前景色1);
+  font-weight: unset;
 }
 .detailed-status__meta > i.fa {
   width: unset;
@@ -2994,26 +3002,17 @@ _ {
 }
 .detailed-status__link {
   color: var(--前景色3);
-  margin-inline: 1px;
-  padding-inline: var(--余白);
+  font-size: 12px;
+  font-weight: 500;
+  gap: 3px;
 }
 .detailed-status__link:hover {
   color: var(--前景色2);
 }
-.detailed-status__link .fa {
-  font-size: 12px;
-  vertical-align: 1px;
-}
-.detailed-status__reblogs,
-.detailed-status__favorites,
-_ {
-  margin-inline-start: 3px;
-  font-size: unset;
-}
-.detailed-status__reblogs .animated-number,
-.detailed-status__favorites .animated-number,
-_ {
+.detailed-status__link .animated-number {
   height: 17px;
+  font-size: 15px;
+  color: var(--前景色2);
 }
 
 .animated-number {
