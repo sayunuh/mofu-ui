@@ -6452,6 +6452,11 @@ _ {
   border-radius: 0;
 }
 .media-gallery__item,
+.video-player,
+_ {
+  outline: unset;
+}
+.media-gallery__item,
 .media-gallery__gifv,
 .audio-player,
 .status .video-player,
