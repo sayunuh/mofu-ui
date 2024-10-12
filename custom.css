@@ -3109,8 +3109,8 @@ _ {
   justify-content: center;
   z-index: 2;
 }
-.status__action-bar > * > span > button {
-  width: 100% !important;
+.status__action-bar .icon-button {
+  gap: 2px;
 }
 
 .detailed-status__action-bar {
@@ -3120,11 +3120,6 @@ _ {
 .detailed-status__action-bar > * {
   flex: 0 1 max(8%, 48px);
   display: block;
-}
-.detailed-status__button > button,
-.detailed-status__action-bar-dropdown > span > button,
-_ {
-  width: 100% !important;
 }
 .detailed-status__action-bar button {
   height: 32px !important;
@@ -3137,6 +3132,7 @@ _ {
 .status__action-bar button:not(._),
 .detailed-status__action-bar button:not(._),
 _ {
+  width: 100%;
   background: none;
   color: var(--前景色3);
 }
