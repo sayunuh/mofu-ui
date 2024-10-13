@@ -2852,6 +2852,102 @@ _ {
   float: inline-end;
 }
 
+/*** 投稿内共通: 公開範囲のアイコン ***/
+
+.status__visibility-icon > svg.icon,
+.detailed-status__meta__line > svg.icon,
+_ {
+  height: 18px;
+  margin-block: 0;
+  padding-block: 1px;
+  border-radius: 99px;
+  background: radial-gradient(
+    circle farthest-side, transparent -200%, var(--前景色3) 900%
+  );
+  color: var(--前景色2);
+}
+.status__visibility-icon > svg.icon {
+  padding-inline: 3px;
+  width: 26px;
+}
+.status__wrapper-private .status__visibility-icon > svg.icon-lock,
+.detailed-status__meta__line > svg.icon-lock,
+_ {
+  background: var(--前景色3);
+  color: var(--背景色飽和);
+}
+.status__wrapper-direct .status__visibility-icon > svg.icon-at,
+.detailed-status__meta__line > svg.icon-at,
+_ {
+  background: var(--前景色特別);
+  color: var(--背景色飽和);
+}
+
+.detailed-status__meta svg.icon {
+  margin-inline-end: 0;
+  padding-inline: 6px 0;
+  border-radius: 99px 0 0 99px;
+  background: var(--公開範囲背景);
+  color: var(--公開範囲前景);
+}
+.detailed-status__meta__line:has(> svg.icon)::before {
+  order: 12;
+  font-size: 12px;
+  margin-inline-end: var(--余白);
+  padding-inline: 3px 8px;
+  line-height: 20px;
+  border-radius: 0 99px 99px 0;
+  background: var(--公開範囲背景);
+  color: var(--公開範囲前景);
+  content: var(--公開範囲文字列);
+}
+
+.detailed-status__meta__line {
+  --公開範囲背景: radial-gradient(circle farthest-side, transparent -200%, var(--前景色3) 900%);
+  --公開範囲前景: var(--前景色2);
+  --公開範囲文字列: 'Public';
+}
+.detailed-status__meta__line:has(> svg.icon-unlock) {
+  --公開範囲文字列: 'Quiet public';
+}
+.detailed-status__meta__line:has(> svg.icon-lock) {
+  --公開範囲背景: var(--前景色3);
+  --公開範囲前景: var(--背景色飽和);
+  --公開範囲文字列: 'Followers';
+}
+.detailed-status__meta__line:has(> svg.icon-at) {
+  --公開範囲背景: var(--前景色特別);
+  --公開範囲前景: var(--背景色飽和);
+  --公開範囲文字列: 'Specific people';
+}
+
+.detailed-status__meta__line:lang(ja) {
+  --公開範囲文字列: '公開';
+}
+.detailed-status__meta__line:lang(ja):has(> svg.icon-unlock) {
+  --公開範囲文字列: 'ひかえめな公開';
+}
+.detailed-status__meta__line:lang(ja):has(> svg.icon-lock) {
+  --公開範囲文字列: 'フォロワー';
+}
+.detailed-status__meta__line:lang(ja):has(> svg.icon-at) {
+  --公開範囲文字列: '特定の人';
+}
+
+/*** 投稿簡略表示: 公開範囲のアイコン ***/
+
+.status__visibility-icon {
+  order: 1;
+  padding: 0;
+}
+.status__visibility-icon > svg.icon {
+  margin-inline-start: 4px;
+  vertical-align: text-bottom;
+}
+.status__visibility-icon > svg.icon-globe {
+  display: none;
+}
+
 /*** 投稿詳細表示 ***/
 
 .detailed-status__wrapper {
@@ -2932,14 +3028,14 @@ _ {
 .detailed-status__datetime + span { order: 0; }
 .detailed-status__meta::before { order: 1; }
 .detailed-status__meta svg.icon { order: 11; }
-.detailed-status__application { order: 11; }
+.detailed-status__application { order: 12; }
 @media (min-width: 600px) {
-  .layout-single-column .detailed-status__meta::before { order: 12; }
-  .layout-single-column .detailed-status__datetime { order: 13; }
-  .layout-single-column .dropdown-menu__text-button { order: 13; }
+  .layout-single-column .detailed-status__meta::before { order: 13; }
+  .layout-single-column .detailed-status__datetime { order: 14; }
+  .layout-single-column .dropdown-menu__text-button { order: 14; }
 }
-.detailed-status__meta::after { order: 14; }
-.detailed-status__link { order: 15; }
+.detailed-status__meta::after { order: 15; }
+.detailed-status__link { order: 16; }
 
 .detailed-status__meta::before {
   content: '';
@@ -2983,17 +3079,7 @@ _ {
   color: var(--前景色1);
   font-weight: unset;
 }
-.detailed-status__meta > i.fa {
-  width: unset;
-  padding-inline: 8px;
-  margin-block: 0;
-  display: flex;
-  gap: 4px;
-}
-.detailed-status__meta > i.fa::after {
-  content: attr(title);
-  font-family: 'mastodon-font-sans-serif', sans-serif;
-  font-size: 12px;
+.detailed-status__meta__line > svg.icon {
 }
 .detailed-status__application {
 }
@@ -3164,52 +3250,6 @@ button.icon-button.disabled i.fa-retweet,
 button.icon-button.disabled:hover i.fa-retweet,
 _ {
   background-image: var(--icon-ブースト不可);
-}
-
-/*** 投稿内共通: 公開範囲のアイコン ***/
-
-.status__visibility-icon > i.fa,
-.detailed-status__meta > i.fa,
-_ {
-  font-size: 18px;
-  line-height: 20px;
-  border-radius: 999px;
-  background: radial-gradient(
-    circle farthest-side, transparent -200%, var(--前景色3) 900%
-  );
-  color: var(--前景色2);
-}
-.status__visibility-icon > i.fa {
-  margin-block: -1px;
-  padding-inline: 3px;
-  width: 26px;
-  text-align: center;
-}
-.status__wrapper-private .status__visibility-icon > .fa-lock,
-.detailed-status__wrapper-private .detailed-status__meta > .fa-lock,
-_ {
-  background: var(--前景色3);
-  color: var(--背景色飽和);
-}
-.status__wrapper-direct .status__visibility-icon > .fa-at,
-.detailed-status__wrapper-direct .detailed-status__meta > .fa-at,
-_ {
-  background: var(--前景色特別);
-  color: var(--背景色飽和);
-}
-
-/*** 投稿簡略表示: 公開範囲アイコン ***/
-
-.status__visibility-icon {
-  order: 1;
-  padding: 0;
-}
-.status__visibility-icon > i.fa {
-  margin-inline-start: 4px;
-  vertical-align: text-bottom;
-}
-.status__visibility-icon > i.fa-globe {
-  display: none;
 }
 
 /*** 投稿詳細表示: カラム幅が広い時 ***/
