@@ -742,6 +742,12 @@ _ {
   border-color: var(--背景色b);
 }
 
+/*** 共通要素: SVG のアイコン ***/
+
+svg.icon {
+  vertical-align: bottom;
+}
+
 /*** 「リモートで表示」の外観をボタンにする ***/
 
 .timeline-hint a {
@@ -3202,6 +3208,9 @@ _ {
   padding: 0;
   justify-content: center;
   z-index: 2;
+}
+.icon-button {
+  vertical-align: bottom;
 }
 .status__action-bar .icon-button {
   gap: 2px;
