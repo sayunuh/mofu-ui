@@ -6993,10 +6993,10 @@ _ {
 .column article:first-of-type {
   --背景彩色-先頭なら上書き: var(--新着の背景彩色);
 }
-.column article:first-of-type:not([data-id^='f-']):not(:has(.status__prepend .fa-retweet)) .status__relative-time,
-.column article[data-id^='f-'] + article:not([data-id^='f-']):not(:has(.status__prepend .fa-retweet)) .status__relative-time,
-.column article:first-of-type .status__prepend:has(.fa-retweet),
-.column article[data-id^='f-'] + article:not([data-id^='f-']) .status__prepend:has(.fa-retweet),
+.column article:first-of-type:not([data-id^='f-']):not(:has(.status__prepend svg.icon-retweet)) .status__relative-time,
+.column article[data-id^='f-'] + article:not([data-id^='f-']):not(:has(.status__prepend svg.icon-retweet)) .status__relative-time,
+.column article:first-of-type .status__prepend:has(svg.icon-retweet),
+.column article[data-id^='f-'] + article:not([data-id^='f-']) .status__prepend:has(svg.icon-retweet),
 _ {
   color: var(--前景色新着);
 }
