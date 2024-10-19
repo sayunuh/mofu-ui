@@ -1654,13 +1654,22 @@ _ {
 
 /*** スタートメニュー ***/
 
+.navigation-panel__menu {
+  display: contents;
+}
+
 .navigation-panel .column-link {
   padding-inline: 0;
   text-align: center;
-  text-overflow: ellipsis;
 }
 .navigation-panel .column-link__icon {
   margin-inline: 4px;
+}
+.column-link span,
+.column-link::after,
+_ {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (min-width: 720px){
@@ -7121,9 +7130,6 @@ _ {
   }
   .layout-single-column .navigation-panel::after {
     border-top-right-radius: 15px;
-  }
-  .layout-single-column .navigation-panel__menu {
-    display: contents;
   }
   .layout-single-column .navigation-panel .navigation-panel__logo,
   .layout-single-column .navigation-panel .list-panel,
