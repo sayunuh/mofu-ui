@@ -4424,21 +4424,8 @@ _ {
   }
 }
 
-.compose-form .emoji-button {
-  padding: 5px;  
-  border-radius: 99px;
-}
-
-.compose-form .compose-form__buttons-wrapper {
-  border: none;
-  border-radius: 0 0 8px 8px;
-}
-
 .compose-form__buttons button {
-  width: 28px !important;
-}
-.compose-form__publish-button-wrapper {
-  width: 100%;
+  width: 24px;
 }
 
 .compose-form .compose-form__warning {
