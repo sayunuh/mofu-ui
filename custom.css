@@ -4446,6 +4446,22 @@ _ {
   color: var(--前景色注意);
 }
 
+.compose-form__dropdowns > div {
+  overflow: unset;
+}
+.dropdown-button {
+  color: var(--標準の強い彩色);
+  border-color: var(--標準の強い彩色);
+}
+.dropdown-button:focus {
+  outline-offset: 1px;
+}
+.dropdown-button.active {
+  background: var(--標準の弱い彩色);
+  border-color: var(--標準の弱い彩色);
+  color: white;
+}
+
 /*** 投稿記入欄 : 公開範囲の警告を投稿ボタンの近くへ移動 ***/
 
 .drawer__inner > .compose-form,
