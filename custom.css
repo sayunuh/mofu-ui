@@ -3595,14 +3595,14 @@ _ {
   gap: 4px;
 }
 
-.notification-group__main__header:has(> .notification-group__main__header__wrapper > * > a:only-child) {
+:is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header:has(> .notification-group__main__header__wrapper > * > a:only-child) {
   display: block;
 }
-.notification-group__main__header__wrapper:has(> * > a:only-child) {
+:is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper:has(> * > a:only-child) {
   float: left;
   margin-inline-end: 8px;
 }
-.notification-group__main__header__wrapper:has(> * > a:only-child) + * {
+:is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper:has(> * > a:only-child) + * {
   margin-top: 6px;
 }
 
@@ -3610,7 +3610,7 @@ _ {
   width: 28px;
 }
 :is(.notification-group--favourite, .notification-group--reblog) .notification-group__icon {
-  --note: '通報の通知も .notification-group なのでお気に入りとブーストだけに絞る必要がある';
+  --note: 'フォローや通報の通知も .notification-group なのでお気に入りとブーストだけに絞る必要がある';
   margin-inline-end: -36px;
 }
 :is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper {
