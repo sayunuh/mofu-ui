@@ -1548,6 +1548,8 @@ _ {
 
 .tabs-bar__wrapper {
   top: 0;
+  backdrop-filter: unset;
+  -webkit-backdrop-filter: unset;
 }
 @media screen and (max-height: 380px) {
   .tabs-bar__wrapper {
