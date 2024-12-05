@@ -5362,6 +5362,7 @@ _ {
 /*** 画像拡大表示の画面 ***/
 
 .modal-root__overlay {
+  background: hsla(0, 0%, 50%, 0.75);
   --bd-filter: blur(0.5vmax);
   -webkit-backdrop-filter: var(--bd-filter);
   backdrop-filter: var(--bd-filter);
