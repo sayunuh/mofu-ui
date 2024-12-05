@@ -3713,6 +3713,7 @@ _ {
   margin: 0 var(--横余白);
   padding: var(--縦余白) 0;
   border-bottom: 1px solid var(--背景色b);
+  color: var(--前景色2);
 }
 .notification-ungrouped__header__icon {
   width: calc(var(--プロフ画像の半径) * 2);
