@@ -4033,19 +4033,6 @@ _ {
     drop-shadow(0 0 0 white)
   ;
 }
-.reactions-bar .emoji-button,
-.reactions-bar .emoji-button:hover,
-_ {
-  color: var(--前景色2);
-}
-.reactions-bar .emoji-button::after {
-  content: url('/emoji/1f642.svg');
-  width: 22px; height: 22px;
-  margin-left: 4px;
-}
-.reactions-bar .emoji-button:not(:hover)::after {
-  filter: grayscale(100%);
-}
 
 /*** カラムヘッダーのボタン ***/
 
