@@ -1871,6 +1871,7 @@ _ {
 .flash-message,
 .flash-message.translation-prompt,
 _ {
+  border: none;
   background: var(--背景色注意);
   color: var(--前景色注意);
   border-radius: 2px;
