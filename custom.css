@@ -1104,9 +1104,8 @@ _ {
 
 .prose a,
 .about__section__title,
-.column-header > .column-header__back-button,
-.column-header__back-button,
 .column-back-button,
+.column-header__back-button svg.icon,
 .column-link--transparent.active,
 .account__header__bio .account__header__fields a,
 .status__content a,
