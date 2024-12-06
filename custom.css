@@ -3519,7 +3519,20 @@ _ {
 .filtered-notifications-banner {
   border: none;
   margin-bottom: var(--小間隔);
+  outline-offset: -6px;
+  color: var(--前景色1);
 }
+.filtered-notifications-banner:not(._) {
+  border-radius: var(--小カド);
+}
+.filtered-notifications-banner:hover {
+  background: var(--背景色c);
+}
+.filtered-notifications-banner:focus-visible {
+  outline: 2px solid;
+  outline-offset: -2px;
+}
+
 .notification__message {
   padding-block: 2px;
   padding-inline: 0;
