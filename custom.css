@@ -3704,11 +3704,11 @@ _ {
 .notification-group__embedded-status__content p {
   display: block;
 }
-.notification-group__embedded-status__content p:not(._) {
+.notification-group__embedded-status__content p:not(._):not(._) {
   margin: 0;
 }
-.notification-group__embedded-status__content a {
-  color: inherit;
+.notification-group__embedded-status__content a:not(._):not(._) {
+  color: unset;
 }
 .notification-group__embedded-status .reply-indicator__attachments {
   font: unset;
