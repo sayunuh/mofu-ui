@@ -1105,6 +1105,7 @@ _ {
 .prose a,
 .about__section__title,
 .column-back-button,
+.column-header__back-button:not(._),
 .column-header__back-button svg.icon,
 .column-link--transparent.active,
 .account__header__bio .account__header__fields a,
