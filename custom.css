@@ -1073,14 +1073,8 @@ _ {
 .status-card,
 .navigation-bar,
 .character-counter,
-.text-icon-button,
-.text-icon-button:active,
-.text-icon-button:focus,
-.text-icon-button:hover,
-.icon-button.inverted,
-.icon-button.inverted:active,
-.icon-button.inverted:focus,
-.icon-button.inverted:hover,
+.text-icon-button:not(._),
+.icon-button.inverted:not(._),
 .load-more,
 .notification__filter-bar button,
 .account__section-headline a,
@@ -1128,12 +1122,6 @@ _ {
 .simple_form .hint a,
 .admin-wrapper .content .muted-hint a,
 body .muted-hint a,
-.icon-button.active,
-.icon-button.active:hover,
-.icon-button.active:focus,
-.icon-button.active:active,
-.icon-button.inverted.active,
-.text-icon-button.active,
 .status__content__read-more-button,
 _ {
   color: var(--強い彩色);
@@ -4432,6 +4420,10 @@ _ {
 
 .compose-form__buttons button {
   width: 24px;
+}
+.compose-form__actions .icon-button.inverted.active {
+  color: var(--背景色0);
+  background: var(--弱い彩色);
 }
 
 .compose-form .compose-form__warning {
