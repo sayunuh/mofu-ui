@@ -801,7 +801,6 @@ _ {
 .simple_form input[type=number],
 .simple_form textarea,
 .simple_form select,
-.poll__option input[type=text],
 .compose-form__poll-wrapper select,
 .compose-form .spoiler-input__input,
 .compose-form .compose-form__modifiers,
@@ -816,7 +815,6 @@ _ {
 .simple_form input[type=number],
 .simple_form textarea,
 .simple_form select,
-.poll__option input[type=text],
 .compose-form__poll-wrapper select,
 .compose-form .spoiler-input__input,
 _ {
@@ -858,7 +856,6 @@ _ {
 .simple_form input[type=number]:focus,
 .simple_form textarea:focus,
 .simple_form select:focus,
-.poll__option input[type=text]:focus,
 .compose-form__poll-wrapper .poll__footer select:focus,
 .setting-text:focus,
 .compose-form .spoiler-input__input:focus,
@@ -4784,8 +4781,13 @@ _ {
 .compose-form__poll .poll__input {
   margin: 0;
 }
-.compose-form .poll__option input[type=text] {
+.poll__option input[type=text] {
   border: 1px solid var(--背景色0);
+  color: var(--前景色0);
+  background-color: var(--背景色a);
+}
+.poll__option input[type=text]:focus {
+  border-color: var(--強い彩色);
 }
 .compose-form .poll__option {
   padding: 0;
