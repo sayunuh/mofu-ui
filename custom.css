@@ -4771,32 +4771,27 @@ _ {
 
 /*** 投票作成枠 ***/
 
-.compose-form__poll-wrapper,
-_ {
-  background-color: var(--背景色c);
-  border: none;
-  border-bottom: 1px solid var(--背景色a);
+.compose-form__highlightable {
+  gap: 0;
 }
-.compose-form__poll-wrapper .poll__footer,
-_ {
-  border: none;
+.compose-form__footer {
+  padding-top: 8px;
 }
-.compose-form__poll-wrapper .icon-button,
-.compose-form__poll-wrapper .icon-button.disabled,
-_ {
-  color: var(--前景色2);
+.compose-form__poll {
+  padding: 8px 16px;
+  background: var(--背景色1);
 }
-.icon-button.disabled {
-  opacity: 0.333;
+.compose-form__poll .poll__input {
+  margin: 0;
 }
-.compose-form__poll-wrapper .icon-button.disabled {
-  opacity: 0.2;
-}
-.poll__input {
-  border-color: var(--前景色2);
+.compose-form .poll__option input[type=text] {
+  border: 1px solid var(--背景色0);
 }
 .compose-form .poll__option {
-  padding: 2px 0;
+  padding: 0;
+}
+.compose-form__poll__select__value {
+  color: var(--強い彩色);
 }
 
 /*** 投稿記入欄: 言語選択メニュー ***/
