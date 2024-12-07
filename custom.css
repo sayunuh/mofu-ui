@@ -1658,8 +1658,9 @@ _ {
 }
 
 .navigation-panel .column-link {
+  display: flex;
   padding-inline: 0;
-  text-align: center;
+  justify-content: center;
 }
 .navigation-panel .column-link__icon {
   margin-inline: 4px;
@@ -1679,7 +1680,7 @@ _ {
   }
   .navigation-panel .column-link {
     padding-inline: 15px 10px;
-    text-align: start;
+    justify-content: unset;
   }
   .column-link__icon {
     margin-inline-start: 0;
