@@ -4806,6 +4806,12 @@ _ {
   color: var(--強い彩色);
 }
 
+/*** 添付画像の送信の進捗 ***/
+
+.upload-progress {
+  padding-top: 8px;
+}
+
 /*** 投稿記入欄: 言語選択メニュー ***/
 
 .language-dropdown__dropdown .emoji-mart-search {
