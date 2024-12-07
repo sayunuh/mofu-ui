@@ -619,6 +619,9 @@ _ {
 
 /*** 共通要素: ボタン類 ***/
 
+button {
+  margin: 0;
+}
 .button:not(._):not(._),
 .simple_form .button:not(._):not(._),
 .simple_form button:not(._):not(._),
@@ -1759,6 +1762,13 @@ _ {
 _ {
   border: none;
   margin-bottom: var(--小間隔);
+}
+
+.column-header__title,
+.column-header__back-button,
+.column-back-button,
+_ {
+  padding-block: 12px;
 }
 
 /*** 「ブロックしたドメイン」などのカラムの変な表示への対策 ***/
