@@ -3502,8 +3502,11 @@ _ {
 
 .status--in-thread .attachment-list,
 .status--in-thread .audio-player,
+.status--in-thread .content-warning,
+.status--in-thread .filter-warning,
 .status--in-thread .hashtag-bar,
 .status--in-thread .media-gallery,
+.status--in-thread .more-from-author,
 .status--in-thread .picture-in-picture-placeholder,
 .status--in-thread .status-card,
 .status--in-thread .status__action-bar,
