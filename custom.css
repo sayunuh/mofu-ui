@@ -1,6 +1,7 @@
 /*** 変数定義 ***/
 
 body {
+  --表紙絵: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/c4340e641c02732f.png');
   --表紙絵キャプション: 'トップ画 by しふたろうさん（@shiftal_on）';
   --小間隔: 2px;
   --大間隔: 12px;
@@ -544,7 +545,7 @@ body {
     width: calc(100vw - var(--スクロールバー幅) * 2);
     pointer-events: none;
     z-index: -1;
-    background: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/c4340e641c02732f.png') center / cover fixed var(--背景色b);
+    background: var(--表紙絵) center / cover fixed var(--背景色b);
     filter: saturate(0) brightness(0.7);
     mix-blend-mode: overlay;
     opacity: 0.4;
