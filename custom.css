@@ -2281,11 +2281,11 @@ html[lang=ja] .trends__item__name strong::before {
   font-weight: 500;
   transition: backdrop-filter 0.1s;
 }
-.server-banner > a:not(:hover):not(:focus) .server-banner__hero::before {
+.server-banner > a:not(:hover):not(:focus-visible) .server-banner__hero::before {
   content: 'About mofu.kemo.no';
   backdrop-filter: contrast(0.3333) saturate(1.2) brightness(1.5) blur(8px);
 }
-.server-banner > a:not(:hover):not(:focus) .server-banner__hero:lang(ja)::before {
+.server-banner > a:not(:hover):not(:focus-visible) .server-banner__hero:lang(ja)::before {
   content: 'もふけもの。について';
 }
 .server-banner__description {
