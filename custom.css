@@ -2250,16 +2250,43 @@ html[lang=ja] .trends__item__name strong::before {
 /*** 非ログイン状態の左カラム ***/
 
 .server-banner {
-  position: relative;
-  padding-top: 0;
 }
 .server-banner__introduction {
   display: none;
+}
+.server-banner > a {
+  display: block;
+  border-radius: var(--大カド);
+  outline-offset: -12px;
+}
+.server-banner > a:focus-visible {
+  outline-offset: -2px;
 }
 .server-banner__hero {
   margin-block: 0 24px;
   border-radius: var(--大カド);
   aspect-ratio: 3 / 2;
+  _note: 'position: relative のせいで親の a より手前に来て outline が隠れる問題への対策';
+  z-index: -1;
+}
+.server-banner__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--前景色1);
+  font-size: 15px;
+  font-weight: 500;
+  transition: backdrop-filter 0.1s;
+}
+.server-banner > a:not(:hover):not(:focus) .server-banner__hero::before {
+  content: 'About mofu.kemo.no';
+  backdrop-filter: contrast(0.3333) saturate(1.2) brightness(1.5) blur(8px);
+}
+.server-banner > a:not(:hover):not(:focus) .server-banner__hero:lang(ja)::before {
+  content: 'もふけもの。について';
 }
 .server-banner__description {
   max-width: 350px;
@@ -2297,46 +2324,6 @@ _ {
 }
 html[lang=ja] .server-banner__number-label::after {
   content: '（過去30日）';
-}
-
-.server-banner a.button-secondary[href="/about"] {
-  display: flex;
-  position: absolute;
-  top: 0;
-  aspect-ratio: 3 / 2;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--大カド);
-  background: transparent !important;
-  opacity: 0.95;
-  transition: backdrop-filter 0.1s;
-}
-.server-banner a.button-secondary[href="/about"]:not(:hover) {
-  backdrop-filter: contrast(0.3333) saturate(1.2) brightness(1.5) blur(4px);
-}
-.server-banner a.button-secondary[href="/about"]::before {
-  content: 'About mofu.kemo.no';
-  min-width: 50%;
-  padding-block: 6px;
-  padding-inline: 13px;
-  border: 1px solid var(--前景色3);
-  border-radius: 300px / 400px;
-  background: linear-gradient(var(--背景色飽和) -700%, transparent 400%);
-  color: var(--前景色1);
-  font-weight: 500;
-  font-size: 15px;
-  transition: transform 0.1s, opacity 0.1s;
-}
-html[lang=ja] .server-banner a.button-secondary[href="/about"]::before {
-  content: 'もふけもの。について';
-}
-.server-banner a.button-secondary[href="/about"]:hover::before {
-  opacity: 0;
-  transform: scale(1.05);
-}
-.server-banner a.button-secondary[href="/about"] span {
-  display: none;
 }
 
 /*** 非ログイン状態の右カラム ***/
