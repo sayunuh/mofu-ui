@@ -2510,6 +2510,31 @@ _ {
   padding: calc(var(--縦余白) + 8px) calc(var(--横余白) + 8px);
 }
 
+/*** ローカルタイムラインの先頭に表紙絵を表示する ***/
+
+@media (min-height: 512px) {
+  body {
+    --表紙絵の明度調整: linear-gradient(#0005, #0005);
+  }
+  body.theme-mastodon-light {
+    --表紙絵の明度調整: linear-gradient(#0000, #0000);
+  }
+
+  .account__section-headline:has(> [href='/public/local'].active) + .scrollable::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: calc(0.5 * var(--カラム幅-主要));
+    max-height: 25vh;
+    margin-bottom: var(--小間隔);
+    border-radius: var(--小カド);
+    background: var(--表紙絵の明度調整), var(--表紙絵) center / cover;
+  }
+  .account__section-headline:has(> [href='/public/local'].active) + .scrollable .dismissable-banner {
+    display: none;
+  }
+}
+
 /*** 投稿簡略表示: 全般 ***/
 
 body {
