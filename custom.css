@@ -534,24 +534,6 @@ body {
   overflow-wrap: break-word;
 }
 
-@media (min-width: 600px) {
-  body.app-body::before,
-  body.lighter::before,
-  _ {
-    content: '';
-    position: fixed;
-    inset-block: var(--スクロールバー幅);
-    inset-inline: var(--スクロールバー幅) auto;
-    width: calc(100vw - var(--スクロールバー幅) * 2);
-    pointer-events: none;
-    z-index: -1;
-    background: var(--表紙絵) center / cover fixed var(--背景色b);
-    filter: saturate(0) brightness(0.7);
-    mix-blend-mode: overlay;
-    opacity: 0.4;
-  }
-}
-
 /*** 選択範囲 ***/
 
 ::selection {
