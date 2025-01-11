@@ -4209,28 +4209,6 @@ _ {
 _ {
   display: none;
 }
-.dismissable-banner::before,
-.warning-banner::before,
-_ {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: var(--小カド);
-  background: url(/packs/media/images/friends-cropped-40409bf96999902fa49757ebce824ce6.png) center / cover;
-  opacity: 0.125;
-  mix-blend-mode: luminosity;
-  pointer-events: none;
-}
-.dismissable-banner > *,
-.warning-banner > *,
-_ {
-  --note: '背景画像より手前に表示する為に';
-  position: relative;
-}
-.dismissable-banner__action {
-  --note: '元々 float によって手前に出ているが、ほかを relative にした事で隠れてしまう';
-  z-index: 1;
-}
 
 /*** ダイレクトメッセージの警告 ***/
 
