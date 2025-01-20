@@ -2511,11 +2511,11 @@ _ {
     content: '';
     display: block;
     width: var(--カラム幅-主要);
-    height: calc(0.5 * var(--カラム幅-主要));
-    max-height: 16.667vh;
+    height: calc(0.35 * var(--カラム幅-主要));
+    max-height: 25vh;
     margin-bottom: var(--小間隔);
     border-radius: var(--小カド);
-    background: var(--表紙絵の明度調整), var(--表紙絵) center / cover;
+    background: var(--表紙絵の明度調整), var(--表紙絵) center 44% / cover;
   }
   .account__section-headline:has(> [href='/public/local'].active) + .scrollable .dismissable-banner {
     display: none;
