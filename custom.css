@@ -1397,7 +1397,7 @@ body.layout-single-column {
   --カラム幅-全間隔: 0px;
   --カラム幅-投稿作成: 0px;
   --カラム幅-メニュー: 54px;
-  --カラム幅-主要: calc(100vw - var(--カラム幅-全間隔) - var(--カラム幅-投稿作成) - var(--カラム幅-メニュー));
+  --カラム幅-主要: min(800px, 100vw - var(--カラム幅-全間隔) - var(--カラム幅-投稿作成) - var(--カラム幅-メニュー));
 }
 .columns-area__panels__main {
   flex: 1 0 auto;
