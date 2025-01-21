@@ -2511,8 +2511,10 @@ _ {
     content: '';
     display: block;
     width: var(--カラム幅-主要);
-    height: calc(0.35 * var(--カラム幅-主要));
-    max-height: 25vh;
+    _note: 'カラム幅を単位として、表示領域の高さが 2 倍から 5 倍までの区間で縦横比が変化する';
+    height: calc(0.25 * var(--カラム幅-主要) + 5vh);
+    min-height: calc(0.35 * var(--カラム幅-主要));
+    max-height: calc(0.5 * var(--カラム幅-主要));
     margin-bottom: var(--小間隔);
     border-radius: var(--小カド);
     background: var(--表紙絵の明度調整), var(--表紙絵) center 44% / cover;
