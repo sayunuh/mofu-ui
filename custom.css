@@ -237,7 +237,7 @@ body {
   --icon-タグ束: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25"><path fill="hsla(40, 30%25, 90%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 19 2 h -3 l 11 11 l -9.5 9.5 l 1.5 1.5 l 11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
   --icon-左矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 24 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 40 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z"/></svg>');
   --icon-右矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 24 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 40 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z"/></svg>');
-  --icon-警告: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 960 960"><path d="M 112 756 l 368 -614 l 368 614 z M 175 720 h 610 l -305 -508 z M 480 676 q 16 0 28 -12 t 12 -28 t -12 -28 t -28 -12 t -28 12 t -12 28 t 12 28 t 28 12 z M 444 552 h 72 v -192 h -72 z"></path></svg>');
+  --icon-警告: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="20" viewBox="-960 0 2880 960"><path d="M 112 756 l 368 -614 l 368 614 z M 175 720 h 610 l -305 -508 z M 480 676 q 16 0 28 -12 t 12 -28 t -12 -28 t -28 -12 t -28 12 t -12 28 t 12 28 t 28 12 z M 444 552 h 72 v -192 h -72 z"></path></svg>');
   
   color: var(--前景色1);
 }
@@ -6074,7 +6074,7 @@ _ {
   padding-block: 5px;
   color: transparent;
   background: var(--前景色1);
-  --mask: var(--icon-警告) center / contain no-repeat;
+  --mask: var(--icon-警告) center / cover no-repeat;
   -webkit-mask: var(--mask);
   mask: var(--mask);
 }
