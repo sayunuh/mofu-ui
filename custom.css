@@ -3622,6 +3622,18 @@ _ {
   color: var(--前景色2);
 }
 
+/*** 通知: アイコンの色 ***/
+
+.notification-group__icon:not(._) {
+  color: var(--前景色2);
+}
+.notification-group--reblog .notification-group__icon {
+  color: var(--前景色ブースト);
+}
+.notification-group--favourite .notification-group__icon {
+  color: var(--前景色お気に入り);
+}
+
 /*** 通知: お気に入りとブースト ***/
 
 .notification-group__main {
