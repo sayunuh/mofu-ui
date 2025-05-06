@@ -6250,6 +6250,9 @@ html[lang=ja] .status__content--with-spoiler > p:first-child::before {
   overflow: unset;
   white-space: unset;
 }
+.account__header__fields span:not(#_) {
+  display: unset;
+}
 .account__header__fields .invisible {
   font-size: unset;
   line-height: unset;
