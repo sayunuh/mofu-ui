@@ -3245,7 +3245,7 @@ _ {
 :where(.status__action-bar, .detailed-status__action-bar) .icon-button {
   --弱い彩色: var(--前景色3);
 }
-.icon-button:has(.fa-retweet) {
+.icon-button:has(> :first-child.icon-retweet) {
   --弱い彩色: var(--前景色ブースト);
 }
 .icon-button.star-icon {
@@ -3767,7 +3767,7 @@ _ {
   justify-content: flex-end;
 }
 
-.icon-button.active .icon-retweet {
+.icon-button.active:has(> :first-child.icon-retweet) {
   color: var(--前景色ブースト);
 }
 .icon-button.star-icon.active,
