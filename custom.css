@@ -237,6 +237,7 @@ body {
   --icon-タグ束: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25"><path fill="hsla(40, 30%25, 90%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 19 2 h -3 l 11 11 l -9.5 9.5 l 1.5 1.5 l 11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
   --icon-左矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 24 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z M 40 4 l -4 4 l 4 4 h 4 l -4 -4 l 4 -4 z"/></svg>');
   --icon-右矢印: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 16"><path fill="hsla(40, 10%25, 85%25, 0.8)" d="M 8 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 24 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z M 40 4 l 4 4 l -4 4 h -4 l 4 -4 l -4 -4 z"/></svg>');
+  --icon-警告: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 960 960"><path d="M 112 756 l 368 -614 l 368 614 z M 175 720 h 610 l -305 -508 z M 480 676 q 16 0 28 -12 t 12 -28 t -12 -28 t -28 -12 t -28 12 t -12 28 t 12 28 t 28 12 z M 444 552 h 72 v -192 h -72 z"></path></svg>');
   
   color: var(--前景色1);
 }
@@ -6055,83 +6056,54 @@ _ {
   color: var(--強い彩色);
 }
 
-/*** 警告の「もっと見る」の体裁 ***/
+/*** 内容警告文の体裁 ***/
 
-.ui .status__content--with-spoiler > p:first-child {
+.content-warning {
   position: relative;
-  padding-block: 1px;
-  padding-inline: 1em 0;
-  margin-bottom: 4px;
+  border: none;
+  padding-block: 3px;
+  padding-inline: 1em 0.5em;
   font-weight: 600;
   color: var(--前景色1);
   background: var(--背景彩色);
-  box-shadow: 0 0 0 2px var(--背景色a);
-  border-radius: 4px;
-  font-size: 14px;
-}
-.status__content--with-spoiler > p:first-child::before {
-  content: 'Warning : ';
-  margin-inline-start: 1em;
-  color: var(--前景色2);
-}
-html[lang=ja] .status__content--with-spoiler > p:first-child::before {
-  content: '警告 : ';
-}
-.ui .status__content .status__content__spoiler-link {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  font: inherit;
   border-radius: 4px;
 }
-.status__content__spoiler-link > span {
+.content-warning p::before {
+  content: '字字字';
+  margin-inline-start: 0.6em;
+  padding-block: 5px;
   color: transparent;
-  font-size: 0;
+  background: var(--前景色1);
+  --mask: var(--icon-警告) center / contain no-repeat;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
-.status__content__spoiler-link::before {
-  content: ' ';
+.content-warning p {
+  margin: unset;
+  font-weight: unset;
+}
+.content-warning button {
   position: absolute;
   inset: 0 auto auto 0;
-  padding: 1px 0;
   width: 2em;
+  height: 28px;
+  color: transparent;
   background: var(--強い彩色);
   --mask: var(--icon-矢尻右) center / contain;
   -webkit-mask: var(--mask);
   mask: var(--mask);
   transition: transform 0.1s var(--transition-bounce);
+  user-select: none;
 }
-.status__content__spoiler-link--show-more::before {
-}
-.status__content__spoiler-link--show-less::before {
+.content-warning:has(+ .status__content, + .notification-group__embedded-status__content) button {
   transform: rotate(90deg);
 }
 
-.status__content--with-spoiler .status__content__text {
-  display: block;
-  max-height: 0;
-  overflow: hidden;
-  color: var(--前景色1);
+.status .content-warning {
+  margin-bottom: 6px;
 }
-.status__content--with-spoiler .status__content__text--visible {
-  max-height: 2400px;
-  transition:
-    max-height 1s linear;
-}
-
-.detailed-status .status__content--with-spoiler > p:first-child {
+.detailed-status .content-warning {
   font-size: 17px;
-}
-.detailed-status .status__content--with-spoiler .status__content__text--visible {
-  max-height: 3000px;
-}
-
-.muted .status__content--with-spoiler p:first-child {
-  font: inherit;
-}
-.muted .status__content__spoiler-link {
-  pointer-events: none;
 }
 
 /*** アカウントの自己紹介部分の体裁 ***/
