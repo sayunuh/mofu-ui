@@ -4590,8 +4590,9 @@ _ {
   grid-template-rows: 48px max-content;
 }
 .reply-indicator__line::before {
+  top: 2px;
+  height: calc(100% + 38px);
   background: var(--前景色2);
-  height: calc(100% + 36px);
 }
 .reply-indicator .detailed-status__display-avatar .account__avatar {
   width: 100% !important;
