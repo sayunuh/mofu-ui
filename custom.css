@@ -2558,6 +2558,9 @@ body.layout-single-column {
 .status__prepend a[href]:hover {
   text-decoration: underline;
 }
+.status__prepend .emojione {
+  opacity: 0.6;
+}
 
 .status__info {
   padding-bottom: 2px;
