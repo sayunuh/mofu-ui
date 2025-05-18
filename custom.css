@@ -57,6 +57,8 @@ body {
   --暗彩色の順序10: rgb(74, 127, 19);
   --暗彩色の順序11: rgb(105, 114, 0);
   --暗彩色の順序12: rgb(135, 98, 15);
+  
+  --background-border-color: var(--背景色b);
 }
 body.layout-multiple-columns {
   --小カド: 6px;
@@ -3933,6 +3935,29 @@ _ {
 .story:is(:hover, :focus, :active) .story__details__publisher,
 _ {
   color: var(--強い彩色);
+}
+
+/*** Explore の人々 ***/
+
+.explore__suggestions__card {
+  margin: 0 0 var(--小間隔);
+  border: none;
+  padding: var(--縦余白) var(--横余白);
+  gap: 0;
+  background-color: var(--背景色a);
+  border-radius: var(--小カド);
+}
+.explore__suggestions__card__source {
+  color: var(--前景色2);
+}
+.explore__suggestions__card__body__main__name-button .display-name {
+  color: var(--前景色2);
+}
+.explore__suggestions__card__body__main__name-button .display-name strong {
+  color: var(--前景色0);
+}
+.explore__suggestions__card__body__main__name-button .display-name__account {
+  color: unset;
 }
 
 /*** お知らせの体裁 ***/
