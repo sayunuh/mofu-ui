@@ -2847,16 +2847,11 @@ _ {
 
 /*** 投稿簡略表示: 「続き」 ***/
 
-html[lang=ja] .status__wrapper-reply:not([data-featured=true]):not([aria-label$='さんがブースト']) .status__prepend::after {
-  content: '続き';
-}
-html[lang|=en] .status__wrapper-reply:not([data-featured=true]):not([aria-label$=' boosted']) .status__prepend::after {
-  content: 'Continued';
-}
-html[lang=ja] .status__wrapper-reply:not([data-featured=true]):not([aria-label$='さんがブースト']) .status__prepend > span,
-html[lang|=en] .status__wrapper-reply:not([data-featured=true]):not([aria-label$=' boosted']) .status__prepend > span,
-_ {
+.status__wrapper-reply:not([data-featured=true]) .status__prepend:lang(ja) > span:not(:has(> a)) {
   display: none;
+}
+.status__wrapper-reply:not([data-featured=true]) .status__prepend:lang(ja):not(:has( > span> a))::after {
+  content: '続き';
 }
 
 /*** 投稿簡略表示: フィルターされました ***/
