@@ -6068,6 +6068,11 @@ _ {
   background: var(--背景彩色);
   border-radius: 4px;
 }
+.content-warning:focus-within:has(> :focus-visible) {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: -2px;
+}
 .content-warning p::before {
   content: '字字字';
   margin-inline-start: 0.6em;
