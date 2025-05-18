@@ -3824,7 +3824,7 @@ _ {
 
 /*** ブーストされた投稿 ***/
 
-.status__prepend .fa-retweet::after {
+.status__prepend .status__prepend__icon:has(> .icon-retweet)::after {
   content: '';
   position: absolute;
   inset-block: 0;
