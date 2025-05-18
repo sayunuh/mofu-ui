@@ -2857,19 +2857,6 @@ _ {
   content: '続き';
 }
 
-/*** 投稿簡略表示: フィルターされました ***/
-
-.status__wrapper--filtered {
-  padding: var(--縦余白) var(--横余白);
-  color: var(--前景色2);
-  text-align: start;
-}
-.status__wrapper--filtered__button {
-  color: var(--強い彩色);
-  float: right;
-  float: inline-end;
-}
-
 /*** 投稿内共通: 公開範囲のアイコン ***/
 
 .status__visibility-icon > svg.icon,
@@ -6097,10 +6084,11 @@ _ {
   outline-style: solid;
   outline-offset: -2px;
 }
-.content-warning p::before {
-  content: '字字字';
-  margin-inline-start: 0.6em;
+.content-warning:not(.content-warning--filter) p::before {
+  content: '';
+  margin-inline-start: -0.5em;
   padding-block: 5px;
+  padding-inline: 3em 0;
   color: transparent;
   background: var(--前景色1);
   --mask: var(--icon-警告) center / cover no-repeat;
@@ -6109,6 +6097,7 @@ _ {
 }
 .content-warning p {
   margin: unset;
+  text-indent: 1em;
   font-weight: unset;
 }
 .content-warning button {
