@@ -415,6 +415,7 @@ _ {
   --icon-右矢印: var(--Lt-icon-右矢印);
 }
 
+body,
 body.theme-default,
 body.layout-single-column.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
 body.layout-multiple-columns.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
@@ -451,6 +452,7 @@ _ {
   --背景色c: var(--背景色2);
   --影の色: var(--前景色飽和);
 }
+body,
 body.theme-default,
 body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
 body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
