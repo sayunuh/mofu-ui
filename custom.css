@@ -127,7 +127,6 @@ body {
   --背景色0: hsl(0, 0%, 6%);
   --背景色1: var(--col01の背景色1);
   --背景色2: var(--col01の背景色2);
-  --透過背景色1on0: var(--背景色b); --透過背景色1on2: var(--背景色b);
   
   --col00の背景色1: hsl(0, 0%, 14%);    	--col00の背景色2: hsl(0, 0%, 22%);
   --col01の背景色1: hsl(212, 12%, 14%); 	--col01の背景色2: hsl(212, 11%, 22%);
@@ -141,8 +140,6 @@ body {
   --col09の背景色1: hsl(212, 12%, 14%); 	--col09の背景色2: hsl(212, 11%, 22%);
   --col10の背景色1: hsl(212, 12%, 14%); 	--col10の背景色2: hsl(212, 11%, 22%);
   
-  ----透過背景色1on0: rgba(173, 200, 255, 0.11);
-  ----透過背景色1on2: rgba(1, 1, 0, 0.376);
   --前景色新着: hsl(344, 65%, 61%);
   --背景色注意: hsl(50, 100%, 12%);
   --背景色警告: hsla(0, 100%, 50%, 0.1);
@@ -257,8 +254,6 @@ _ {
   --col09の背景色1: hsl(180, 22%, 84%); 	--col09の背景色2: hsl(190, 22%, 77%);
   --col10の背景色1: hsl(320, 32%, 88%); 	--col10の背景色2: hsl(312, 25%, 81%);
   
-  ----透過背景色1on0: rgba(89, 59, 0, 0.1);
-  ----透過背景色1on2: rgba(254, 255, 251, 0.325);
   --前景色新着: hsl(344, 100%, 65%);
   --背景色注意: hsl(48, 100%, 83%);
   --背景色特別: hsl(238, 100%, 94%);
@@ -384,7 +379,6 @@ _ {
   --背景色a: var(--背景色0);
   --背景色b: var(--背景色1);
   --背景色c: var(--背景色2);
-  --カラム内透過背景色: var(--透過背景色1on0);
   --影の色: var(--前景色飽和);
 }
 body.theme-default,
@@ -395,7 +389,6 @@ _ {
   --背景色a: var(--背景色2);
   --背景色b: var(--背景色1);
   --背景色c: var(--背景色0);
-  --カラム内透過背景色: var(--透過背景色1on2);
   --影の色: var(--背景色飽和);
 }
 body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/hc"]),
@@ -406,7 +399,6 @@ _ {
   --背景色b: var(--背景色1);
   --背景色c: var(--背景色2);
   --前景色0: var(--前景色飽和);
-  --カラム内透過背景色: var(--透過背景色1on0);
   --影の色: var(--前景色飽和);
 }
 
@@ -948,7 +940,7 @@ _ {
 }
 .account__header__bio .account__header__fields,
 _ {
-  background-color: var(--カラム内透過背景色);
+  background-color: var(--背景色b);
 }
 
 .explore__search-header,
@@ -4077,7 +4069,7 @@ _ {
 .column-header__buttons > button:hover,
 .column-header__buttons > button:focus,
 _ {
-  background: var(--カラム内透過背景色);
+  background: var(--背景色b);
 }
 .column-header__buttons > button:not(.column-header__back-button) {
   width: 48px;
