@@ -1879,13 +1879,10 @@ _ {
 _ {
   border-color: var(--背景色b);
 }
-.admin .content h4,
-_ {
+.admin .content h4 {
   border-color: var(--背景色c);
 }
 
-.admin .sidebar ul a,
-.admin .content h4,
 .admin .permissions-list__item__text__type,
 .admin .card__bar .display-name span,
 _ {
@@ -1899,11 +1896,6 @@ _ {
 .admin .filters-list__item__meta,
 _ {
   color: var(--前景色2);
-}
-.admin .sidebar ul .simple-navigation-active-leaf a,
-_ {
-  background: var(--背景色b);
-  color: var(--強い彩色);
 }
 
 .flash-message,
@@ -1927,9 +1919,13 @@ _ {
 .admin .sidebar ul a {
   padding: 12px 0 12px 30px;
   border-radius: 20px 0 0 20px;
+  color: var(--前景色1);
 }
 .admin .sidebar ul a.selected {
   border-radius: 20px 0 0 0;
+}
+.admin .sidebar ul a:hover {
+  color: var(--前景色0);
 }
 .admin .sidebar ul ul {
   border-radius: 0 0 0 20px;
@@ -1939,6 +1935,8 @@ _ {
   margin-left: 25px;
 }
 .admin .sidebar ul .simple-navigation-active-leaf a {
+  background: var(--背景色b);
+  color: var(--強い彩色);
   border-radius: 20px 0 0 20px;
 }
 .admin .sidebar > ul > li:is(
@@ -2002,6 +2000,16 @@ _ {
 
 .ellipsized-ip {
   white-space: nowrap;
+}
+
+.admin .content h2,
+.admin .content h3,
+.admin .content h4,
+.admin .content > p,
+.simple_form .lead,
+.simple_form label:not(#_),
+_ {
+  color: unset;
 }
 
 .admin .simple_form > h4 {
