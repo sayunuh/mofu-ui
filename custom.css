@@ -1095,7 +1095,6 @@ _ {
 .reply-indicator__content, 
 .getting-started .column-link,
 .scrollable .column-link,
-.drawer__tab,
 .block-modal__action-bar > div,
 .boost-modal__action-bar > div,
 .confirmation-modal__action-bar > div,
@@ -4347,12 +4346,11 @@ _ {
   border-bottom-left-radius: var(--小カド);
   border-bottom-right-radius: var(--小カド);
 }
-.drawer__header a:hover {
-  transition: none;
+.drawer__tab {
+  color: var(--前景色1);
 }
-.drawer__header .fa {
-  font-size: 18px;
-  line-height: 17px;
+.drawer__tab:is(:hover, :active, :focus):not(#_) {
+  color: var(--前景色0);
 }
 
 /*** 検索欄 ***/
