@@ -227,9 +227,6 @@ body {
   --filter-絵文字強調: contrast(0.6) brightness(1.25) saturate(1.25);
   --filter-画像上の白字: blur(4px) saturate(150%) contrast(50%) saturate(250%);
   --transition-bounce: cubic-bezier(0.5, 1.5, 0.5, 1);
-  --icon-ブースト: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="hsla(40, 30%25, 90%25, 0.3)"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
-  --icon-ブースト-白: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="white"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
-  --icon-ブースト不可: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><path id="bar" d="M 28 168 l 14 14 l 160 -160 l -14 -14 z"/><clipPath id="bar-clip"><path clip-rule="evenodd" d=" M 0 0 v 190 h 220 v -190 z M 28 168 l 24 24 l 160 -160 l -24 -24 z"/></clipPath></defs><g fill="hsla(40, 30%25, 90%25, 0.3)"><use href="%23bar"/><g clip-path="url(%23bar-clip)"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></g></svg>');
   --icon-外へ: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="hsla(40, 30%25, 90%25, 0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
   --icon-外へ白: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
   --icon-矢尻右: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><g fill="hsl(188, 43%25, 47%25)"><path d="M 4 2 l -1 1 l 2 2 l -2 2 l 1 1 l 3 -3 z" /></g></svg>');
@@ -333,8 +330,6 @@ _ {
   
   --invert-if-dark: invert(0);
   --filter-絵文字強調: brightness(0.8) saturate(1.25);
-  --icon-ブースト: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><g id="s"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></defs><g fill="hsla(220, 100%25, 10%25, 0.3)"><use href="%23s"/></g><g fill="hsl(140, 60%25, 40%25)"><use href="%23s" y="190"/><use href="%23s" y="380"/><use href="%23s" y="570"/><use href="%23s" y="760"/><use href="%23s" y="950"/><use href="%23s" y="1140"/><use href="%23s" y="1330"/><use href="%23s" y="1520"/><use href="%23s" y="1710"/><use href="%23s" y="1900"/></g></svg>');
-  --icon-ブースト不可: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="209" viewBox="0 0 220 2090"><defs><path id="part" d="M 48 32 l -40 48 c -2 3 0 8 4 8 h 25 v 34 c 0 27 10 37 37 37 h 72 l -25 -30 h -47 c -4 0 -7 -3 -7 -7 v -34 h 25 c 4 0 6 -5 4 -8 l -40 -48 c -2 -2 -6 -2 -8 0 z"/><path id="bar" d="M 28 168 l 14 14 l 160 -160 l -14 -14 z"/><clipPath id="bar-clip"><path clip-rule="evenodd" d=" M 0 0 v 190 h 220 v -190 z M 28 168 l 24 24 l 160 -160 l -24 -24 z"/></clipPath></defs><g fill="hsla(220, 100%25, 10%25, 0.3)"><use href="%23bar"/><g clip-path="url(%23bar-clip)"><use href="%23part"/><use href="%23part" transform="rotate(180) translate(-220 -190)"/></g></g></svg>');
   --icon-外へ: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="none" stroke="hsla(220, 100%25, 10%25, 0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M 7 5 h -2 q -3 0 -3 3 v 7 q 0 3 3 3 h 7 q 3 0 3 -3 v -2 M 11 2 h 7 v 7 M 18 2 l -10 10"/></svg>');
   --icon-加筆: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="hsla(220, 100%25, 10%25, 0.3)" d="M 9 16 v 2 h 2 v -2 z M 13 16 v 2 h 2 v -2 M 17 16 v 2 h 2 v -2 z M 1 18 l 5 -2 l 8 -8 l -3 -3 l -8 8 z M 15 7 l 2 -2 q 1 -1 0 -2 l -1 -1 q -1 -1 -2 0 l -2 2 z"/></svg>');
   --icon-タグ単: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><path fill="hsla(220, 100%25, 10%25, 0.25)" d="M 6 2 a 4 4 0 0 0 -4 4 v 7 l 11 11 l 11 -11 l -11 -11 z M 7 5 a 2 2 0 0 1 0 4 a 2 2 0 1 1 0 -4 z M 13 10 h 1 l -2 8 h -1 z M 16 10 h 1 l -2 8 h -1 z"/></svg>');
@@ -3247,19 +3242,6 @@ _ {
   font-size: 15px;
 }
 
-/*** ブーストだけ SVG で色を指定されてるので差し替える ***/
-
-button.icon-button i.fa-retweet, 
-button.icon-button:hover i.fa-retweet, 
-_ {
-  background-image: var(--icon-ブースト);
-}
-button.icon-button.disabled i.fa-retweet,
-button.icon-button.disabled:hover i.fa-retweet,
-_ {
-  background-image: var(--icon-ブースト不可);
-}
-
 /*** 投稿詳細表示: カラム幅が広い時 ***/
 @media (min-width: 600px) {
   .layout-single-column .detailed-status__display-name {
@@ -5465,9 +5447,6 @@ _ {
 }
 .media-modal__overlay .picture-in-picture__footer .icon-button.active {
   color: var(--前景色ブースト);
-}
-.media-modal__overlay .picture-in-picture__footer button.icon-button i.fa-retweet {
-  background-image: var(--icon-ブースト-白);
 }
 .media-modal__overlay .picture-in-picture__footer .icon-button.star-icon.active {
   color: var(--前景色お気に入り);
