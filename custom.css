@@ -886,11 +886,8 @@ _ {
 .search__input:focus {
   background-color: var(--背景色a);
 }
-.search__icon .fa:not(._) {
+.search__icon .icon {
   color: var(--前景色2);
-}
-.search__icon .fa.active:not(.fa-times-circle) {
-  opacity: 0.5;
 }
 
 .emoji-mart-search input,
@@ -4799,6 +4796,7 @@ _ {
   border: 2px solid transparent;
   line-height: unset;
   border-radius: 4px;
+  color: unset;
 }
 .search__popout__menu__item:hover,
 .search__popout__menu__item.selected,
