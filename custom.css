@@ -40,7 +40,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color01']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color01']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='A'],[content^='B'],[content^='C'],[content^='D'],
     [content^='E'],[content^='F'],[content^='G'],[content^='H'],
@@ -57,7 +57,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color00']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color00']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='Y'],[content^='Z'],[content^='5'],[content^='6'],
     [content^='7'],[content^='8'],[content^='9'],[content^='+'],
@@ -70,7 +70,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color02']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color02']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='a'],[content^='b'],[content^='c'],[content^='d'],
     [content^='e'],[content^='f'],[content^='g'],[content^='h'],
@@ -83,7 +83,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color03']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color03']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='i'],[content^='j'],[content^='k'],[content^='l'],
     [content^='m'],[content^='n'],[content^='o'],[content^='p'],
@@ -96,7 +96,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color04']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color04']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='q'],[content^='r'],[content^='s'],[content^='t'],
     [content^='u'],[content^='v'],[content^='w'],[content^='x'],
@@ -109,7 +109,7 @@
   > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color05']
 ), :root:has(
   > head > meta[name=initialPath][content$='/color05']
-), :root:has(
+), :root:where(:has(> body.app-body)):has(
   > head > meta[name='style-nonce']:where(
     [content^='y'],[content^='z'],[content^='0'],[content^='1'],
     [content^='2'],[content^='3'],[content^='4'],[content^='/'],
