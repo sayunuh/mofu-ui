@@ -4,6 +4,7 @@
   container: root;
   --color-scheme: dark;
   --contrast: medium;
+  --hue: color01;
 }
 @media (prefers-color-scheme: light) {
   :root:has(> body.theme-system) {
@@ -34,6 +35,129 @@
   --contrast: high;
 }
 
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color01'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color01']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color01']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='A'],[content^='B'],[content^='C'],[content^='D'],
+    [content^='E'],[content^='F'],[content^='G'],[content^='H'],
+    [content^='I'],[content^='J'],[content^='K'],[content^='L'],
+    [content^='M'],[content^='N'],[content^='O'],[content^='P'],
+    [content^='Q'],[content^='R'],[content^='S'],[content^='T'],
+    [content^='U'],[content^='V'],[content^='W'],[content^='X'],
+  _)
+) {
+  --hue: color01;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color00'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color00']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color00']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='Y'],[content^='Z'],[content^='5'],[content^='6'],
+    [content^='7'],[content^='8'],[content^='9'],[content^='+'],
+  _)
+) {
+  --hue: color00;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color02'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color02']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color02']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='a'],[content^='b'],[content^='c'],[content^='d'],
+    [content^='e'],[content^='f'],[content^='g'],[content^='h'],
+  _)
+) {
+  --hue: color02;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color03'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color03']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color03']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='i'],[content^='j'],[content^='k'],[content^='l'],
+    [content^='m'],[content^='n'],[content^='o'],[content^='p'],
+  _)
+) {
+  --hue: color03;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color04'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color04']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color04']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='q'],[content^='r'],[content^='s'],[content^='t'],
+    [content^='u'],[content^='v'],[content^='w'],[content^='x'],
+  _)
+) {
+  --hue: color04;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color05'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color05']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color05']
+), :root:has(
+  > head > meta[name='style-nonce']:where(
+    [content^='y'],[content^='z'],[content^='0'],[content^='1'],
+    [content^='2'],[content^='3'],[content^='4'],[content^='/'],
+  _)
+) {
+  --hue: color05;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color06'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color06']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color06']
+) {
+  --hue: color06;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color07'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color07']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color07']
+) {
+  --hue: color07;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color08'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color08']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color08']
+) {
+  --hue: color08;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color09'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color09']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color09']
+) {
+  --hue: color09;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/color10'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/color10']
+), :root:has(
+  > head > meta[name=initialPath][content$='/color10']
+) {
+  --hue: color10;
+}
+
 body {
   --表紙絵: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/9407911455a34af8.png');
   --表紙絵キャプション: 'トップ絵 by オポッサさん（https://x.com/oPoSa_7）';
@@ -60,6 +184,7 @@ body {
   --前景色お気に入り: hsl(42, 100%, 40%);
   --前景色ブックマーク: #ff5050;
   
+  --スタイル名: 'color01';
   --背景色1: var(--col01の背景色1);
   --背景色2: var(--col01の背景色2);
   --背景彩色: var(--標準の背景彩色);
@@ -563,106 +688,73 @@ body {
   background: var(--背景色b);
   border-radius: 8px;
 }
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color01"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color01"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color01']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="A"],[content^="B"],[content^="C"],[content^="D"],
-  [content^="E"],[content^="F"],[content^="G"],[content^="H"],
-  [content^="I"],[content^="J"],[content^="K"],[content^="L"],
-  [content^="M"],[content^="N"],[content^="O"],[content^="P"],
-  [content^="Q"],[content^="R"],[content^="S"],[content^="T"],
-  [content^="U"],[content^="V"],[content^="W"],[content^="X"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color01'; --背景色1: var(--col01の背景色1); --背景色2: var(--col01の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color00"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color00"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color00']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="Y"],[content^="Z"],[content^="5"],[content^="6"],
-  [content^="7"],[content^="8"],[content^="9"],[content^="+"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color00'; --背景色1: var(--col00の背景色1); --背景色2: var(--col00の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color02"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color02"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color02']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="a"],[content^="b"],[content^="c"],[content^="d"],
-  [content^="e"],[content^="f"],[content^="g"],[content^="h"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color02'; --背景色1: var(--col02の背景色1); --背景色2: var(--col02の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color03"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color03"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color03']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="i"],[content^="j"],[content^="k"],[content^="l"],
-  [content^="m"],[content^="n"],[content^="o"],[content^="p"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color03'; --背景色1: var(--col03の背景色1); --背景色2: var(--col03の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color04"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color04"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color04']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="q"],[content^="r"],[content^="s"],[content^="t"],
-  [content^="u"],[content^="v"],[content^="w"],[content^="x"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color04'; --背景色1: var(--col04の背景色1); --背景色2: var(--col04の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color05"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color05"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color05']) + body.no-reduce-motion,
-head:has(> meta[name="style-nonce"]:where(
-  [content^="y"],[content^="z"],[content^="0"],[content^="1"],
-  [content^="2"],[content^="3"],[content^="4"],[content^="/"],
-_)) + body.app-body,
-_ {
-  --スタイル名: 'color05'; --背景色1: var(--col05の背景色1); --背景色2: var(--col05の背景色2);
-  --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color06"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color06"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color06']) + body.no-reduce-motion {
-  --スタイル名: 'color06'; --背景色1: var(--col06の背景色1); --背景色2: var(--col06の背景色2);
-  --背景彩色: var(--col06の背景彩色); --強い彩色: var(--col06の強い彩色); --弱い彩色: var(--col06の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color07"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color07"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color07']) + body.no-reduce-motion {
-  --スタイル名: 'color07'; --背景色1: var(--col07の背景色1); --背景色2: var(--col07の背景色2);
-  --背景彩色: var(--col07の背景彩色); --強い彩色: var(--col07の強い彩色); --弱い彩色: var(--col07の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color08"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color08"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color08']) + body.no-reduce-motion {
-  --スタイル名: 'color08'; --背景色1: var(--col08の背景色1); --背景色2: var(--col08の背景色2);
-  --背景彩色: var(--col08の背景彩色); --強い彩色: var(--col08の強い彩色); --弱い彩色: var(--col08の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color09"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color09"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color09']) + body.no-reduce-motion {
-  --スタイル名: 'color09'; --背景色1: var(--col09の背景色1); --背景色2: var(--col09の背景色2);
-  --背景彩色: var(--col09の背景彩色); --強い彩色: var(--col09の強い彩色); --弱い彩色: var(--col09の弱い彩色);
-}
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/color10"]):not(#_),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/color10"]):not(#_),
-head:has(> meta[name=initialPath][content$='/color10']) + body.no-reduce-motion {
-  --スタイル名: 'color10'; --背景色1: var(--col10の背景色1); --背景色2: var(--col10の背景色2);
-  --背景彩色: var(--col10の背景彩色); --強い彩色: var(--col10の強い彩色); --弱い彩色: var(--col10の弱い彩色);
-}
+
+@container root style(--hue: color00) { body {
+    --スタイル名: 'color00'; --背景色1: var(--col00の背景色1); --背景色2: var(--col00の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color01) { body {
+    --スタイル名: 'color01'; --背景色1: var(--col01の背景色1); --背景色2: var(--col01の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color02) { body {
+    --スタイル名: 'color02'; --背景色1: var(--col02の背景色1); --背景色2: var(--col02の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color03) { body {
+    --スタイル名: 'color03'; --背景色1: var(--col03の背景色1); --背景色2: var(--col03の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color04) { body {
+    --スタイル名: 'color04'; --背景色1: var(--col04の背景色1); --背景色2: var(--col04の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color05) { body {
+    --スタイル名: 'color05'; --背景色1: var(--col05の背景色1); --背景色2: var(--col05の背景色2);
+    --背景彩色: var(--標準の背景彩色); --強い彩色: var(--標準の強い彩色); --弱い彩色: var(--標準の弱い彩色);
+}}
+@container root style(--hue: color06) { body {
+    --スタイル名: 'color06'; --背景色1: var(--col06の背景色1); --背景色2: var(--col06の背景色2);
+    --背景彩色: var(--col06の背景彩色); --強い彩色: var(--col06の強い彩色); --弱い彩色: var(--col06の弱い彩色);
+}}
+@container root style(--hue: color07) { body {
+    --スタイル名: 'color07'; --背景色1: var(--col07の背景色1); --背景色2: var(--col07の背景色2);
+    --背景彩色: var(--col07の背景彩色); --強い彩色: var(--col07の強い彩色); --弱い彩色: var(--col07の弱い彩色);
+}}
+@container root style(--hue: color08) { body {
+    --スタイル名: 'color08'; --背景色1: var(--col08の背景色1); --背景色2: var(--col08の背景色2);
+    --背景彩色: var(--col08の背景彩色); --強い彩色: var(--col08の強い彩色); --弱い彩色: var(--col08の弱い彩色);
+}}
+@container root style(--hue: color09) { body {
+    --スタイル名: 'color09'; --背景色1: var(--col09の背景色1); --背景色2: var(--col09の背景色2);
+    --背景彩色: var(--col09の背景彩色); --強い彩色: var(--col09の強い彩色); --弱い彩色: var(--col09の弱い彩色);
+}}
+@container root style(--hue: color10) { body {
+    --スタイル名: 'color10'; --背景色1: var(--col10の背景色1); --背景色2: var(--col10の背景色2);
+    --背景彩色: var(--col10の背景彩色); --強い彩色: var(--col10の強い彩色); --弱い彩色: var(--col10の弱い彩色);
+}}
+@container root style(--hue: color06) or style(--hue: color07) or style(--hue: color08) or style(--hue: color09) or style(--hue: color10) { body {
+  --背景彩色の順序01: var(--背景彩色); 	--背景彩色の順序02: var(--背景彩色);
+  --背景彩色の順序03: var(--背景彩色); 	--背景彩色の順序04: var(--背景彩色);
+  --背景彩色の順序05: var(--背景彩色); 	--背景彩色の順序06: var(--背景彩色);
+  --背景彩色の順序07: var(--背景彩色); 	--背景彩色の順序08: var(--背景彩色);
+  --背景彩色の順序09: var(--背景彩色); 	--背景彩色の順序10: var(--背景彩色);
+  --背景彩色の順序11: var(--背景彩色); 	--背景彩色の順序12: var(--背景彩色);
+  
+  --強い彩色の順序01: var(--強い彩色); 	--強い彩色の順序02: var(--強い彩色);
+  --強い彩色の順序03: var(--強い彩色); 	--強い彩色の順序04: var(--強い彩色);
+  --強い彩色の順序05: var(--強い彩色); 	--強い彩色の順序06: var(--強い彩色);
+  --強い彩色の順序07: var(--強い彩色); 	--強い彩色の順序08: var(--強い彩色);
+  --強い彩色の順序09: var(--強い彩色); 	--強い彩色の順序10: var(--強い彩色);
+  --強い彩色の順序11: var(--強い彩色); 	--強い彩色の順序12: var(--強い彩色);
+  
+  --弱い彩色の順序01: var(--弱い彩色); 	--弱い彩色の順序02: var(--弱い彩色);
+  --弱い彩色の順序03: var(--弱い彩色); 	--弱い彩色の順序04: var(--弱い彩色);
+  --弱い彩色の順序05: var(--弱い彩色); 	--弱い彩色の順序06: var(--弱い彩色);
+  --弱い彩色の順序07: var(--弱い彩色); 	--弱い彩色の順序08: var(--弱い彩色);
+  --弱い彩色の順序09: var(--弱い彩色); 	--弱い彩色の順序10: var(--弱い彩色);
+  --弱い彩色の順序11: var(--弱い彩色); 	--弱い彩色の順序12: var(--弱い彩色);
+}}
 
 /*** 共通要素: body ***/
 
