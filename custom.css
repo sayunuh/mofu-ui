@@ -1,5 +1,39 @@
 /*** 変数定義 ***/
 
+:root {
+  container: root;
+  --color-scheme: dark;
+  --contrast: medium;
+}
+@media (prefers-color-scheme: light) {
+  :root:has(> body.theme-system) {
+    --color-scheme: light;
+  }
+}
+:root:has(> body.theme-mastodon-light) {
+  --color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --contrast: low;
+  }
+}
+:root:has(
+  > body.theme-default,
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/lc'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/lc'],
+  > head > meta[name=initialPath][content$='/lc']
+) {
+  --contrast: low;
+}
+:root:has(
+  > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/hc'],
+  > body.layout-multiple-columns > :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*='/hc'],
+  > head > meta[name=initialPath][content$='/hc']
+) {
+  --contrast: high;
+}
+
 body {
   --表紙絵: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/9407911455a34af8.png');
   --表紙絵キャプション: 'トップ絵 by オポッサさん（https://x.com/oPoSa_7）';
@@ -227,35 +261,6 @@ body.layout-multiple-columns:has(.drawer .search__input[value*="/width08"]) {
   }
 }
 
-.link-footer a,
-.reply-indicator__content a,
-.status__content a,
-.status__content__read-more-button,
-.status__content__translate-button,
-_,
-.link-footer a.mention span,
-.reply-indicator__content a.mention span,
-.status__content a.mention span,
-.status__content__read-more-button.mention span,
-.status__content__translate-button.mention span,
-_ {
-  text-decoration: none;
-}
-.link-footer a:is(:active, :focus, :hover),
-.reply-indicator__content a:is(:active, :focus, :hover),
-.status__content a:is(:active, :focus, :hover),
-.status__content__read-more-button:is(:active, :focus, :hover),
-.status__content__translate-button:is(:active, :focus, :hover),
-_,
-.link-footer a.mention span:is(:active, :focus, :hover),
-.reply-indicator__content a.mention span:is(:active, :focus, :hover),
-.status__content a.mention span:is(:active, :focus, :hover),
-.status__content__read-more-button.mention span:is(:active, :focus, :hover),
-.status__content__translate-button.mention span:is(:active, :focus, :hover),
-_ {
-  text-decoration: underline;
-}
-
 body {
   --背景色飽和: hsl(0, 0%, 0%);
   --前景色飽和: hsl(0, 0%, 100%);
@@ -335,88 +340,9 @@ body {
   --icon-右矢印: var(--Dk-icon-右矢印);
 }
 
-body.theme-mastodon-light,
-_ {
-  --背景色飽和: hsl(0, 0%, 100%);
-  --前景色飽和: hsl(0, 0%, 0%);
-  
-  --背景色0: var(--Lt-背景色0);
-  --col00の背景色1: var(--Lt-col00の背景色1); 	--col00の背景色2: var(--Lt-col00の背景色2);
-  --col01の背景色1: var(--Lt-col01の背景色1); 	--col01の背景色2: var(--Lt-col01の背景色2);
-  --col02の背景色1: var(--Lt-col02の背景色1); 	--col02の背景色2: var(--Lt-col02の背景色2);
-  --col03の背景色1: var(--Lt-col03の背景色1); 	--col03の背景色2: var(--Lt-col03の背景色2);
-  --col04の背景色1: var(--Lt-col04の背景色1); 	--col04の背景色2: var(--Lt-col04の背景色2);
-  --col05の背景色1: var(--Lt-col05の背景色1); 	--col05の背景色2: var(--Lt-col05の背景色2);
-  --col06の背景色1: var(--Lt-col06の背景色1); 	--col06の背景色2: var(--Lt-col06の背景色2);
-  --col07の背景色1: var(--Lt-col07の背景色1); 	--col07の背景色2: var(--Lt-col07の背景色2);
-  --col08の背景色1: var(--Lt-col08の背景色1); 	--col08の背景色2: var(--Lt-col08の背景色2);
-  --col09の背景色1: var(--Lt-col09の背景色1); 	--col09の背景色2: var(--Lt-col09の背景色2);
-  --col10の背景色1: var(--Lt-col10の背景色1); 	--col10の背景色2: var(--Lt-col10の背景色2);
-  
-  --背景色注意: var(--Lt-背景色注意);
-  --背景色特別: var(--Lt-背景色特別);
-  
-  --前景色0: var(--Lt-前景色0);
-  --前景色1: var(--Lt-前景色1);
-  --前景色2: var(--Lt-前景色2);
-  --前景色3: var(--Lt-前景色3);
-  
-  --前景色新着: var(--Lt-前景色新着);
-  --前景色注意: var(--Lt-前景色注意);
-  
-  --標準の背景彩色: var(--Lt1-標準の背景彩色);
-  --新着の背景彩色: var(--Lt1-新着の背景彩色);
-  --col06の背景彩色: var(--Lt-col06の背景彩色);
-  --col07の背景彩色: var(--Lt-col07の背景彩色);
-  --col08の背景彩色: var(--Lt-col08の背景彩色);
-  --col09の背景彩色: var(--Lt-col09の背景彩色);
-  --col10の背景彩色: var(--Lt-col10の背景彩色);
-  --背景彩色の順序01: var(--Lt1-背景彩色の順序01); 	--背景彩色の順序02: var(--Lt1-背景彩色の順序02);
-  --背景彩色の順序03: var(--Lt1-背景彩色の順序03); 	--背景彩色の順序04: var(--Lt1-背景彩色の順序04);
-  --背景彩色の順序05: var(--Lt1-背景彩色の順序05); 	--背景彩色の順序06: var(--Lt1-背景彩色の順序06);
-  --背景彩色の順序07: var(--Lt1-背景彩色の順序07); 	--背景彩色の順序08: var(--Lt1-背景彩色の順序08);
-  --背景彩色の順序09: var(--Lt1-背景彩色の順序09); 	--背景彩色の順序10: var(--Lt1-背景彩色の順序10);
-  --背景彩色の順序11: var(--Lt1-背景彩色の順序11); 	--背景彩色の順序12: var(--Lt1-背景彩色の順序12);
-  
-  --標準の強い彩色: var(--Lt-標準の強い彩色);
-  --col06の強い彩色: var(--col06の暗彩色);
-  --col07の強い彩色: var(--col07の暗彩色);
-  --col08の強い彩色: var(--col08の暗彩色);
-  --col09の強い彩色: var(--col09の暗彩色);
-  --col10の強い彩色: var(--col10の暗彩色);
-  --強い彩色の順序01: var(--暗彩色の順序01); 	--強い彩色の順序02: var(--暗彩色の順序02);
-  --強い彩色の順序03: var(--暗彩色の順序03); 	--強い彩色の順序04: var(--暗彩色の順序04);
-  --強い彩色の順序05: var(--暗彩色の順序05); 	--強い彩色の順序06: var(--暗彩色の順序06);
-  --強い彩色の順序07: var(--暗彩色の順序07); 	--強い彩色の順序08: var(--暗彩色の順序08);
-  --強い彩色の順序09: var(--暗彩色の順序09); 	--強い彩色の順序10: var(--暗彩色の順序10);
-  --強い彩色の順序11: var(--暗彩色の順序11); 	--強い彩色の順序12: var(--暗彩色の順序12);
-  
-  --標準の弱い彩色: var(--Lt-標準の弱い彩色);
-  --col06の弱い彩色: var(--col06の明彩色);
-  --col07の弱い彩色: var(--col07の明彩色);
-  --col08の弱い彩色: var(--col08の明彩色);
-  --col09の弱い彩色: var(--col09の明彩色);
-  --col10の弱い彩色: var(--col10の明彩色);
-  --弱い彩色の順序01: var(--明彩色の順序01); 	--弱い彩色の順序02: var(--明彩色の順序02);
-  --弱い彩色の順序03: var(--明彩色の順序03); 	--弱い彩色の順序04: var(--明彩色の順序04);
-  --弱い彩色の順序05: var(--明彩色の順序05); 	--弱い彩色の順序06: var(--明彩色の順序06);
-  --弱い彩色の順序07: var(--明彩色の順序07); 	--弱い彩色の順序08: var(--明彩色の順序08);
-  --弱い彩色の順序09: var(--明彩色の順序09); 	--弱い彩色の順序10: var(--明彩色の順序10);
-  --弱い彩色の順序11: var(--明彩色の順序11); 	--弱い彩色の順序12: var(--明彩色の順序12);
-  
-  --表紙絵の明度調整: var(--Lt-表紙絵の明度調整);
-  --invert-if-dark: var(--Lt-invert-if-dark);
-  --filter-絵文字強調: var(--Lt-filter-絵文字強調);
-  --icon-外へ: var(--Lt-icon-外へ);
-  --icon-加筆: var(--Lt-icon-加筆);
-  --icon-タグ単: var(--Lt-icon-タグ単);
-  --icon-タグ束: var(--Lt-icon-タグ束);
-  --icon-左矢印: var(--Lt-icon-左矢印);
-  --icon-右矢印: var(--Lt-icon-右矢印);
-}
 @media (prefers-color-scheme: light) {
-  body.theme-system,
-  _ {
+  /* @container を使いたいが、iOS 15 が対応していない */
+  body:where(.theme-system) {
     --背景色飽和: hsl(0, 0%, 100%);
     --前景色飽和: hsl(0, 0%, 0%);
     
@@ -495,73 +421,132 @@ _ {
     --icon-右矢印: var(--Lt-icon-右矢印);
   }
 }
-
-body,
-body.theme-default,
-body.layout-single-column.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
-body.layout-multiple-columns.theme-contrast:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
-head:has(> meta[name=initialPath][content$='/lc']) + body.theme-contrast,
-_ {
-  --標準の背景彩色: var(--Dk2-標準の背景彩色);
-  --新着の背景彩色: var(--Dk2-新着の背景彩色);
-  --背景彩色の順序01: var(--Dk2-背景彩色の順序01); 	--背景彩色の順序02: var(--Dk2-背景彩色の順序02);
-  --背景彩色の順序03: var(--Dk2-背景彩色の順序03); 	--背景彩色の順序04: var(--Dk2-背景彩色の順序04);
-  --背景彩色の順序05: var(--Dk2-背景彩色の順序05); 	--背景彩色の順序06: var(--Dk2-背景彩色の順序06);
-  --背景彩色の順序07: var(--Dk2-背景彩色の順序07); 	--背景彩色の順序08: var(--Dk2-背景彩色の順序08);
-  --背景彩色の順序09: var(--Dk2-背景彩色の順序09); 	--背景彩色の順序10: var(--Dk2-背景彩色の順序10);
-  --背景彩色の順序11: var(--Dk2-背景彩色の順序11); 	--背景彩色の順序12: var(--Dk2-背景彩色の順序12);
+body:where(.theme-mastodon-light) {
+  --背景色飽和: hsl(0, 0%, 100%);
+  --前景色飽和: hsl(0, 0%, 0%);
+  
+  --背景色0: var(--Lt-背景色0);
+  --col00の背景色1: var(--Lt-col00の背景色1); 	--col00の背景色2: var(--Lt-col00の背景色2);
+  --col01の背景色1: var(--Lt-col01の背景色1); 	--col01の背景色2: var(--Lt-col01の背景色2);
+  --col02の背景色1: var(--Lt-col02の背景色1); 	--col02の背景色2: var(--Lt-col02の背景色2);
+  --col03の背景色1: var(--Lt-col03の背景色1); 	--col03の背景色2: var(--Lt-col03の背景色2);
+  --col04の背景色1: var(--Lt-col04の背景色1); 	--col04の背景色2: var(--Lt-col04の背景色2);
+  --col05の背景色1: var(--Lt-col05の背景色1); 	--col05の背景色2: var(--Lt-col05の背景色2);
+  --col06の背景色1: var(--Lt-col06の背景色1); 	--col06の背景色2: var(--Lt-col06の背景色2);
+  --col07の背景色1: var(--Lt-col07の背景色1); 	--col07の背景色2: var(--Lt-col07の背景色2);
+  --col08の背景色1: var(--Lt-col08の背景色1); 	--col08の背景色2: var(--Lt-col08の背景色2);
+  --col09の背景色1: var(--Lt-col09の背景色1); 	--col09の背景色2: var(--Lt-col09の背景色2);
+  --col10の背景色1: var(--Lt-col10の背景色1); 	--col10の背景色2: var(--Lt-col10の背景色2);
+  
+  --背景色注意: var(--Lt-背景色注意);
+  --背景色特別: var(--Lt-背景色特別);
+  
+  --前景色0: var(--Lt-前景色0);
+  --前景色1: var(--Lt-前景色1);
+  --前景色2: var(--Lt-前景色2);
+  --前景色3: var(--Lt-前景色3);
+  
+  --前景色新着: var(--Lt-前景色新着);
+  --前景色注意: var(--Lt-前景色注意);
+  
+  --標準の背景彩色: var(--Lt1-標準の背景彩色);
+  --新着の背景彩色: var(--Lt1-新着の背景彩色);
+  --col06の背景彩色: var(--Lt-col06の背景彩色);
+  --col07の背景彩色: var(--Lt-col07の背景彩色);
+  --col08の背景彩色: var(--Lt-col08の背景彩色);
+  --col09の背景彩色: var(--Lt-col09の背景彩色);
+  --col10の背景彩色: var(--Lt-col10の背景彩色);
+  --背景彩色の順序01: var(--Lt1-背景彩色の順序01); 	--背景彩色の順序02: var(--Lt1-背景彩色の順序02);
+  --背景彩色の順序03: var(--Lt1-背景彩色の順序03); 	--背景彩色の順序04: var(--Lt1-背景彩色の順序04);
+  --背景彩色の順序05: var(--Lt1-背景彩色の順序05); 	--背景彩色の順序06: var(--Lt1-背景彩色の順序06);
+  --背景彩色の順序07: var(--Lt1-背景彩色の順序07); 	--背景彩色の順序08: var(--Lt1-背景彩色の順序08);
+  --背景彩色の順序09: var(--Lt1-背景彩色の順序09); 	--背景彩色の順序10: var(--Lt1-背景彩色の順序10);
+  --背景彩色の順序11: var(--Lt1-背景彩色の順序11); 	--背景彩色の順序12: var(--Lt1-背景彩色の順序12);
+  
+  --標準の強い彩色: var(--Lt-標準の強い彩色);
+  --col06の強い彩色: var(--col06の暗彩色);
+  --col07の強い彩色: var(--col07の暗彩色);
+  --col08の強い彩色: var(--col08の暗彩色);
+  --col09の強い彩色: var(--col09の暗彩色);
+  --col10の強い彩色: var(--col10の暗彩色);
+  --強い彩色の順序01: var(--暗彩色の順序01); 	--強い彩色の順序02: var(--暗彩色の順序02);
+  --強い彩色の順序03: var(--暗彩色の順序03); 	--強い彩色の順序04: var(--暗彩色の順序04);
+  --強い彩色の順序05: var(--暗彩色の順序05); 	--強い彩色の順序06: var(--暗彩色の順序06);
+  --強い彩色の順序07: var(--暗彩色の順序07); 	--強い彩色の順序08: var(--暗彩色の順序08);
+  --強い彩色の順序09: var(--暗彩色の順序09); 	--強い彩色の順序10: var(--暗彩色の順序10);
+  --強い彩色の順序11: var(--暗彩色の順序11); 	--強い彩色の順序12: var(--暗彩色の順序12);
+  
+  --標準の弱い彩色: var(--Lt-標準の弱い彩色);
+  --col06の弱い彩色: var(--col06の明彩色);
+  --col07の弱い彩色: var(--col07の明彩色);
+  --col08の弱い彩色: var(--col08の明彩色);
+  --col09の弱い彩色: var(--col09の明彩色);
+  --col10の弱い彩色: var(--col10の明彩色);
+  --弱い彩色の順序01: var(--明彩色の順序01); 	--弱い彩色の順序02: var(--明彩色の順序02);
+  --弱い彩色の順序03: var(--明彩色の順序03); 	--弱い彩色の順序04: var(--明彩色の順序04);
+  --弱い彩色の順序05: var(--明彩色の順序05); 	--弱い彩色の順序06: var(--明彩色の順序06);
+  --弱い彩色の順序07: var(--明彩色の順序07); 	--弱い彩色の順序08: var(--明彩色の順序08);
+  --弱い彩色の順序09: var(--明彩色の順序09); 	--弱い彩色の順序10: var(--明彩色の順序10);
+  --弱い彩色の順序11: var(--明彩色の順序11); 	--弱い彩色の順序12: var(--明彩色の順序12);
+  
+  --表紙絵の明度調整: var(--Lt-表紙絵の明度調整);
+  --invert-if-dark: var(--Lt-invert-if-dark);
+  --filter-絵文字強調: var(--Lt-filter-絵文字強調);
+  --icon-外へ: var(--Lt-icon-外へ);
+  --icon-加筆: var(--Lt-icon-加筆);
+  --icon-タグ単: var(--Lt-icon-タグ単);
+  --icon-タグ束: var(--Lt-icon-タグ束);
+  --icon-左矢印: var(--Lt-icon-左矢印);
+  --icon-右矢印: var(--Lt-icon-右矢印);
 }
-body.layout-single-column.theme-mastodon-light:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
-body.layout-multiple-columns.theme-mastodon-light:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
-head:has(> meta[name=initialPath][content$='/lc']) + body.theme-mastodon-light,
-_ {
-  --標準の背景彩色: var(--Lt2-標準の背景彩色);
-  --新着の背景彩色: var(--Lt2-新着の背景彩色);
-  --背景彩色の順序01: var(--Lt2-背景彩色の順序01); 	--背景彩色の順序02: var(--Lt2-背景彩色の順序02);
-  --背景彩色の順序03: var(--Lt2-背景彩色の順序03); 	--背景彩色の順序04: var(--Lt2-背景彩色の順序04);
-  --背景彩色の順序05: var(--Lt2-背景彩色の順序05); 	--背景彩色の順序06: var(--Lt2-背景彩色の順序06);
-  --背景彩色の順序07: var(--Lt2-背景彩色の順序07); 	--背景彩色の順序08: var(--Lt2-背景彩色の順序08);
-  --背景彩色の順序09: var(--Lt2-背景彩色の順序09); 	--背景彩色の順序10: var(--Lt2-背景彩色の順序10);
-  --背景彩色の順序11: var(--Lt2-背景彩色の順序11); 	--背景彩色の順序12: var(--Lt2-背景彩色の順序12);
-}
 
-body.theme-mastodon-light,
-body.theme-contrast,
-_ {
+body {
   --背景色a: var(--背景色0);
   --背景色b: var(--背景色1);
   --背景色c: var(--背景色2);
-  --影の色: var(--前景色飽和);
+  --影の色: var(--背景色飽和);
 }
-@media (prefers-color-scheme: light) {
-  body.theme-system,
-  _ {
-    --背景色a: var(--背景色0);
+@container root style(--contrast: low) {
+  body {
+    --背景色a: var(--背景色2);
     --背景色b: var(--背景色1);
-    --背景色c: var(--背景色2);
+    --背景色c: var(--背景色0);
     --影の色: var(--前景色飽和);
   }
 }
-body,
-body.theme-default,
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/lc"]),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/lc"]),
-head:has(> meta[name=initialPath][content$='/lc']) + body,
-_ {
-  --背景色a: var(--背景色2);
-  --背景色b: var(--背景色1);
-  --背景色c: var(--背景色0);
-  --影の色: var(--背景色飽和);
+@container root style(--contrast: high) {
+  body {
+    --背景色a: var(--背景色飽和);
+    --背景色b: var(--背景色1);
+    --背景色c: var(--背景色2);
+    --前景色0: var(--前景色飽和);
+    --影の色: var(--前景色飽和);
+  }
 }
-body.layout-single-column:has(> :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*="/hc"]),
-body.layout-multiple-columns:has(> :first-child >*>*> :nth-child(2) > .drawer > .search > .search__input[value*="/hc"]),
-head:has(> meta[name=initialPath][content$='/hc']) + body,
-_ {
-  --背景色a: var(--背景色飽和);
-  --背景色b: var(--背景色1);
-  --背景色c: var(--背景色2);
-  --前景色0: var(--前景色飽和);
-  --影の色: var(--前景色飽和);
+
+@container root style(--contrast: low) and style(--color-scheme: dark) {
+  body {
+    --標準の背景彩色: var(--Dk2-標準の背景彩色);
+    --新着の背景彩色: var(--Dk2-新着の背景彩色);
+    --背景彩色の順序01: var(--Dk2-背景彩色の順序01); 	--背景彩色の順序02: var(--Dk2-背景彩色の順序02);
+    --背景彩色の順序03: var(--Dk2-背景彩色の順序03); 	--背景彩色の順序04: var(--Dk2-背景彩色の順序04);
+    --背景彩色の順序05: var(--Dk2-背景彩色の順序05); 	--背景彩色の順序06: var(--Dk2-背景彩色の順序06);
+    --背景彩色の順序07: var(--Dk2-背景彩色の順序07); 	--背景彩色の順序08: var(--Dk2-背景彩色の順序08);
+    --背景彩色の順序09: var(--Dk2-背景彩色の順序09); 	--背景彩色の順序10: var(--Dk2-背景彩色の順序10);
+    --背景彩色の順序11: var(--Dk2-背景彩色の順序11); 	--背景彩色の順序12: var(--Dk2-背景彩色の順序12);
+  }
+}
+@container root style(--contrast: low) and style(--color-scheme: light) {
+  body {
+    --標準の背景彩色: var(--Lt2-標準の背景彩色);
+    --新着の背景彩色: var(--Lt2-新着の背景彩色);
+    --背景彩色の順序01: var(--Lt2-背景彩色の順序01); 	--背景彩色の順序02: var(--Lt2-背景彩色の順序02);
+    --背景彩色の順序03: var(--Lt2-背景彩色の順序03); 	--背景彩色の順序04: var(--Lt2-背景彩色の順序04);
+    --背景彩色の順序05: var(--Lt2-背景彩色の順序05); 	--背景彩色の順序06: var(--Lt2-背景彩色の順序06);
+    --背景彩色の順序07: var(--Lt2-背景彩色の順序07); 	--背景彩色の順序08: var(--Lt2-背景彩色の順序08);
+    --背景彩色の順序09: var(--Lt2-背景彩色の順序09); 	--背景彩色の順序10: var(--Lt2-背景彩色の順序10);
+    --背景彩色の順序11: var(--Lt2-背景彩色の順序11); 	--背景彩色の順序12: var(--Lt2-背景彩色の順序12);
+  }
 }
 
 body {
@@ -751,6 +736,37 @@ _ {
   outline: 2px solid var(--弱い彩色);
   outline-offset: 1px;
   transition: none;
+}
+
+/*** 共通要素: リンクの下線 ***/
+
+.link-footer a,
+.reply-indicator__content a,
+.status__content a,
+.status__content__read-more-button,
+.status__content__translate-button,
+_,
+.link-footer a.mention span,
+.reply-indicator__content a.mention span,
+.status__content a.mention span,
+.status__content__read-more-button.mention span,
+.status__content__translate-button.mention span,
+_ {
+  text-decoration: none;
+}
+.link-footer a:is(:active, :focus, :hover),
+.reply-indicator__content a:is(:active, :focus, :hover),
+.status__content a:is(:active, :focus, :hover),
+.status__content__read-more-button:is(:active, :focus, :hover),
+.status__content__translate-button:is(:active, :focus, :hover),
+_,
+.link-footer a.mention span:is(:active, :focus, :hover),
+.reply-indicator__content a.mention span:is(:active, :focus, :hover),
+.status__content a.mention span:is(:active, :focus, :hover),
+.status__content__read-more-button.mention span:is(:active, :focus, :hover),
+.status__content__translate-button.mention span:is(:active, :focus, :hover),
+_ {
+  text-decoration: underline;
 }
 
 /*** 共通要素: ボタン類 ***/
