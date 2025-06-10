@@ -387,8 +387,8 @@ body.layout-multiple-columns:has(.drawer .search__input[value*="/width08"]) {
 }
 
 body {
-  --背景色飽和: hsl(0, 0%, 0%);
-  --前景色飽和: hsl(0, 0%, 100%);
+  --背景色飽和: black;
+  --前景色飽和: white;
   
   --背景色0: var(--Dk-背景色0);
   --col00の背景色1: var(--Dk-col00の背景色1); 	--col00の背景色2: var(--Dk-col00の背景色2);
@@ -468,8 +468,8 @@ body {
 @media (prefers-color-scheme: light) {
   /* @container を使いたいが、iOS 15 が対応していない */
   body:where(.theme-system) {
-    --背景色飽和: hsl(0, 0%, 100%);
-    --前景色飽和: hsl(0, 0%, 0%);
+    --背景色飽和: white;
+    --前景色飽和: black;
     
     --背景色0: var(--Lt-背景色0);
     --col00の背景色1: var(--Lt-col00の背景色1); 	--col00の背景色2: var(--Lt-col00の背景色2);
@@ -547,8 +547,8 @@ body {
   }
 }
 body:where(.theme-mastodon-light) {
-  --背景色飽和: hsl(0, 0%, 100%);
-  --前景色飽和: hsl(0, 0%, 0%);
+  --背景色飽和: white;
+  --前景色飽和: black;
   
   --背景色0: var(--Lt-背景色0);
   --col00の背景色1: var(--Lt-col00の背景色1); 	--col00の背景色2: var(--Lt-col00の背景色2);
