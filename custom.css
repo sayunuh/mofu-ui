@@ -629,14 +629,14 @@ body {
   --背景色a: var(--背景色0);
   --背景色b: var(--背景色1);
   --背景色c: var(--背景色2);
-  --影の色: var(--背景色飽和);
+  --影の色: var(--前景色飽和);
 }
 @container root style(--contrast: low) {
   body {
     --背景色a: var(--背景色2);
     --背景色b: var(--背景色1);
     --背景色c: var(--背景色0);
-    --影の色: var(--前景色飽和);
+    --影の色: var(--背景色飽和);
   }
 }
 @container root style(--contrast: high) {
