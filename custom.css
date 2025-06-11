@@ -1382,7 +1382,6 @@ _ {
 _ {
   border-color: var(--前景色3);
 }
-.compose-panel hr,
 .navigation-panel hr,
 .getting-started__trends h4,
 _ {
@@ -1944,9 +1943,7 @@ _ {
   border-bottom: 1px solid var(--背景色c);
   font-weight: 600;
 }
-.compose-panel hr,
-.navigation-panel hr,
-_ {
+.navigation-panel hr {
   margin: 2px 0;
 }
 .list-panel > .column-link {
@@ -2622,7 +2619,7 @@ html:lang(ja) .sign-in-banner > p {
   margin-bottom: 0;
 }
 .navigation-panel__legal {
-  display: unset;
+  display: contents;
 }
 .navigation-panel__legal hr {
   display: none;
@@ -2662,9 +2659,12 @@ html:lang(ja) .sign-in-banner > p {
   .navigation-panel .navigation-panel__sign-in-banner,
   .navigation-panel .navigation-panel__banner,
   .navigation-panel__sign-in-banner a.button,
-  .navigation-panel .list-panel,
   _ {
     display: block;
+  }
+  .navigation-panel .list-panel,
+  _ {
+    display: contents;
   }
   .navigation-panel .column-link span,
   _ {
@@ -7396,9 +7396,6 @@ _ {
   .layout-single-column .navigation-panel .flex-spacer,
   _ {
     display: none;
-  }
-  .layout-single-column .navigation-panel__legal {
-    display: contents;
   }
   .layout-single-column .navigation-panel .column-link {
     flex: none;
