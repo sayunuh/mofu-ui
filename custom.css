@@ -6610,8 +6610,9 @@ _ {
 .filter-form {
   display: flex;
   flex-direction: column;
-  padding: var(--縦余白) var(--横余白);
   border: none;
+  margin: 0 0 var(--小間隔);
+  padding: var(--縦余白) var(--横余白);
   gap: 8px;
   justify-content: space-evenly;
   background: transparent;
