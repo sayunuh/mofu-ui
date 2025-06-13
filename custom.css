@@ -6982,7 +6982,11 @@ _ {
   ;
   background: var(--強い彩色);
 }
-.poll__input.checkbox.active:after {
+.radio-button__input.checked::before {
+  content: unset;
+}
+
+.poll__input.checkbox.active::after {
   content: '';
   display: block;
   position: absolute;
