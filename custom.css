@@ -863,7 +863,9 @@ _ {
 button {
   margin: 0;
 }
-button:not(#_) {
+button,
+button.dropdown-button,
+_ {
   line-height: inherit;
 }
 .button:not(._):not(._),
