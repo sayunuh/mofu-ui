@@ -962,10 +962,16 @@ _ {
   background: var(--grad), var(--強い彩色);
   color: white;
 }
-.button.button--destructive:is(:hover, :focus),
-.button.negative:is(:hover, :focus):not(._),
+.button:is(.button--destructive, .negative):not(._):is(:hover, :focus),
 _ {
   background-color: var(--背景色危険);
+}
+.button-secondary:is(.button--destructive, .negative):not(._):is(:hover, :focus),
+.button-tertiary:is(.button--destructive, .negative):not(._):is(:hover, :focus),
+_ {
+  border-color: var(--前景色危険);
+  background: transparent;
+  color: var(--前景色危険);
 }
 
 .button:not(._).disabled,
