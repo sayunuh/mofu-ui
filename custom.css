@@ -14,11 +14,6 @@
 :root:has(> body.theme-mastodon-light) {
   --color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --contrast: low;
-  }
-}
 :root:has(
   > body.theme-default,
   > body.layout-single-column > :first-child >*>*> :nth-child(2) > .columns-area__panels__pane--compositional >*>*> .search > .search__input[value*='/lc'],
