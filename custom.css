@@ -762,6 +762,7 @@ body {
   background: var(--背景色b);
   color: var(--前景色1);
   overflow-wrap: break-word;
+  line-height: 1.25;
 }
 
 /*** 選択範囲 ***/
@@ -865,6 +866,9 @@ _ {
 
 button {
   margin: 0;
+}
+button:not(#_) {
+  line-height: inherit;
 }
 .button:not(._):not(._),
 .simple_form .button:not(._):not(._),
