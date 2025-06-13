@@ -1082,6 +1082,10 @@ _ {
 .search__input {
   color: var(--前景色1);
   background: var(--背景色c);
+}
+.search__input,
+.search.active .search__input,
+_ {
   border-radius: 8px;
 }
 .search__input,
