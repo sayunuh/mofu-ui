@@ -1569,7 +1569,7 @@ html {
 _ {
   overflow: unset;
 }
-.account-card__title__avatar img {
+.account-card__title__avatar img:not(._) {
   border: none;
 }
 
