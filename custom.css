@@ -1560,7 +1560,10 @@ html {
 
 /*** プロフィール画像の共通設定 ***/
 
-.account__avatar:not(._._) {
+.account__avatar,
+.account__header__bar .account__avatar:not(._),
+.account-card__title__avatar .account__avatar,
+_ {
   border-radius: 20%;
   overflow: hidden;
 }
