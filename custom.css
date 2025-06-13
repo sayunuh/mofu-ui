@@ -196,6 +196,7 @@ body {
   --icon-警告: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="20" viewBox="-960 0 2880 960"><path d="M 112 756 l 368 -614 l 368 614 z M 175 720 h 610 l -305 -508 z M 480 676 q 16 0 28 -12 t 12 -28 t -12 -28 t -28 -12 t -28 12 t -12 28 t 12 28 t 28 12 z M 444 552 h 72 v -192 h -72 z"></path></svg>');
   
   --background-border-color: var(--背景色b);
+  --avatar-border-radius: 20%;
 }
 body {
   --col06の明彩色: hsl(160, 56%, 47%);
@@ -1559,9 +1560,7 @@ html {
 
 /*** プロフィール画像の共通設定 ***/
 
-.account__avatar,
-.account-card__title__avatar .account__avatar, 
-_ {
+.account__avatar:not(._._) {
   border-radius: 20%;
   overflow: hidden;
 }
