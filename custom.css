@@ -4915,6 +4915,13 @@ _ {
   color: var(--前景色危険);
 }
 
+.language-dropdown__dropdown .emoji-mart-search,
+.language-dropdown__dropdown .emoji-mart-search input,
+.language-dropdown__dropdown .emoji-mart-scroll,
+_ {
+  background: unset;
+}
+
 .autosuggest-textarea__suggestions {
   padding: 4px;
 }
