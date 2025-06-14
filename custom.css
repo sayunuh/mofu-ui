@@ -4904,16 +4904,18 @@ _ {
   background-color: var(--背景色a);
 }
 
-/*** ドロップダウンメニューの影 ***/
+/*** ドロップダウンメニューなどの共通の外形 ***/
 
 .dropdown-menu,
 .compose-form .autosuggest-textarea__suggestions,
 .emoji-picker-dropdown__menu,
 .privacy-dropdown__dropdown,
 .language-dropdown__dropdown,
-.search-popout,
+.search__popout,
 _ {
-  box-shadow: 0 2px 10px -4px var(--影の色);
+  border: unset;
+  border-radius: 8px;
+  box-shadow: 0 0 2px -1px var(--影の色), 0 6px 16px -12px var(--影の色);
 }
 
 /*** ドロップダウンメニュー ***/
@@ -5288,6 +5290,7 @@ _ {
 .emoji-mart-bar:first-child {
   background-color: var(--背景色c);
   border: none;
+  border-radius: 8px 8px 0 0;
 }
 .emoji-mart-anchor,
 .emoji-mart-anchor:hover,
