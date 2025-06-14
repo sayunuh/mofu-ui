@@ -4896,32 +4896,13 @@ _ {
 _ {
   background-color: var(--背景色a);
 }
-.autosuggest-textarea__suggestions, 
-_ {
-  padding: 4px;
-}
-
-.dropdown-menu__item a,
-.dropdown-menu__item button,
-_ {
-  color: var(--前景色0);
-  background-color: var(--背景色a);
-}
-.autosuggest-textarea__suggestions__item:not(._) {
-  border-radius: 4px;
-}
-.autosuggest-textarea__suggestions__item.selected,
-.autosuggest-textarea__suggestions__item:is(:active, :focus, :hover),
-.language-dropdown__dropdown__results__item:is(:active, :focus, :hover),
-_ {
-  color: white;
-  background: var(--grad), var(--弱い彩色);
-}
 
 .dropdown-menu__item a,
 .dropdown-menu__item button,
 _ {
   padding-block: 4px;
+  color: var(--前景色0);
+  background-color: var(--背景色a);
 }
 @media (pointer: coarse) {
   .dropdown-menu__item a,
@@ -4932,6 +4913,20 @@ _ {
 }
 .dropdown-menu__item--dangerous a {
   color: var(--前景色危険);
+}
+
+.autosuggest-textarea__suggestions {
+  padding: 4px;
+}
+.autosuggest-textarea__suggestions__item:not(._) {
+  border-radius: 4px;
+}
+.autosuggest-textarea__suggestions__item.selected,
+.autosuggest-textarea__suggestions__item:is(:active, :focus, :hover),
+.language-dropdown__dropdown__results__item:is(:active, :focus, :hover),
+_ {
+  color: white;
+  background: var(--grad), var(--弱い彩色);
 }
 
 /*** 左下の通知 ***/
