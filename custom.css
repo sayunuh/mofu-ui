@@ -4877,6 +4877,7 @@ _ {
 .privacy-dropdown__dropdown,
 .language-dropdown__dropdown,
 .search__popout,
+.explore__search-header .search__popout,
 _ {
   border: unset;
   border-radius: 8px;
