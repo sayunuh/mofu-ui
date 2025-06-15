@@ -4925,6 +4925,11 @@ _ {
 .autosuggest-textarea__suggestions {
   padding: 4px;
 }
+.autosuggest-textarea__suggestions__item {
+  height: unset;
+  min-height: 32px;
+  color: var(--前景色0);
+}
 .autosuggest-textarea__suggestions__item:not(._) {
   border-radius: 4px;
 }
@@ -4934,6 +4939,28 @@ _ {
 _ {
   color: white;
   background: var(--grad), var(--弱い彩色);
+}
+
+.autosuggest-account,
+.autosuggest-emoji,
+.autosuggest-hashtag,
+_ {
+  padding-block: 4px;
+}
+.autosuggest-account .account__avatar,
+.autosuggest-emoji img,
+_ {
+  width: 32px !important;
+  height: 32px !important;
+  background: var(--背景色a);
+  box-shadow: 0 0 0 2px var(--背景色a);
+}
+.autosuggest-emoji img {
+  margin: 0;
+  border-radius: 2px;
+}
+.autosuggest-account .display-name__account {
+  color: var(--前景色1);
 }
 
 /*** 左下の通知 ***/
