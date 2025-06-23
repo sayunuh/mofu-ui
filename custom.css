@@ -195,6 +195,20 @@ body {
   --icon-矢尻下: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><g fill="hsl(188, 43%25, 47%25)"><path d="M 2 4 l 1 -1 l 2 2 l 2 -2 l 1 1 l -3 3 z" /></g></svg>');
   --icon-警告: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="20" viewBox="-960 0 2880 960"><path d="M 112 756 l 368 -614 l 368 614 z M 175 720 h 610 l -305 -508 z M 480 676 q 16 0 28 -12 t 12 -28 t -12 -28 t -28 -12 t -28 12 t -12 28 t 12 28 t 28 12 z M 444 552 h 72 v -192 h -72 z"></path></svg>');
   
+  --カド左上: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><path d="M 0 0 v 10 c 0 -3 0 -6 2 -8 c 2 -2 5 -2 8 -2 z" /></svg>');
+  --カド右上: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><path d="M 10 0 h -10 c 3 0 6 0 8 2 c 2 2 2 5 2 8 z" /></svg>');
+  --カド左下: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><path d="M 0 10 h 10 c -3 0 -6 0 -8 -2 c -2 -2 -2 -5 -2 -8 z" /></svg>');
+  --カド右下: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><path d="M 10 10 v -10 c 0 3 0 6 -2 8 c -2 2 -5 2 -8 2 z" /></svg>');
+  --全塗り: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"><path d="M 0 0 v 1 h 1 v -1 z" /></svg>');
+  --カドマスク16px:
+    var(--全塗り) center / cover subtract,
+    var(--カド左上) top left / 23px 23px no-repeat,
+    var(--カド右上) top right / 23px 23px no-repeat,
+    var(--カド左下) bottom left / 23px 23px no-repeat,
+    var(--カド右下) bottom right / 23px 23px no-repeat
+  ;
+  _note: 'カドマスクの大きさは半径の (5 - 5/√2) 倍';
+  
   --background-border-color: var(--背景色b);
   --avatar-border-radius: 20%;
 }
@@ -6815,13 +6829,15 @@ _ {
 _ {
   outline: unset;
 }
-.media-gallery__item,
-.media-gallery__gifv,
-.audio-player,
+.status .media-gallery__item,
+.status .media-gallery__gifv,
+.status .audio-player,
 .status .video-player,
 .status .video-player video,
 _ {
   border-radius: 16px;
+  -webkit-mask: var(--カドマスク16px);
+  mask: var(--カドマスク16px);
 }
 .detailed-status .media-gallery__item,
 .detailed-status .media-gallery__gifv,
@@ -6829,7 +6845,7 @@ _ {
 .detailed-status .video-player,
 .detailed-status .video-player video,
 _ {
-    border-radius: 0;
+    border-radius: unset;
 }
 .video-player.detailed {
   border-radius: unset;
