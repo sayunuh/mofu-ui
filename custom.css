@@ -388,7 +388,7 @@ body.layout-multiple-columns:has(.drawer .search__input[value*="/width08"]) {
     --小間隔: 4px;
     --大間隔: 24px;
     --縦余白: 6px;
-    --note: '主カラムの幅の範囲 : 620px ... 780px';
+    _note: '主カラムの幅の範囲 : 620px ... 780px';
     --横余白: clamp(16px, 32px, 0.1 * (var(--カラム幅-主要) - 620px) + 16px);
     --横余白塗り: 8px;
     --小カド: 10px;
@@ -1649,7 +1649,7 @@ body.layout-single-column {
 }
 .columns-area__panels__main {
   flex: 1 0 auto;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
+  _note: 'flex を前提として width は 0 でもいいが念の為';
   width: 25%;
   max-width: 800px;
   padding: unset;
@@ -1690,11 +1690,11 @@ _ {
 }
 @media (min-width: 720px) {
   body.layout-single-column {
-    --note: '最小幅 720px = 主カラム 514px + 副カラム 170px + 間隔 12px * 3';
-    --note: '最大幅 1175px = 主カラム 760px + 副カラム 271px + 間隔 48px * 3';
-    --note: 'カラム間隔追加の変動区間 : 959px ... 1175px';
-    --note: 'メニューカラムの変動区間 1 : 720px ... 860px';
-    --note: 'メニューカラムの変動区間 2 : 1113px ... 1175px';
+    _note: '最小幅 720px = 主カラム 514px + 副カラム 170px + 間隔 12px * 3';
+    _note: '最大幅 1175px = 主カラム 760px + 副カラム 271px + 間隔 48px * 3';
+    _note: 'カラム間隔追加の変動区間 : 959px ... 1175px';
+    _note: 'メニューカラムの変動区間 1 : 720px ... 860px';
+    _note: 'メニューカラムの変動区間 2 : 1113px ... 1175px';
     --カラム幅-間隔追加: clamp(0px, 36px, 0.5 * (100vw - 1175px) / 3 + 36px);
     --カラム幅-メニュー: calc(170px
       + clamp(0px, 70px, 0.5 * (100vw - 720px) + 0px) 
@@ -1704,11 +1704,11 @@ _ {
 }
 @media (min-width: 1175px) {
   body.layout-single-column {
-    --note: '最小幅 1175px = 主カラム 559px + 副カラム 240px + 280px + 間隔 24px * 4';
-    --note: '最大幅 1892px = 主カラム 800px + 副カラム 450px * 2 + 間隔 48px * 4';
-    --note: '投稿作成カラムの変動区間 : 1178px ... 1518px';
-    --note: 'カラム間隔追加の変動区間 : 1358px ... 1550px';
-    --note: 'メニューカラムの変動区間 : 1518px ... 1938px';
+    _note: '最小幅 1175px = 主カラム 559px + 副カラム 240px + 280px + 間隔 24px * 4';
+    _note: '最大幅 1892px = 主カラム 800px + 副カラム 450px * 2 + 間隔 48px * 4';
+    _note: '投稿作成カラムの変動区間 : 1178px ... 1518px';
+    _note: 'カラム間隔追加の変動区間 : 1358px ... 1550px';
+    _note: 'メニューカラムの変動区間 : 1518px ... 1938px';
     --カラム幅-投稿作成: clamp(280px, 450px, 0.5 * (100vw - 1178px) + 280px);
     --カラム幅-間隔追加: clamp(12px, 36px, 0.5 * (100vw - 1358px) / 4 + 12px);
     --カラム幅-メニュー: clamp(240px, 450px, 0.5 * (100vw - 1518px) + 240px);
@@ -1775,7 +1775,7 @@ _ {
 }
 @media screen and (max-height: 380px) {
   .tabs-bar__wrapper {
-    --note: '縦が狭い時、カラムヘッダーを画面内に固定しない';
+    _note: '縦が狭い時、カラムヘッダーを画面内に固定しない';
     top: -44px;
   }
 }
@@ -2267,7 +2267,7 @@ _ {
     padding-top: 25px;
   }
   .admin .simple_form .fields-row__column-6 {
-    --note: '親が flex なのが前提';
+    _note: '親が flex なのが前提';
     width: 0;
   }
 }
@@ -2685,7 +2685,7 @@ html:lang(ja) .sign-in-banner > p {
 }
 
 .switch-to-advanced {
-  --note: '幅が狭い場合の省略表示';
+  _note: '幅が狭い場合の省略表示';
   letter-spacing: -1em;
   color: transparent;
 }
@@ -2798,7 +2798,7 @@ body.layout-single-column {
 }
 .status__prepend > span {
   flex: 1 0 auto;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
+  _note: 'flex を前提として width は 0 でもいいが念の為';
   width: 50%;
   white-space: nowrap;
 }
@@ -2833,7 +2833,7 @@ body.layout-single-column {
 }
 .status__info .status__display-name {
   flex: 1 0 auto;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
+  _note: 'flex を前提として width は 0 でもいいが念の為';
   width: 50%;
   overflow: unset;
   line-height: unset;
@@ -2852,7 +2852,7 @@ _ {
 }
 .status__info .display-name {
   flex: 1 0 auto;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
+  _note: 'flex を前提として width は 0 でもいいが念の為';
   width: 50%;
   margin-inline-start: calc(-8px - var(--プロフ画像の半径));
   display: flex;
@@ -3373,7 +3373,7 @@ _ {
   background: var(--icon-タグ束) center / contain no-repeat;
 }
 .hashtag-bar a {
-  --note: '不必要に display: inline-flex になっていて、コピーすると改行が入る';
+  _note: '不必要に display: inline-flex になっていて、コピーすると改行が入る';
   display: unset;
   box-sizing: border-box;
   max-width: 100%;
@@ -3880,7 +3880,7 @@ _ {
   width: 28px;
 }
 :is(.notification-group--favourite, .notification-group--reblog) .notification-group__icon {
-  --note: 'フォローや通報の通知も .notification-group なのでお気に入りとブーストだけに絞る必要がある';
+  _note: 'フォローや通報の通知も .notification-group なのでお気に入りとブーストだけに絞る必要がある';
   margin-inline-end: -36px;
 }
 :is(.notification-group--favourite, .notification-group--reblog) .notification-group__main__header__wrapper {
@@ -4598,7 +4598,7 @@ _ {
 }
 
 .column > .navigation-bar::before {
-  --note: '偽のカラムヘッダー';
+  _note: '偽のカラムヘッダー';
   content: 'Write a post';
   position: absolute;
   top: 0; inset-inline: 0;
@@ -4623,7 +4623,7 @@ _ {
   padding-block: 0;
 }
 .compose-panel > .compose-form {
-  --note: 'アット名などの候補メニューが切り抜かれないように';
+  _note: 'アット名などの候補メニューが切り抜かれないように';
   overflow: visible;
   z-index: 2;
 }
@@ -4859,7 +4859,7 @@ _ {
 /*** 右下の動画再生枠 ***/
 
 .picture-in-picture {
-  --note: '右カラムの重ね順に影響されて隠れるので';
+  _note: '右カラムの重ね順に影響されて隠れるので';
   z-index: 1;
 }
 
@@ -6325,7 +6325,7 @@ _ {
 ) {
   padding-block: 2px;
   padding-inline: 19px 5px;
-  --note: '14/15 = 0.9333';
+  _note: '14/15 = 0.9333';
   font-size: 93.33%;
   background: var(--icon-タグ単) left 3px center / 14px 14px no-repeat, var(--背景彩色);
   border-radius: 0.4em / 0.6em;
@@ -6508,7 +6508,7 @@ _ {
   font-size: 18px;
 }
 .account__header__bar .avatar {
-  --note: 'カラム幅 410px → 45px, 600px → 64px';
+  _note: 'カラム幅 410px → 45px, 600px → 64px';
   --画像半径: clamp(45px, 64px, 0.1 * (var(--カラム幅-主要) - 410px) + 45px);
   margin-top: -48px;
   width: calc(var(--画像半径) * 2);
@@ -6584,7 +6584,7 @@ _ {
 /*** 自己紹介部分のメモ欄 ***/
 
 .account__header__bio {
-  --note: '順序を変える為の flex';
+  _note: '順序を変える為の flex';
   display: flex;
   flex-direction: column;
 }
@@ -6618,7 +6618,7 @@ _ {
 
 .detailed-status .display-name {
   flex: 1 0 auto;
-  --note: 'flex を前提として width は 0 でもいいが念の為';
+  _note: 'flex を前提として width は 0 でもいいが念の為';
   width: 50%;
   white-space: unset;
 }
@@ -6696,7 +6696,7 @@ _ {
   position: absolute;
   width: 100%;
   height: 104px;
-  --note: 誤差で隙間が生じないように少し重ねる;
+  _note: 誤差で隙間が生じないように少し重ねる;
   bottom: -4px;
   --bd-filter: saturate(1.4) blur(1px);
   -webkit-backdrop-filter: var(--bd-filter);
@@ -6818,7 +6818,7 @@ _ {
 }
 
 .media-gallery {
-  --note: 'Mastodon v4.2.1 では「50% 50%」と gap「2px」で 100% を超過している';
+  _note: 'Mastodon v4.2.1 では「50% 50%」と gap「2px」で 100% を超過している';
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   border-radius: 0;
@@ -6904,7 +6904,7 @@ _ {
 .status > div[style]:not([class]),
 .detailed-status > div[style]:not([class]),
 _ {
-  --note: 'video-player などを囲っている謎の div';
+  _note: 'video-player などを囲っている謎の div';
   aspect-ratio: unset !important;
 }
 
