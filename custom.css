@@ -7130,8 +7130,11 @@ _ {
   background: linear-gradient(
     to bottom, transparent 34%, var(--背景彩色-先頭なら上書き) 35% 40%, transparent 66%
   ) center bottom / 100% 300% no-repeat, repeating-linear-gradient(
-    146.31deg, #0000, var(--背景彩色) 0.3px 1px, #0000 1.3px 3px
-  ) center center / 0% 100% no-repeat var(--背景色a);
+    146.31deg, transparent, var(--背景彩色) 1% 3.333%, transparent 4.333% 10%
+  ) center center / calc(var(--背景倍率) * 27px) 18px var(--背景繰り返し) var(--背景色a);
+  _note: '(180 - 146.31) 度 = atan(2/3) 度';
+  _note: '27 × 18 の領域を覆う長さは hypot(18, 27) * sin(2 * atan(2/3)) = 29.9538 [px]';
+  _note: 'その 1% は約 0.300px';
 }
 .scrollable article,
 article > .domain,
@@ -7282,6 +7285,8 @@ _ {
 
 .focusable {
   --hover色: transparent;
+  --背景倍率: 0;
+  --背景繰り返し: no-repeat;
   outline-offset: -2px;
   box-shadow: inset 0 0 0 2px var(--背景色a);
 }
@@ -7296,7 +7301,8 @@ _ {
   .focusable:is(.status__wrapper, .notification):has(.status__content:focus-visible),
   _ {
     --hover色: var(--背景彩色);
-    background-size: 100% 300%, 100% 100%;
+    --背景倍率: 1;
+    --背景繰り返し: repeat;
     transition: none;
   }
   .focusable:is(.status__wrapper, .notification) .status__content {
