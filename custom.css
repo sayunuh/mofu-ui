@@ -7104,7 +7104,6 @@ article,
 _ {
   margin: 0 0 var(--小間隔);
 }
-.scrollable article > div > .status__wrapper,
 .scrollable article > div > div > .status__wrapper,
 .scrollable article > div > .notification,
 .notification-group,
@@ -7113,7 +7112,6 @@ _ {
 .scrollable article > .account,
 article > .domain,
 .scrollable .explore__search-results > .account,
-.scrollable > div > .status__wrapper,
 .scrollable > div > div > .status__wrapper,
 .scrollable > div > .detailed-status__wrapper,
 .scrollable .account__header,
@@ -7123,6 +7121,11 @@ article > .domain,
 .scrollable .search-results__section .account,
 .scrollable .trends__item,
 .story,
+_ {
+  background: var(--背景色a);
+}
+.scrollable article > div > .status__wrapper,
+.scrollable > div > .status__wrapper,
 _ {
   background: linear-gradient(
     to bottom, transparent 34%, var(--背景彩色-先頭なら上書き) 35% 40%, transparent 66%
