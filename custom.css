@@ -700,9 +700,6 @@ body {
 * {
   outline-offset: -1px;
 }
-:not(#_) {
-  outline-color: var(--弱い彩色);
-}
 :not(:focus) {
   outline-offset: 10px;
 }
