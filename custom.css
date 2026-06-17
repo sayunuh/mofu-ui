@@ -6182,7 +6182,7 @@ _ {
   margin: -4px;
   padding: 4px;
 }
-.detailed-status .status__content {
+.detailed-status:not(.status--is-quote) > .status__content {
   overflow: visible;
   padding: 0;
 }
@@ -6284,7 +6284,7 @@ _ {
 .status__content {
   z-index: 2;
 }
-.status__content:not(.status__content--collapsed) {
+:not(.status--is-quote) > .status__content:not(.status__content--collapsed) {
   overflow: unset;
 }
 
