@@ -1570,6 +1570,7 @@ body.layout-single-column {
   width: 25%;
   max-width: 800px;
   padding: unset;
+  background: none;
 }
 .columns-area__panels__pane {
   flex: none;
