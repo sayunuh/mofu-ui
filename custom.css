@@ -2889,7 +2889,7 @@ _ {
 
 @media (min-width: 600px) {
   .layout-single-column .status,
-  .layout-single-column .notification-ungrouped .status,
+  .layout-single-column .notification-ungrouped .status:not(#_),
   _ {
     padding-inline-start: calc(var(--横余白) + var(--プロフ画像の半径) * 2 + 8px);
   }
@@ -3976,7 +3976,7 @@ _ {
 .notification-ungrouped .status__wrapper {
   box-shadow: none;
 }
-.notification-ungrouped .status {
+.notification-ungrouped .status:not(#_) {
   padding: var(--縦余白) var(--横余白);
 }
 .notification-ungrouped .status > * {
