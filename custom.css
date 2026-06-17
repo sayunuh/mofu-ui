@@ -1886,7 +1886,7 @@ _ {
   padding-bottom: 0;
 }
 .tabs-bar__wrapper {
-  padding-top: 0;
+  border-top: 0;
 }
 .columns-area--mobile {
   padding-bottom: 0;
