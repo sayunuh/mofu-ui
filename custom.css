@@ -1645,6 +1645,10 @@ body.layout-single-column {
   --カラム幅-全間隔: 0px;
   --カラム幅-投稿作成: 0px;
   --カラム幅-メニュー: 54px;
+    --カラム幅-メニュー: calc(170px
+      + clamp(0px, 70px, 0.5 * (100vw - 720px) + 0px) 
+      + clamp(0px, 31px, 0.5 * (100vw - 1175px) + 31px)
+    );
   --カラム幅-主要: min(800px, 100vw - var(--カラム幅-全間隔) - var(--カラム幅-投稿作成) - var(--カラム幅-メニュー));
 }
 .columns-area__panels__main {
@@ -7394,7 +7398,7 @@ _ {
   animation: 回転 1s infinite linear;
 }
 
-/*** 画面が狭い時にメニューを下部に表示する ***/
+/*** 画面が狭い時にメニューを下部に表示する *** /
 
 @keyframes 透明度 {
   0% { opacity: 0; }
@@ -7495,4 +7499,12 @@ _ {
   .layout-single-column .notification-list {
     margin-bottom: 48px;
   }
+}
+
+*/
+.columns-area__panels__pane--navigational .columns-area__panels__pane__inner {
+  inset: unset;
+}
+.columns-area__panels__pane--navigational .columns-area__panels__pane__inner .navigation-panel {
+  width: unset;
 }
