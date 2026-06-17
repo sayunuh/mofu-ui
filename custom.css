@@ -6331,36 +6331,21 @@ _ {
   padding-inline: 19px 5px;
   _note: '14/15 = 0.9333';
   font-size: 93.33%;
+  color: var(--前景色0);
+  text-decoration: none;
   background: var(--icon-タグ単) left 3px center / 14px 14px no-repeat, var(--背景彩色);
   border-radius: 0.4em / 0.6em;
   box-shadow: 0 0 0 1px var(--背景彩色);
 }
 :not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
   [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
-):not(.mention),
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
-  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
-).mention span,
-_ {
-  color: var(--前景色0);
-  letter-spacing: 0;
-  text-decoration: none;
-}
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
-  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
-).mention {
-  color: transparent;
-  letter-spacing: -1em;
-}
-
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
-  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
-):not(.mention):is(:hover, :focus-visible),
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
-  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
-).mention:is(:hover, :focus-visible) span,
-_ {
+):is(:hover, :focus-visible) {
   color: var(--強い彩色);
+}
+:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+  [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
+):is(:hover, :focus-visible) span {
+  text-decoration: none;
 }
 
 /*** 内容警告文の体裁 ***/
