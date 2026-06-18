@@ -147,6 +147,9 @@
   --hue: color10;
 }
 
+html {
+  background: unset;
+}
 body {
   --表紙絵: url('https://cdn.masto.host/mofu/site_uploads/files/000/000/001/@1x/9407911455a34af8.png');
   --表紙絵キャプション: 'トップ絵 by オポッサさん（https://x.com/oPoSa_7）';
@@ -1449,8 +1452,12 @@ _ {
 _ {
   border-width: var(--スクロールバー空き);
 }
-html {
+html.custom-scrollbars {
   scrollbar-color: var(--前景色3) transparent;
+}
+.scrollable {
+  scrollbar-color: unset;
+  scrollbar-width: unset;
 }
 
 /*** プロフィール画像の共通設定 ***/
