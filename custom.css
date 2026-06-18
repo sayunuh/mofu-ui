@@ -1762,6 +1762,12 @@ _ {
 
 /*** 多カラム構成の調整 ***/
 
+body.layout-multiple-columns .ui {
+  padding-bottom: 0;
+  _note: '多カラム設定の時に変な余白が出て無意味なスクロールが発生するのを抑制する';
+  _note: '単カラム設定でメニューが画面下部に行くのが 759 以下で、強制的に単カラムになるのが 630 以下なので、631〜759 の区間が壊れている';
+}
+
 .layout-multiple-columns .columns-area {
   padding-inline-start: var(--スクロールバー幅);
 }
