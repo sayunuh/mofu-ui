@@ -5602,6 +5602,13 @@ _ {
 
 /*** 画像拡大表示の画面 ***/
 
+html.has-modal,
+html.has-modal body,
+_ {
+  scrollbar-gutter: unset;
+  _note: '少なくともうちの Chrome ではこのせいで変な余白が発生する。他の環境では別の問題があるのかも知れない';
+}
+
 .modal-root__overlay {
   background: hsla(0, 0%, 50%, 0.75);
   --bd-filter: blur(0.5vmax);
@@ -5617,16 +5624,7 @@ _ {
   transition: none;
 }
 
-.media-modal__zoom-button,
-.media-modal__zoom-button:hover,
-.media-modal__zoom-button:focus,
-.media-modal__close,
-.media-modal__close:hover,
-.media-modal__close:focus,
-.media-modal__nav,
-.media-modal__nav:hover,
-.media-modal__nav:focus,
-_ {
+.media-modal .icon-button {
   color: white;
 }
 
