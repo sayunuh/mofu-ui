@@ -6404,6 +6404,10 @@ _ {
   _note: 'カラム幅 410px → 45px, 600px → 64px';
   --画像半径: clamp(45px, 64px, 0.1 * (var(--カラム幅-主要) - 410px) + 45px);
   margin-top: calc(-8px - 3px - var(--画像半径));
+  pointer-events: none;
+}
+._comp_account_header__avatarWrapper > * {
+  pointer-events: auto;
 }
 ._comp_account_header__avatarWrapper .account__avatar {
   width: calc(var(--画像半径) * 2) !important;
