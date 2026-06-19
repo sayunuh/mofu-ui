@@ -6345,26 +6345,26 @@ _ {
 
 /*** アカウントの自己紹介部分の体裁 ***/
 
-.account__header__image {
-  margin-bottom: 0;
+._comp_account_header__header:not(後続link) {
   height: 300px;
   border: none;
-  background: none;
   cursor: zoom-out;
 }
-.account__header__image img {
+._comp_account_header__header img {
   height: 300px;
   background: var(--背景色c);
   transition: height 0.2s var(--transition-bounce);
   -webkit-user-drag: none;
 }
-.account__header__image:active img {
+._comp_account_header__header:active img {
   height: 190px;
 }
-.account__header__bar {
+._comp_account_header__barWrapper {
   margin-top: -60px;
   padding-top: 8px;
-  --bd-filter: saturate(1.4) blur(1px);
+  padding-bottom: 8px;
+  border-radius: 0 0 var(--小カド) var(--小カド);
+  --bd-filter: saturate(1.4) blur(2px);
   -webkit-backdrop-filter: var(--bd-filter);
   backdrop-filter: var(--bd-filter);
   background: linear-gradient(
@@ -6377,16 +6377,17 @@ _ {
 }
 
 @media (min-width: 600px) {
-  .layout-single-column .account__header__image,
-  .layout-single-column .account__header__image img,
+  .layout-single-column ._comp_account_header__header,
+  .layout-single-column ._comp_account_header__header img,
   _ {
     height: 480px;
   }
-  .layout-single-column .account__header__image:active img {
+  .layout-single-column ._comp_account_header__header:active img {
     height: 240px;
   }
-  .layout-single-column .account__header__bar {
+  .layout-single-column ._comp_account_header__barWrapper {
     margin-top: -240px;
+    min-height: 240px;
     background: linear-gradient(
       to right,
       var(--背景色a) -50%,
@@ -6399,130 +6400,30 @@ _ {
   }
 }
 
-.account__header__tabs {
-  margin: 0;
-  margin-top: -8px;
-  padding: 0;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-.account__header__tabs__buttons {
-  flex: 1 0 auto;
-  height: 48px;
-  align-items: flex-end;
-  justify-content: end;
-}
-.account__header__tabs__buttons .icon-button {
-  background: var(--背景色a);
-}
-.account__header__tabs__name h1 {
-  font-size: 18px;
-}
-.account__header__bar .avatar {
+._comp_account_header__avatarWrapper:not(後続link) {
   _note: 'カラム幅 410px → 45px, 600px → 64px';
   --画像半径: clamp(45px, 64px, 0.1 * (var(--カラム幅-主要) - 410px) + 45px);
-  margin-top: -48px;
-  width: calc(var(--画像半径) * 2);
-  height: calc(var(--画像半径) * 2);
-  margin-top: calc(-3px - var(--画像半径));
+  margin-top: calc(-8px - 3px - var(--画像半径));
+}
+
+._comp_account_header__avatarWrapper .account__avatar {
+  width: calc(var(--画像半径) * 2) !important;
+  height: calc(var(--画像半径) * 2) !important;
   border: 3px solid transparent;
   background: radial-gradient(var(--背景色a) -500%, transparent 600%);
   border-radius: calc(var(--画像半径) * 0.4 + 3px);
 }
-.account__header__bar .avatar .account__avatar {
-  box-sizing: content-box;
-  width: 100% !important;
-  height: 100% !important;
-  border: unset;
-  background: unset;
-}
-.account__header__tabs__buttons {
-  padding-top: 0;
-}
-.account__header__content {
-  overflow: visible;
-  font-size: 15px;
-  line-height: 24px;
-}
-.account__header__content p {
-  margin-bottom: 14px;
-}
-.account__header__content a {
-  color: var(--強い彩色);
-  text-decoration: none;
-}
-.account__header__content a:hover {
-  text-decoration: underline;
-}
 
-.account__header__bio .account__header__fields dl {
-  border-bottom-color: var(--背景色a);
-}
-@media (min-width: 600px) {
-  .layout-single-column .account__header__bio .account__header__fields dt {
-    float: left;
-    margin-right: 8px;
-  }
-  .layout-single-column .account__header__bio .account__header__fields dd {
-    margin-left: 30%;
-  }
-}
-.account__header__fields dd {
-  overflow: unset;
-  white-space: unset;
-}
-.account__header__fields span:not(#_) {
-  display: unset;
-}
-.account__header__fields .invisible {
-  font-size: unset;
-  line-height: unset;
-  display: unset;
-  width: unset;
-  height: unset;
-  position: unset;
-}
-.account__header__fields .ellipsis::after {
-  content: '';
-}
-
-.unhandled-link,
-.account__header__fields a,
-_ {
-  word-break: break-all;
-}
-
-/*** 自己紹介部分のメモ欄 ***/
-
-.account__header__bio {
-  _note: '順序を変える為の flex';
-  display: flex;
-  flex-direction: column;
-}
-.account__header__account-note {
-  order: 1;
-  margin: 16px 0 0;
+._comp_account_header__note:not(後続link) {
   border: 1px solid var(--背景色b);
-  padding: 6px;
-  border-radius: 4px;
   box-shadow: inset 0 0 4px var(--背景色b);
+  background: none;
 }
-.account__header__account-note:focus-within {
-  border-color: var(--強い彩色);
-}
-.account__header__account-note > label {
-  color: var(--前景色2);
-}
-.account__header__account-note > textarea {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.account__header__account-note > textarea:focus {
-  background: unset;
-}
-.account__header__account-note > textarea::placeholder {
-  color: var(--前景色3);
+
+/*** アカウントの自己紹介の編集画面 ***/
+
+._feat_account_edit__section {
+  background: var(--背景色a);
 }
 
 /*** 長い名前を折り返して最後まで表示する ***/
