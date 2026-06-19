@@ -6405,7 +6405,6 @@ _ {
   --画像半径: clamp(45px, 64px, 0.1 * (var(--カラム幅-主要) - 410px) + 45px);
   margin-top: calc(-8px - 3px - var(--画像半径));
 }
-
 ._comp_account_header__avatarWrapper .account__avatar {
   width: calc(var(--画像半径) * 2) !important;
   height: calc(var(--画像半径) * 2) !important;
@@ -6413,7 +6412,11 @@ _ {
   background: radial-gradient(var(--背景色a) -500%, transparent 600%);
   border-radius: calc(var(--画像半径) * 0.4 + 3px);
 }
-
+._comp_account_header__buttonsDesktop .icon-button:not(後続link),
+._comp_account_header__buttonsMobile .icon-button:not(後続link),
+_ {
+  border-color: var(--前景色3);
+}
 ._comp_account_header__note:not(後続link) {
   border: 1px solid var(--背景色b);
   box-shadow: inset 0 0 4px var(--背景色b);
