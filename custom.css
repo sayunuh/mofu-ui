@@ -3956,18 +3956,28 @@ _ {
   width: 4px;
   background: var(--弱い彩色);
 }
-.status__wrapper[data-featured=true] .status__prepend-icon-wrapper .fa {
+._feat_account_timeline__pinnedStatusHeader:not(後続link) {
   display: flex;
-  align-items: center; justify-content: center;
-  width: 26px;
-  height: calc(100% + var(--縦余白));
-  margin-block: calc(-1 * var(--縦余白)) auto;
-  margin-inline: calc(-1 * var(--横余白)) auto;
-  border-radius: 0 0 10px 0;
+  padding-top: 20px;
+}
+._feat_account_timeline__pinnedStatusHeader ._comp_badge__badge {
+  position: absolute;
+  inset-block: 0 auto;
+  inset-inline: 0 auto;
+  padding: 0;
+  gap: 6px;
+  background: none;
+  color: var(--強い彩色);
+}
+._feat_account_timeline__pinnedStatusHeader ._comp_badge__badge .icon-pinned {
+  width: 16px; height: 16px;
+  padding: 4px;
   background: var(--弱い彩色);
   color: white;
-  transform: none;
+  opacity: 1;
+  border-radius: 0 0 10px 0;
 }
+
 
 .media-gallery__item-thumbnail,
 .media-gallery__item > .media-gallery__preview,
