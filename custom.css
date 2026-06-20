@@ -3828,11 +3828,11 @@ _ {
   }
 }
 
-.notification-group__avatar-group {
+.notification-group .avatar-group {
   gap: 4px;
 }
-.notification-group__avatar-group a,
-.notification-group__avatar-group .account__avatar,
+.notification-group .avatar-group a,
+.notification-group .avatar-group .account__avatar,
 _ {
   border-radius: 50%;
 }
