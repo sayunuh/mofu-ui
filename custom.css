@@ -7102,33 +7102,33 @@ _ {
 .column article:nth-of-type(12n+11) { --弱い彩色: var(--弱い彩色の順序11); }
 .column article:nth-of-type(12n+12) { --弱い彩色: var(--弱い彩色の順序12); }
 
-.focusable {
+.scrollable .focusable {
   --hover色: transparent;
   --背景倍率: 0;
   outline-offset: -2px;
   box-shadow: inset 0 0 0 2px var(--背景色a);
 }
-.focusable:focus {
+.scrollable .focusable:focus {
   outline: 2px solid var(--弱い彩色);
 }
 @media (hover: hover) {
-  .focusable:not(:has(.status__content:is(:hover, :focus-visible))) {
+  .scrollable .focusable:not(:has(.status__content:is(:hover, :focus-visible))) {
     transition: background-size 0s linear 0.35s;
   }
-  .focusable:is(.status__wrapper, .notification):has(.status__content:hover):not(:has(:is(a, label, button):hover)),
-  .focusable:is(.status__wrapper, .notification):has(.status__content:focus-visible),
+  .scrollable .focusable:has(.status__content:hover):not(:has(:is(a, label, button):hover)),
+  .scrollable .focusable:has(.status__content:focus-visible),
   _ {
     --hover色: var(--背景彩色);
     --背景倍率: 1;
     transition: none;
   }
-  .focusable:is(.status__wrapper, .notification) .status__content {
+  .scrollable .focusable .status__content {
     box-shadow: inset 0 0 0 1px var(--hover色);
     transition: box-shadow 0.05s linear 0.35s
       , background-color 0s linear 0.35s
     ;
   }
-  .focusable:is(.status__wrapper, .notification) .status__content:is(:hover, :focus-visible) {
+  .scrollable .focusable .status__content:is(:hover, :focus-visible) {
     background: var(--背景色a);
     transition: none;
   }
@@ -7158,22 +7158,22 @@ _ {
   }
 }
 
-.column article:nth-child(-n+8) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(-n+8) > div > .focusable {
   animation: 新着背景上昇 1s linear 0.25s;
 }
-.column article:nth-child(9) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(9) > div > .focusable {
   animation: 新着背景上昇 1s linear 0s;
 }
-.column article:nth-child(10) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(10) > div > .focusable {
   animation: 新着背景上昇 1s linear -0.25s;
 }
-.column article:nth-child(11) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(11) > div > .focusable {
   animation: 新着背景上昇 1s linear -0.5s;
 }
-.column article:nth-child(12) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(12) > div > .focusable {
   animation: 新着背景上昇 1s linear -0.75s;
 }
-.column article:nth-child(13) > div > :is(.status__wrapper, .notification) {
+.column article:nth-child(13) > div > .focusable {
   animation: 新着背景上昇 1s linear -1s;
 }
 
