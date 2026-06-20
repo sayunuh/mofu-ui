@@ -7112,23 +7112,23 @@ _ {
   outline: 2px solid var(--弱い彩色);
 }
 @media (hover: hover) {
-  .scrollable .focusable:not(:has(.status__content:is(:hover, :focus-visible))) {
+  .scrollable .focusable:not(.detailed-status__wrapper):not(:has(.status__content:is(:hover, :focus-visible))) {
     transition: background-size 0s linear 0.35s;
   }
-  .scrollable .focusable:has(.status__content:hover):not(:has(:is(a, label, button):hover)),
-  .scrollable .focusable:has(.status__content:focus-visible),
+  .scrollable .focusable:not(.detailed-status__wrapper):has(.status__content:hover):not(:has(:is(a, label, button):hover)),
+  .scrollable .focusable:not(.detailed-status__wrapper):has(.status__content:focus-visible),
   _ {
     --hover色: var(--背景彩色);
     --背景倍率: 1;
     transition: none;
   }
-  .scrollable .focusable .status__content {
+  .scrollable .focusable:not(.detailed-status__wrapper) .status__content {
     box-shadow: inset 0 0 0 1px var(--hover色);
     transition: box-shadow 0.05s linear 0.35s
       , background-color 0s linear 0.35s
     ;
   }
-  .scrollable .focusable .status__content:is(:hover, :focus-visible) {
+  .scrollable .focusable:not(.detailed-status__wrapper) .status__content:is(:hover, :focus-visible) {
     background: var(--背景色a);
     transition: none;
   }
