@@ -1147,7 +1147,7 @@ _ {
 
 .status__content,
 .announcements__item__content,
-.account__header__bio .account__header__content,
+._comp_account_bio__bio,
 .prose,
 .rules-list,
 .story,
@@ -6110,7 +6110,7 @@ _ {
 }
 .status:not(.muted) .status__content img.emojione,
 .compare-history-modal .status__content img.emojione,
-.account__header__content img.emojione,
+._comp_account_bio__bio img.emojione,
 .account-card__bio img.emojione,
 .announcements__item__content img.emojione,
 _ {
@@ -6120,7 +6120,7 @@ _ {
 }
 .status:not(.muted) .status__content img.emojione.custom-emoji,
 .compare-history-modal .status__content img.emojione.custom-emoji,
-.account__header__content img.emojione.custom-emoji,
+._comp_account_bio__bio img.emojione.custom-emoji,
 .account-card__bio img.emojione.custom-emoji,
 .announcements__item__content img.emojione.custom-emoji,
 _ {
@@ -6158,7 +6158,7 @@ _ {
 .status:not(.muted) .status__content img.emojione.custom-emoji, 
 .compare-history-modal .status__content img.emojione.custom-emoji, 
 .detailed-status .status__content img.emojione.custom-emoji, .announcements__item__content img.emojione.custom-emoji,
-.account__header__content img.emojione.custom-emoji, 
+._comp_account_bio__bio img.emojione.custom-emoji, 
 .account-card__bio img.emojione.custom-emoji, 
 .reply-indicator__content img.emojione.custom-emoji,
 _ {
@@ -6213,7 +6213,7 @@ _ {
 .status:not(.muted) .emojione:hover,
 .detailed-status .emojione:hover,
 .announcements__item__content .emojione:hover,
-.account__header__bar .emojione:hover,
+._comp_account_header__barWrapper .emojione:hover,
 .reactions-bar__item:hover img.emojione,
 _ {
   position: relative;
@@ -6246,7 +6246,7 @@ _ {
 
 /*** 本文中のハッシュタグ ***/
 
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+:not(.muted) > :is(.status__content, ._comp_account_bio__bio, .account-card__bio) a:is(
   [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
 ) {
   padding-block: 2px;
@@ -6259,12 +6259,12 @@ _ {
   border-radius: 0.4em / 0.6em;
   box-shadow: 0 0 0 1px var(--背景彩色);
 }
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+:not(.muted) > :is(.status__content, ._comp_account_bio__bio, .account-card__bio) a:is(
   [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
 ):is(:hover, :focus-visible) {
   color: var(--強い彩色);
 }
-:not(.muted) > :is(.status__content, .account__header__content, .account-card__bio) a:is(
+:not(.muted) > :is(.status__content, ._comp_account_bio__bio, .account-card__bio) a:is(
   [href^='/tags/'], [href^='https://mofu.kemo.no/tags/']
 ):is(:hover, :focus-visible) span {
   text-decoration: none;
@@ -6420,6 +6420,13 @@ _ {
 ._comp_account_header__buttonsMobile .icon-button:not(後続link),
 _ {
   border-color: var(--前景色3);
+}
+._comp_account_bio__bio {
+  font-size: 15px;
+  line-height: 24px;
+}
+._comp_account_bio__bio p {
+  margin-bottom: 22px;
 }
 ._comp_account_header__note:not(後続link) {
   border: 1px solid var(--背景色b);
