@@ -1429,9 +1429,10 @@ _ {
   --スクロールバー空き: 2px;
 }
 
-::-webkit-scrollbar {
-  width: var(--スクロールバー幅);
-  height: var(--スクロールバー幅);
+::-webkit-scrollbar,
+textarea:not(._)::-webkit-scrollbar,
+_ {
+  all: var(--スクロールバー幅);
 }
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track:hover,
@@ -4592,7 +4593,6 @@ _ {
   line-height: 24px;
   font-size: 15px;
   padding: 0 7px;
-  overflow: hidden;
 }
 @media (pointer: coarse) {
   .compose-form .autosuggest-textarea__textarea {
