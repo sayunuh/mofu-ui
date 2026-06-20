@@ -6359,10 +6359,9 @@ _ {
 ._comp_account_header__header:active img {
   height: 190px;
 }
-._comp_account_header__barWrapper {
+._comp_account_header__barWrapper:not(後続link) {
   margin-top: -60px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding: 8px var(--横余白);
   border-radius: 0 0 var(--小カド) var(--小カド);
   --bd-filter: saturate(1.4) blur(2px);
   -webkit-backdrop-filter: var(--bd-filter);
