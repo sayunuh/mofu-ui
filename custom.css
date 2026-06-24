@@ -1562,11 +1562,7 @@ body.layout-single-column {
   --カラム幅-間隔: calc(var(--スクロールバー幅) + var(--カラム幅-間隔追加));
   --カラム幅-全間隔: 0px;
   --カラム幅-投稿作成: 0px;
-  --カラム幅-メニュー: 54px;
-    --カラム幅-メニュー: calc(170px
-      + clamp(0px, 70px, 0.5 * (100vw - 720px) + 0px) 
-      + clamp(0px, 31px, 0.5 * (100vw - 1175px) + 31px)
-    );
+  --カラム幅-メニュー: 0px;
   --カラム幅-主要: min(800px, 100vw - var(--カラム幅-全間隔) - var(--カラム幅-投稿作成) - var(--カラム幅-メニュー));
 }
 .columns-area__panels__main {
@@ -1589,7 +1585,13 @@ _ {
 .columns-area__panels__pane--navigational,
 .columns-area__panels__pane--navigational > *:not(._),
 _ {
-  width: var(--カラム幅-メニュー);
+}
+@media (min-width: 760px) {
+  .columns-area__panels__pane--navigational,
+  .columns-area__panels__pane--navigational > *:not(._),
+  _ {
+    width: var(--カラム幅-メニュー);
+  }
 }
 .layout-single-column .columns-area,
 .layout-single-column .column,
@@ -1602,16 +1604,17 @@ _ {
 
 @media (min-width: 600px) {
   body.layout-single-column {
-    --カラム幅-間隔追加: clamp(0px, 12px, (100vw - 890px) / 3 + 12px);
-    --カラム幅-全間隔: var(--カラム幅-間隔) * 3;
+    --カラム幅-間隔追加: clamp(0px, 12px, (100vw - 890px) / 2 + 12px);
+    --カラム幅-全間隔: var(--カラム幅-間隔) * 2;
   }
   .columns-area__panels {
     width: calc(100vw - var(--カラム幅-間隔) * 2);
     margin-inline: var(--カラム幅-間隔) auto;
+    padding: 0;
     gap: var(--カラム幅-間隔);
   }
 }
-@media (min-width: 720px) {
+@media (min-width: 760px) {
   body.layout-single-column {
     _note: '最小幅 720px = 主カラム 514px + 副カラム 170px + 間隔 12px * 3';
     _note: '最大幅 1175px = 主カラム 760px + 副カラム 271px + 間隔 48px * 3';
@@ -1623,6 +1626,8 @@ _ {
       + clamp(0px, 70px, 0.5 * (100vw - 720px) + 0px) 
       + clamp(0px, 31px, 0.5 * (100vw - 1175px) + 31px)
     );
+    
+    --カラム幅-全間隔: var(--カラム幅-間隔) * 3;
   }
 }
 @media (min-width: 1175px) {
@@ -7247,13 +7252,4 @@ _ {
 }
 .ui__navigation-bar__item.active {
   color: var(--強い彩色);
-}
-
-/**/
-
-.columns-area__panels__pane--navigational .columns-area__panels__pane__inner {
-  inset: unset;
-}
-.columns-area__panels__pane--navigational .columns-area__panels__pane__inner .navigation-panel {
-  width: unset;
 }
