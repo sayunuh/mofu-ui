@@ -2385,17 +2385,6 @@ html[lang=ja] .server-banner__number-label::after {
 
 /*** 非ログイン状態の右カラム ***/
 
-
-.navigation-panel__sign-in-banner {
-  order: 1;
-}
-.compose-panel .flex-spacer,
-.navigation-panel .flex-spacer,
-.getting-started__trends,
-.link-footer,
-_ {
-  order: 2;
-}
 .sign-in-banner {
   max-width: 350px;
   margin-inline: auto;
@@ -2413,24 +2402,17 @@ html:lang(ja) .sign-in-banner > p {
 .sign-in-banner > a.button:last-child {
   margin-bottom: 0;
 }
-.navigation-panel__legal {
-  display: contents;
+
+html:lang(ja) .navigation-panel__legal > a::after {
+  content: 'もふけもの。について';
 }
-.navigation-panel__legal hr {
+html:lang(ja) .navigation-panel__legal > a > span {
   display: none;
 }
-@media (min-width: 720px) {
-  html:lang(ja) .navigation-panel__legal > a::after {
-    content: 'もふけもの。について';
-  }
-  html:lang(ja) .navigation-panel__legal > a > span {
-    display: none;
-  }
-  html:lang(ja) .sign-in-banner::before {
-    content: 'サーバー利用者の公開投稿を覗いてみるには「リアルタイムフィード」をご覧ください。詳しくは「もふけもの。について」をどうぞ。';
-    display: block;
-    margin-block: 24px;
-  }
+html:lang(ja) .sign-in-banner::before {
+  content: 'サーバー利用者の公開投稿を覗いてみるには「リアルタイムフィード」をご覧ください。詳しくは「もふけもの。について」をどうぞ。';
+  display: block;
+  margin-block: 24px;
 }
 
 /*** 横幅が狭くても右カラムに「もふけもの。」を表示する ***/
