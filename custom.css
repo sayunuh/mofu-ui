@@ -1519,7 +1519,7 @@ _ {
 }
 
 .columns-area__panels__pane--navigational .columns-area__panels__pane__inner {
-  background: var(--背景色a);
+  background: var(--背景色b);
   transform: translate(284px, 0px) !important;
   transition: transform 0.25s var(--transition-bounce);
 }
