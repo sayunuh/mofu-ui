@@ -1647,57 +1647,7 @@ _ {
 
 /*** 単カラム : ヘッダー ***/
 
-.layout-single-column .ui__header {
-  border: none;
-  display: block;
-  height: 0;
-  margin-inline: 0;
-  z-index: 3;
-}
-@media (min-width: 1175px) {
-  .layout-single-column .ui__header {
-    display: none;
-  }
-}
-
-.ui__header__logo {
-  display: none;
-}
-.ui__header__links {
-  position: absolute;
-  inset-inline: auto 0;
-  min-width: var(--カラム幅-メニュー);
-  width: fit-content;
-  height: 48px;
-  padding-inline: calc(var(--カラム幅-間隔追加) + var(--スクロールバー幅));
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(to top, var(--背景色b) -100%, transparent 1000%);
-  --bd-filter: blur(1px);
-  -webkit-backdrop-filter: var(--bd-filter);
-  backdrop-filter: var(--bd-filter);
-  border-bottom-left-radius: 15px;
-}
-@media (min-width: 600px) {
-  .ui__header__links {
-    padding-inline-end: var(--カラム幅-間隔追加);
-  }
-}
-.ui__header__links .account__avatar {
-  width: 40px !important;
-  height: 40px !important;
-}
-.ui__header__links a.button[href='/search'] {
-  display: none;
-}
-.ui__header__links a.button[href='/publish'],
-.ui__header__links a.button[href^='/auth/'],
-_ {
-  flex: 1 0 auto;
-}
-
 .tabs-bar__wrapper {
-  top: 0;
   backdrop-filter: unset;
   -webkit-backdrop-filter: unset;
 }
@@ -1705,71 +1655,6 @@ _ {
   .tabs-bar__wrapper {
     _note: '縦が狭い時、カラムヘッダーを画面内に固定しない';
     top: -44px;
-  }
-}
-
-.columns-area__panels {
-  margin-top: 48px;
-  min-height: 100vh;
-  min-height: 100dvh;
-  justify-content: end;
-}
-
-.columns-area__panels__pane__inner {
-  height: calc(100vh - 48px);
-  height: calc(100dvh - 48px);
-}
-.columns-area__panels__pane--navigational .navigation-panel {
-  height: 100%;
-}
-@media (min-width: 720px) {
-  .columns-area__panels {
-    margin-top: 0;
-  }
-  .columns-area__panels__pane--navigational {
-    margin-top: 48px;
-  }
-}
-@media (min-width: 1175px) {
-  .columns-area__panels {
-    justify-content: center;
-  }
-  .columns-area__panels__pane--navigational {
-    margin-top: 0;
-  }
-  .columns-area__panels__pane__inner {
-    height: 100%;
-  }
-}
-
-/*** 単カラム : ヘッダー : 未ログインの時 ***/
-
-@media (min-width: 720px) {
-  .ui__header__links a.button[href='/auth/sign_up'] {
-    box-shadow: inset 0 0 0 1px var(--背景色a);
-    background: none;
-    color: var(--前景色3);
-    pointer-events: none;
-  }
-  .ui__header__links a.button[href='/auth/sign_up'] span {
-    display: none;
-  }
-  .ui__header__links a.button[href='/auth/sign_up']::after {
-    content: 'Logged out';
-  }
-  .ui__header__links a.button[href='/auth/sign_up']:lang(ja)::after {
-    content: '未ログイン';
-  }
-  .ui__header__links a.button[href='/auth/sign_in'] {
-    width: 40px; height: 40px;
-    flex: none;
-    padding: 0;
-    border: none;
-    border-radius: 20%;
-    background: url('/avatars/original/missing.png') center / contain;
-  }
-  .ui__header__links a.button[href='/auth/sign_in'] span {
-    display: none;
   }
 }
 
