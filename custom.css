@@ -1512,11 +1512,19 @@ _ {
   }
 }
 
-/*** 幅が狭い時のメニューの背景色を消す ***/
+/*** 右側のメニューのカラム ***/
 
 .columns-area__panels__pane--navigational .navigation-panel {
-  background: unset;
   border: none;
+}
+
+.columns-area__panels__pane--navigational .columns-area__panels__pane__inner {
+  background: var(--背景色a);
+}
+@media (min-width: 760px) {
+  .columns-area__panels__pane--navigational .columns-area__panels__pane__inner {
+    background: none;
+  }
 }
 
 /*** メニューに hover を設定 ***/
@@ -1702,10 +1710,6 @@ _ {
 }
 
 /*** スタートメニュー ***/
-
-.navigation-panel__menu {
-  display: contents;
-}
 
 .column-link span,
 .column-link::after,
