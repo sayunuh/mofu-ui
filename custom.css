@@ -5861,7 +5861,7 @@ html[lang=ja] .simple_form.new_user[action='/auth'] h1 + p.lead::before {
   line-height: 1.5;
 }
 .simple_form.new_user[action='/auth'] h1 + p.lead::after {
-  content: "登録時の確認メールは mofu@masto.host からお送りします。";
+  content: "登録時の確認メールは kemono@hotoast.cc からお送りします。";
   display: block;
   margin: 20px 0 40px;
   padding: 1em;
